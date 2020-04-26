@@ -1,0 +1,639 @@
+
+@import url('https://fonts.googleapis.com/css?family=Cabin|Kanit&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+//variables
+
+$backgroundColor: white;
+$primaryColor: black;
+$secondaryColor: yellow;
+
+
+
+$tertiaryColor: red;
+
+//complement color pick a colour that matches the colour selected
+$contrastColor: complement($secondaryColor);
+
+
+$titleFontFamily: 'Cabin', sans-serif;
+$bodyTextFontFamily: 'Kanit', sans-serif;
+$bodyFontFamily: 'Nunito', sans-serif;
+
+
+
+$titleFontSize: 30px;
+$bodyTextFont: 18px; 
+
+
+
+// mixins to include into multiple styles
+
+
+@mixin parentgridmix{
+    // declre the grid
+    display: grid;
+    // declare how many coumns the grid will have
+    grid-template-columns: 1fr;  
+    height: 100vh; 
+
+    // declare how many rows the grid will have
+   // grid-template-rows: repeat(1, minmax(600px, auto))
+  
+
+}
+
+@mixin childgridmix{
+    // declre the grid
+    display: grid;
+    // declare how many coumns the grid will have
+    grid-template-columns: repeat(12, 1fr); 
+      
+  
+
+}
+
+
+
+
+@mixin card{
+    color: $contrastColor;
+    width : 100%;
+ 
+}
+
+
+@mixin largeCard {
+    color: $contrastColor;
+    width : 100%;
+
+}
+
+
+/*rest the browser style*/
+body,p,a,ul,li{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+li{
+    list-style-type: none;
+
+}
+
+/*rest broser ends here*/ 
+
+/*base styles*/
+body{
+    background: whitesmoke;
+}
+
+
+input, textarea{
+
+   
+    // border: none;
+    // border-bottom: 2px solid;
+    // border-color: $primaryColor;
+    // padding: 5px;
+    // margin: 10px 10px;
+
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid $primaryColor;
+}
+
+input:focus {
+    border: 1px solid $contrastColor;
+  }
+
+img {
+    padding: 10px;
+}
+
+select{
+    position: relative;
+    font-family: $bodyTextFontFamily;
+     width: 100%;
+    padding: 10px;
+    background-color: white;
+    border: none;
+    border-bottom: 2px solid $primaryColor;
+}
+
+select option{
+    position: relative;
+    font-family: $bodyTextFontFamily;
+    font-size: $bodyTextFont;
+    width: 100%;
+    padding: 10px;
+    background-color: grey;
+
+}
+
+option{
+    padding: 20px;
+    
+}
+
+
+
+
+h1,h2,h3,h4,h5,h6{
+    font-family: $titleFontFamily;
+    font-weight: 900;
+}
+
+
+li, a{
+    font-family: $bodyTextFontFamily;
+    color: $contrastColor;
+}
+
+
+label, span{
+    font-family: $bodyTextFontFamily;
+    width: 10px;
+    font-size: $bodyTextFont;
+    font-weight: 900;
+
+}
+
+span{
+    font-size: 22px;
+}
+
+
+
+
+form {
+    background-color: $backgroundColor;
+    padding: 50px;
+    margin:auto;
+   
+}
+
+
+button {
+    
+  
+    border-radius: 5px;
+    background-color: $primaryColor; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 4px 2px;
+   // min-width: 200px;
+   width: 100%;
+
+}
+
+
+button:disabled {
+   opacity: 0.5;
+   // transition: ease-in-out, width .35s ease-in-out;
+  }
+
+/*base styles end here*/
+
+
+
+
+// mobile styles
+
+
+//1 2 3 4 5    6       7       8      9 10 11 12 13
+
+// grid rows
+// grid-template-rows: repeat(3, minmax(200px, auto))
+
+//styles for fixed assets
+
+ .navLogout{
+  
+    display: grid;
+    justify-items: end;
+
+    grid-column: 1fr;
+    padding: 0px;
+    margin: 0px;
+    width: 110%;
+
+
+}
+
+.navTitle{
+    display: grid;
+    grid-column: 1fr;
+    justify-items: center;
+    color: $tertiaryColor;
+    text-align: center;
+    font-size: 30px;
+    padding: 0px;
+    margin: 0px;
+
+
+}
+
+#pageTitle{
+    padding: 0px;
+    margin: 0px;
+    margin-left: 50px
+}
+
+.profilePicPreview {
+    display: grid;
+    justify-items: center;
+    align-self: center;
+   // border-radius: 100px;
+   // padding: 20px;
+}
+
+
+.menu{
+    background-color: $secondaryColor;
+    font-size: $titleFontSize;
+    font-style: $bodyFontFamily;
+    padding: 0px;
+
+}
+
+.navbar{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1;
+    background-color: transparent;
+    color: $secondaryColor;
+    padding: 0px;
+}
+
+
+
+  .page{
+     // display: grid;
+    //  grid-template-columns: 1fr;
+     // grid-template-columns: 20vw auto;
+     padding: 30px;
+     max-width: 100%;
+  }
+
+  .main{
+      grid-column-start: 1;
+    //  height: 100vh;
+
+  }
+
+
+.sidebar{
+    display: none;
+   // visibility: hidden;
+    // position: fixed;
+    
+    // max-width: 13vw;
+    // background-color: $secondaryColor;
+    //  height: 100vh;
+    // padding-top: 60px; 
+    
+  
+
+}
+
+
+  
+
+
+.fieldError{
+
+    color: red;
+
+}
+
+
+.footer{
+    // this is how to include a mixin created above
+    @include card;
+}
+
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color: $primaryColor;
+	color: $contrastColor;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
+}
+
+
+.pagegrid{
+    @include parentgridmix;
+    background-color: white;
+ //   max-width: 100%;
+ //   justify-content: center;
+ //   justify-items: center;
+    
+}
+
+.confirmationPage{
+    display: grid;
+    // declare how many coumns the grid will have
+    grid-template-columns: 1fr;  
+    background-color: white;
+
+}
+
+
+//to align items up and down vertically on the screen use
+// align-items : start/center/end (this is for parent div styling child elements)
+// align-self: start/center/end (this is for child elements styling themselves)
+
+// to align items left and right horizontally on the screen use
+// justify-items : start/center/end (this is for parent div styling child elements)
+// justify-self: start/center/end (this is for child elements trying to style themselves)
+
+.innergrid{
+
+    background-color: white;
+    // align-self: center;
+     justify-self: center;
+}
+
+
+.grid{
+    display: grid;
+
+    align-self: center;
+    justify-self: center;
+
+}
+
+
+.one-column-row{
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1;
+    grid-gap: 10px;
+
+    align-items: center;
+    justify-items: center;
+    width: 95%;
+    padding: 5px;
+    margin: 10px;
+
+   // grid-template-columns: repeat(12, 1fr);
+}
+
+
+
+.two-column-row{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1;
+    grid-gap: 10px;
+    width: 95%;
+    align-items: center;
+    justify-items: center;
+    padding: 5px;
+    margin: 10px;
+
+    // display: grid;
+    // grid-template-columns: 1fr 1fr;
+    // grid-template-rows: 1;
+    // grid-gap: 10px;
+    // width: 100%;
+    // align-items: center;
+    // justify-items: center;
+    // padding: 5px;
+    // margin: 10px;
+
+
+   // grid-template-columns: repeat(12, 1fr);
+}
+
+
+
+
+.three-column-row{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1;
+    grid-gap: 10px;
+
+    align-items: center;
+    justify-items: center;
+    padding: 5px;
+    margin: 10px;
+
+
+   // grid-template-columns: repeat(12, 1fr);
+}
+
+
+.four-column-row{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1;
+    grid-gap: 10px;
+
+    align-items: center;
+    justify-items: center;
+    padding: 5px;
+    margin: 10px;
+
+
+   // grid-template-columns: repeat(12, 1fr);
+}
+
+
+
+.column{
+   // display: grid;
+
+    grid-column: 1fr;
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+  //  grid-template-rows: 1;
+   //s grid-template-columns: 1fr 1fr; 
+
+    
+  //  align-items: center;
+    //justify-items: center;
+
+
+}
+
+.card{
+    display: grid;
+    background-color: $primaryColor;
+    padding: 10px;
+
+}
+
+.successContainer{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    align-self: center;
+    justify-self: center;
+    padding: 10px;
+    margin: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: $primaryColor;
+    border-radius: 5px;
+    background-color: $backgroundColor;
+    margin-top: 400px;
+}
+
+
+.profile-form{
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    align-self: center;
+    justify-self: center;
+    padding: 10px;
+    margin: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: $primaryColor;
+    border-radius: 5px;
+    background-color: $backgroundColor;
+  //  justify-content: center;
+   // grid-template-columns: 1fr 1fr;
+  
+ 
+}
+
+.profileGroup{
+    width: 100%;
+    margin-left: 50px;
+    margin-right: inherit;
+}
+
+.profile-form h3{
+    font-size: $titleFontSize;
+    font-family: $titleFontFamily;
+    text-transform: capitalize;
+}
+
+.componentFooter{
+    display: grid;
+   // background-color: $primaryColor;
+    color: $primaryColor;
+    font-size: 20px;
+    font-weight: bold;
+    justify-items: center;
+    max-width: 100%;
+    padding: 5px;
+  
+}
+
+.align-right{
+   // display: grid;
+    justify-items: end;
+    align-items: end;
+    align-self: end;
+}
+
+// grid-column: 1fr;
+//     padding: 5px;
+//     margin: 5px;
+//     width: 100%;
+
+
+
+
+// small tablets
+@media screen and (min-width: 620px){
+    .sidebar {
+      display:none;
+      }
+
+}
+
+
+// large tablets
+@media screen and (min-width: 960px){
+    .sidebar {
+      display:none
+      }
+
+}
+
+
+// desktop style 
+@media screen and (min-width: 1200px){
+
+    // .sidebar {
+    //     position: fixed;
+    
+    //     width: 20vw;
+    //     background-color: $secondaryColor;
+        
+    //   }
+
+    
+  .page{
+    display: grid;
+    grid-template-columns: 13vw auto;
+    padding: 30px;
+   // max-width: 75%;
+    }
+
+  .main{
+        grid-column-start: 2;
+    //  height: 100vh;
+
+    }
+
+
+  .sidebar{
+    display: block;
+    position: fixed; 
+    max-width: 13vw;
+    background-color: $secondaryColor;
+    height: 100vh;
+    padding-top: 60px; 
+    padding-left: 60px;
+    padding-right: 70px;
+  
+
+
+ }
+
+    .float{
+        visibility: hidden;
+    }
+    
+    .my-float{
+        visibility: hidden;
+    }
+    
+}

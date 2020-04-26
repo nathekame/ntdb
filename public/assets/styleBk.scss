@@ -1,0 +1,278 @@
+//@import url('https://fonts.googleapis.com/css?family=Cabin|Kanit&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+
+
+//variables
+
+$backgroundColor: white;
+$primaryColor: black;
+$secondaryColor: yellow;
+
+$tertiaryColor: red;
+
+//complement color pick a colour that matches the colour selected
+$contrastColor: complement($primaryColor);
+
+
+$titleFontFamily: 'Cabin', sans-serif;
+$bodyTextFontFamily: 'Nunito', sans-serif;
+
+
+$titleFontSize: 30px;
+$bodyTextFont: 18px; 
+
+
+/*rest the browser style*/
+body,p,a,ul,li{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+li{
+    list-style-type: none;
+
+}
+
+/*rest broser ends here*/ 
+
+
+
+
+/*base styles*/
+body{
+    background: whitesmoke;
+}
+
+
+input, textarea{
+
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid $primaryColor;
+}
+
+input:focus {
+    border: 1px solid $contrastColor;
+  }
+
+select{
+    position: relative;
+    font-family: $bodyTextFontFamily;
+     width: 100%;
+    padding: 10px;
+    background-color: white;
+    border: none;
+    border-bottom: 2px solid $primaryColor;
+}
+
+select option{
+    position: relative;
+    font-family: $bodyTextFontFamily;
+    font-size: $bodyTextFont;
+    width: 100%;
+    padding: 10px;
+    background-color: grey;
+
+}
+
+option{
+    padding: 20px;
+    
+}
+
+
+
+
+h1,h2,h3,h4,h5,h6{
+    font-family: $titleFontFamily;
+    font-weight: 900;
+}
+
+
+li, a{
+    font-family: $bodyTextFontFamily;
+}
+
+
+label{
+    font-family: $bodyTextFontFamily;
+    width: 10px;
+    font-size: $bodyTextFont;
+    font-weight: 900;
+
+}
+
+
+
+form {
+    background-color: $primaryColor;
+    padding: 50px;
+}
+
+
+button {
+    
+  
+    border-radius: 5px;
+    background-color: $primaryColor; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 4px 2px;
+   // min-width: 200px;
+   width: 100%;
+
+}
+
+
+button:disabled {
+   opacity: 0.5;
+   // transition: ease-in-out, width .35s ease-in-out;
+  }
+
+/*base styles end here*/
+
+
+
+.grid{
+    display: grid;
+
+    align-self: center;
+    justify-self: center;
+
+}
+
+
+.one-column-row{
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1;
+    grid-gap: 10px;
+
+    align-items: center;
+    justify-items: center;
+    width: 95%;
+    padding: 5px;
+    margin: 10px;
+
+   // grid-template-columns: repeat(12, 1fr);
+}
+
+
+
+.two-column-row{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1;
+    grid-gap: 10px;
+    width: 95%;
+    align-items: center;
+    justify-items: center;
+    padding: 5px;
+    margin: 10px;
+
+    // display: grid;
+    // grid-template-columns: 1fr 1fr;
+    // grid-template-rows: 1;
+    // grid-gap: 10px;
+    // width: 100%;
+    // align-items: center;
+    // justify-items: center;
+    // padding: 5px;
+    // margin: 10px;
+
+
+   // grid-template-columns: repeat(12, 1fr);
+}
+
+
+
+
+.three-column-row{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1;
+    grid-gap: 10px;
+
+    align-items: center;
+    justify-items: center;
+    padding: 5px;
+    margin: 10px;
+
+
+   // grid-template-columns: repeat(12, 1fr);
+}
+
+
+.four-column-row{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1;
+    grid-gap: 10px;
+
+    align-items: center;
+    justify-items: center;
+    padding: 5px;
+    margin: 10px;
+
+
+   // grid-template-columns: repeat(12, 1fr);
+}
+
+
+
+.column{
+   // display: grid;
+
+    grid-column: 1fr;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+  //  grid-template-rows: 1;
+   //s grid-template-columns: 1fr 1fr; 
+
+    
+  //  align-items: center;
+    //justify-items: center;
+
+
+}
+
+
+
+
+
+
+
+
+// small tablets
+@media screen and (min-width: 620px){
+
+}
+
+
+// large tablets
+@media screen and (min-width: 960px){
+
+}
+
+
+// desktop style 
+@media screen and (min-width: 1200px){
+    
+}
