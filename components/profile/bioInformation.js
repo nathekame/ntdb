@@ -21,8 +21,6 @@ import axiosFuncs from '../../utility/axios'
 import Validator from 'validatorjs';
 
 
-import { Row, Col, CardPanel , Icon} from 'react-materialize';
-
  //   const cropper = React.createRef(null);
 
 //  const buttonStyle = {
@@ -254,46 +252,81 @@ useEffect(() => {
 
   return (
 
-      <div className="pagegrid">
+    <div className="pagegrid">
       
-      <Navbar />
-          <div className="innergrid">
+    <Navbar />
+        <div className="innergrid">
 
-          <Row>
-              <Col m={6} s={12} >
-             
-                <CardPanel className="black">
-                    <span className="white-text">
-                    Bio Information
-                      For a simpler card with less markup, try using a card panel which just has padding and a shadow effect
-                    </span>
-            
+            <div className="profile-form" >
 
+                  <h3>Bio Information </h3>
 
-                  I am a very simple card.
-                  </CardPanel>
-              </Col>
-     
+                  <div className="three-column-row">
+                    
+                        <div className="column">
+                        
+                          <label htmlFor="firstName">First Name  <span className="fieldError">{validation.errors.get("firstName")}</span></label> 
+                          <input className="firstName" id="firstName" onChange={handleChange}  value={bioInformation.firstName} />
+                
+                        </div> 
+                        <div className="column">
+                          <label htmlFor="otherName">Other Name </label>
+                          <input id="otherName" onChange={handleChange} value={bioInformation.otherName}  />
+                         
+                        </div> 
+                        <div className="column">
+                          <label htmlFor="lastName">Last Name  <span className="fieldError">{validation.errors.get("lastName")}</span></label>
+                          <input id="lastName" onChange={handleChange} value={bioInformation.lastName}  />
+                         
+                        </div>
+                   
+                  </div>
 
-        </Row>
-    </div>
+                  <div className="three-column-row">
+                      <div className="column">
+                          <label htmlFor="gender">Gender  <span className="fieldError">{validation.errors.get("gender")}</span></label>
+                          <select id="gender" onChange={handleChange} value={bioInformation.gender}  >
+                              <option value="" />
+                              <option value={"Male"}>Male</option>
+                              <option value={"Female"}>Female</option>
+                          </select>
+                      </div>
+                      <div className="column">
+                          <label htmlFor="dob">Date Of Birth  <span className="fieldError">{validation.errors.get("dob")}</span></label>
+                          <input id="dob" type="date" onChange={handleDateChange} value={bioInformation.dob}  />
+                      </div>
+                      <div className="column">
+                          <label htmlFor="placeOfBirth">Place Of Birth  <span className="fieldError">{validation.errors.get("placeOfBirth")}</span></label>
+                          <input id="placeOfBirth" onChange={handleChange} value={bioInformation.placeOfBirth}  />
+                      </div>
+                  </div>
 
-    </div>
+                  
+
+                  <div className="two-column-row">
+                      <div className="column">
+                         <button  size="small" color="primary" onClick={handleSaveNow}>Save And Logout</button>
+                      </div>
+                      <div className="column">
+                         <button size="small" color="primary" disabled={buttonState} onClick={handleForward}>Next</button>
+                      </div>
+                  </div>
+
+                  <div className="one-column-row">
+                      <div className="column componentFooter">
+                         <span>1/6</span>
+                      </div>
+                  </div>
+
+              </div>
+
+              </div>
               
      
 
-              
-          
+    </div>
 
 
-
-
-
-
-
-
-
-   
   )
 }
 
