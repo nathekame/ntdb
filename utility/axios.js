@@ -144,7 +144,32 @@ const profilePost = async (data) => {
 // }
 
 
+const checkBVN = async (bvn)=> {
 
+    const url = config.apiUrl+"bvn/"+bvn;
+    console.log("the final url to check "+url)
+    try {
+
+        const getReq = await axios.get(url).then(function (response) {
+            // console.log(response);
+            // console.log(response.data);
+             console.log("this is the response satus "+response.status);
+            return response;
+        }).catch(function(error){
+            console.log("this is the error that occurred "+error);
+            //return error
+            return 
+        })
+
+        return  getReq
+        
+    } catch (error) {
+        
+    }
+
+
+
+}
 
 
 
@@ -152,7 +177,8 @@ const axiosFuncs = {
 
     userRegister: userRegister,
     userLogin: userLogin,
-    profilePost: profilePost
+    profilePost: profilePost,
+    checkBVN: checkBVN
    // setItemInStorage : setItemInStorage
 
 // end of the module export bracket

@@ -14,6 +14,9 @@ import config from '../../config/config';
 
 import Validator from 'validatorjs';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -68,6 +71,7 @@ const Login = (props) => {
 
       }
 
+      console.log("the local JWt "+localJWT());
      // connect to the db via axios and the dispatch an action based on the server response
 
       const options = {
@@ -104,12 +108,15 @@ const Login = (props) => {
 
             console.log("the token was decoded well so you are free to go");
 
-            router.push('/account')
+              //   router.push('/account')
+        
+            router.push('/success')
             
 
          }
 
           if(isProfileComplete === "null" || isProfileComplete === '"0"'){
+
 
               router.push('/profile')
   
@@ -138,11 +145,12 @@ const Login = (props) => {
                 <img src="/images/ubelogo.jpeg" alt="logo" height="200px" width="600px"/>
               </div>
               <div className="column">
-                  <h1> Register </h1>
+                  <h1> Login </h1>
               </div>
         </div>
+        <ToastContainer />
+
       <div className="grid">
-     
           <div className="one-column-row">
               <div className="column"> 
               <label htmlFor="email">Email <span className="fieldError">{validation.errors.get("email")}</span></label>

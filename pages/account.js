@@ -10,26 +10,43 @@ import axios from 'axios';
 
 import Login from "../components/auth/login"
 import Logout from '../utility/logout';
-// import Navbar from '../components/layouts/navbar';
+import Navbar from '../components/layouts/navbar';
+
+import Cookie from 'js-cookie'
 // import Layout from '../components/layouts/layout';
 
 // import "../public/assets/js/utility.js"
 
+//import Navbar from '../layouts/navbar'
+
+import ProfileContextProvider from '../store/contexts/profileContext'
+import config from '../config/config';
+import jwtFuncs from '../utility/jwt';
 
 
-const apiCall = async () => {
+
+
+const apiCall = async (id) => {
+
+
+  const userToken = Cookie.get('auth'); 
+  console.log("this is the cookie is got "+userToken);
+
 
   const options = {
     withCredentials: true,
-    headers: {
-      'Authorization': `Bearer ${currentUserAuthToken}`
-    }
+     headers: {
+       'Authorization': `Bearer ${userToken}`
+     }
   } 
 
+     const userID = jwtFuncs.jwtUID(userToken);
+   //  console.log("the user ID "+userID);
 
+        const url = config.apiUrl+"profile/"+userID
 
         // Make a request for a user with a given ID
-        const res =  await axios.get('http://localhost:5000/',options).then(function (response) {
+        const res =  await axios.get(url, options).then(function (response) {
                                                                   // handle success
                                             
                                           return response
@@ -63,25 +80,37 @@ const Account = () => {
 
 //const [ data, error ] = useSWR(url , apiCall );
 
+
 const handleLogout = () =>{
 
   Logout();
 
 }
 
+   
+
+    useEffect(() => {
+
+      apiCall();
+      });
+
 
 return (
   <div>
-     
-    {/* <Layout /> */}
-        <div className="page">
-        <div className="main">
-            <h1>sthis is the acout page</h1>
-            <button onClick={handleLogout}>Logout</button>
-        </div>
-        </div>
-      
-
+  
+        <ProfileContextProvider >     
+              <div className="pagegrid">    
+                  <div className="innergrid">
+                  <Navbar />
+                      <h1>sthis is the acout page</h1>
+                      <h1>sthis is the acout page</h1>
+                      <h1>sthis is the acout page</h1> <h1>sthis is the acout page</h1>
+                      <h1>sthis is the acout page</h1>
+                      <h1>sthis is the acout page</h1>
+                      <button onClick={handleLogout}>Logout</button>
+                  </div>
+              </div>     
+        </ProfileContextProvider>
   </div> 
 )   
 

@@ -14,6 +14,7 @@ import Cookie from 'js-cookie'
 import jwtFuncs from '../../utility/jwt';
 import composeApiData from '../componentUtility/composeApiData';
 
+import _ from 'lodash'
 
 //import localStorageFuncs from '../../../utility/localStorage'
 
@@ -80,12 +81,35 @@ let rules = {
   fullName: 'required',
   relationship: 'required',
   address: 'required',
-  mobileNumber: 'required',
+  emailAddress: 'email',
+  mobileNumber: 'required|numeric|mobileNumberCount',
 
 //  email: 'required|email',
 //  age: 'min:18'
 };
  
+
+
+const checkMobileNumberSize = (mobileNumber, requirement, attribute)=>{
+
+  const requ = _.size(mobileNumber);
+  //console.log("the requ from the size of the acc number ============ "+requ);
+
+  if(requ === 11){
+    return true
+  }
+  if(requ !== 11){
+    return false
+  }
+
+
+}
+
+
+
+Validator.register('mobileNumberCount',checkMobileNumberSize , 'Mobile Numbers Must Be 11 Digits.');
+  
+
 let validation = new Validator(nextOfKinInformation, rules, { required: 'required*' });
 
 validation.fails(); // true

@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 import moment from 'moment'
 
-import { Eclipse } from "react-loading-io";
+//import { Eclipse } from "react-loading-io";
 
 
 import Navbar from '../layouts/navbar'
@@ -189,7 +189,7 @@ if (loading === true) {
          <div className="pagegrid">
               <div className="innergrid">
                   <div className="successContainer" >
-                         <Eclipse size={100} color="black" />;
+                         {/* <Eclipse size={100} color="black" />; */}
                          <h3>Creating Your Profile...</h3>
                   </div>  
               </div>

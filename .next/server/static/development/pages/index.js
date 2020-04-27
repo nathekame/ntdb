@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -139,6 +139,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var validatorjs__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(validatorjs__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _utility_axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utility/axios */ "./utility/axios.js");
 /* harmony import */ var _utility_localStorage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utility/localStorage */ "./utility/localStorage.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-toastify */ "react-toastify");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_toastify__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_11__);
 var _jsxFileName = "/home/noa/ntdbProject/app/NTDB/components/auth/register.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -158,6 +164,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+ //import 'materialize-css';
+
 const Register = props => {
   const router = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])();
   const {
@@ -167,13 +176,23 @@ const Register = props => {
     email: '',
     password: '',
     cpassword: '',
-    fileNumber: ''
+    controlNumber: ''
+  });
+  const {
+    0: buttonState,
+    1: setButtonState
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true);
+  const {
+    0: regError,
+    1: setRegError
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    errorMsg: ''
   });
   let rules = {
     email: 'required|email',
     password: 'required',
     cpassword: 'required|same:password',
-    fileNumber: 'required'
+    controlNumber: 'required'
   };
   let validation = new validatorjs__WEBPACK_IMPORTED_MODULE_6___default.a(userReg, rules, {
     required: 'required*'
@@ -194,14 +213,28 @@ const Register = props => {
     const data = {
       email: userReg.email,
       password: userReg.password,
-      fileNumber: userReg.fileNumber
+      controlNumber: userReg.controlNumber
     };
     let api = await _utility_axios__WEBPACK_IMPORTED_MODULE_7__["default"].userRegister(data);
     const token = api.data.userToken;
-    console.log("this is the status from the register" + api.status);
+    const apiMsg = api.data.msg;
+    console.log("this is the status from the register ====>>> " + api.status);
+    console.log("this is the data from the register ====>>> " + JSON.stringify(api.data));
+    console.log("this is the data from the register ====>>> " + api.data.msg);
 
     if (api.data === "error") {
       console.log("the log is error");
+      router.push('/');
+    }
+
+    if (api.status === 200) {
+      //   const [ regError, setRegError ] = useState({errorMsg: ''});
+      // setUserReg({ ...userReg, [e.target.id]: e.target.value })
+      //    setRegError({...regError, errorMsg:  api.data.msg});
+      Object(react_toastify__WEBPACK_IMPORTED_MODULE_10__["toast"])(apiMsg, {
+        type: react_toastify__WEBPACK_IMPORTED_MODULE_10__["toast"].TYPE.ERROR,
+        className: 'errorToast'
+      });
       router.push('/');
     }
 
@@ -213,7 +246,34 @@ const Register = props => {
         _utility_localStorage__WEBPACK_IMPORTED_MODULE_8__["default"].setItemInStorage("auth", token);
       }
 
+      Object(react_toastify__WEBPACK_IMPORTED_MODULE_10__["toast"])("Registration Success", {
+        type: react_toastify__WEBPACK_IMPORTED_MODULE_10__["toast"].TYPE.SUCCESS,
+        className: 'successToast'
+      });
       router.push('/profile');
+    } //  console.log("the erro "+regError.errorMsg);
+
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if (validation.passes()) {
+      setButtonState(false); // console.log("the   buttonStete "+buttonState);  
+    } else {
+      setButtonState(true);
+    }
+  }, [userReg]);
+
+  const checkForError = () => {
+    const val = regError.errorMsg;
+
+    const isEmp = lodash__WEBPACK_IMPORTED_MODULE_9___default.a.size(val);
+
+    if (isEmp > 0) {
+      console.log("it is true that hteres omething there look at it " + val);
+    }
+
+    if (isEmp === 0) {
+      console.log(" na lie ooo nothig dey inside " + val);
     }
   };
 
@@ -222,7 +282,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89,
+      lineNumber: 147,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -230,7 +290,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91,
+      lineNumber: 149,
       columnNumber: 19
     }
   }, __jsx("form", {
@@ -239,7 +299,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94,
+      lineNumber: 152,
       columnNumber: 25
     }
   }, __jsx("div", {
@@ -247,7 +307,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95,
+      lineNumber: 153,
       columnNumber: 29
     }
   }, __jsx("div", {
@@ -255,7 +315,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96,
+      lineNumber: 154,
       columnNumber: 33
     }
   }, __jsx("img", {
@@ -266,7 +326,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97,
+      lineNumber: 155,
       columnNumber: 35
     }
   })), __jsx("div", {
@@ -274,22 +334,29 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 157,
       columnNumber: 33
     }
   }, __jsx("h1", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100,
-      columnNumber: 33
+      lineNumber: 158,
+      columnNumber: 37
     }
-  }, " Register "))), __jsx("div", {
+  }, " Register "))), __jsx(react_toastify__WEBPACK_IMPORTED_MODULE_10__["ToastContainer"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 162,
+      columnNumber: 22
+    }
+  }), __jsx("div", {
     className: "grid",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103,
+      lineNumber: 166,
       columnNumber: 25
     }
   }, __jsx("div", {
@@ -297,7 +364,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 105,
+      lineNumber: 167,
       columnNumber: 29
     }
   }, __jsx("div", {
@@ -305,7 +372,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106,
+      lineNumber: 168,
       columnNumber: 33
     }
   }, __jsx("label", {
@@ -313,7 +380,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107,
+      lineNumber: 169,
       columnNumber: 33
     }
   }, "Email ", __jsx("span", {
@@ -321,7 +388,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107,
+      lineNumber: 169,
       columnNumber: 62
     }
   }, validation.errors.get("email"))), __jsx("input", {
@@ -332,7 +399,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108,
+      lineNumber: 170,
       columnNumber: 33
     }
   })), __jsx("div", {
@@ -340,34 +407,34 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110,
+      lineNumber: 172,
       columnNumber: 33
     }
   }, __jsx("label", {
-    htmlFor: "fileNumber",
+    htmlFor: "controlNumber",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111,
+      lineNumber: 173,
       columnNumber: 33
     }
-  }, "File Number ", __jsx("span", {
+  }, "Control Number ", __jsx("span", {
     className: "fieldError",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111,
-      columnNumber: 73
+      lineNumber: 173,
+      columnNumber: 79
     }
-  }, validation.errors.get("fileNumber"))), __jsx("input", {
+  }, validation.errors.get("controlNumber"))), __jsx("input", {
     onChange: handleChange,
-    name: "fileNumber",
-    id: "fileNumber",
+    name: "controlNumber",
+    id: "controlNumber",
     type: "text",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112,
+      lineNumber: 174,
       columnNumber: 33
     }
   })), __jsx("div", {
@@ -375,7 +442,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 116,
+      lineNumber: 178,
       columnNumber: 33
     }
   }, __jsx("label", {
@@ -383,7 +450,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 117,
+      lineNumber: 179,
       columnNumber: 33
     }
   }, "Password ", __jsx("span", {
@@ -391,7 +458,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 117,
+      lineNumber: 179,
       columnNumber: 68
     }
   }, validation.errors.get("password"))), __jsx("input", {
@@ -402,7 +469,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118,
+      lineNumber: 180,
       columnNumber: 33
     }
   })), __jsx("div", {
@@ -410,7 +477,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 120,
+      lineNumber: 182,
       columnNumber: 33
     }
   }, __jsx("label", {
@@ -418,7 +485,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 121,
+      lineNumber: 183,
       columnNumber: 33
     }
   }, "Confirm Password ", __jsx("span", {
@@ -426,7 +493,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 121,
+      lineNumber: 183,
       columnNumber: 77
     }
   }, validation.errors.get("cpassword"))), __jsx("input", {
@@ -437,7 +504,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122,
+      lineNumber: 184,
       columnNumber: 33
     }
   }))), __jsx("div", {
@@ -445,7 +512,7 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 127,
+      lineNumber: 189,
       columnNumber: 31
     }
   }, __jsx("div", {
@@ -453,14 +520,14 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 128,
+      lineNumber: 190,
       columnNumber: 33
     }
   }, __jsx("p", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 129,
+      lineNumber: 191,
       columnNumber: 33
     }
   }, "Already Registered?  ", __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -468,14 +535,14 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 129,
+      lineNumber: 191,
       columnNumber: 57
     }
   }, __jsx("a", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 129,
+      lineNumber: 191,
       columnNumber: 77
     }
   }, "Login")))), __jsx("div", {
@@ -483,15 +550,16 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 131,
+      lineNumber: 193,
       columnNumber: 33
     }
   }, __jsx("button", {
     className: "button",
+    disabled: buttonState,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 132,
+      lineNumber: 194,
       columnNumber: 34
     }
   }, "submit")))))));
@@ -2187,6 +2255,17 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
+/***/ "./node_modules/react-toastify/dist/ReactToastify.css":
+/*!************************************************************!*\
+  !*** ./node_modules/react-toastify/dist/ReactToastify.css ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./pages/index.js":
 /*!************************!*\
   !*** ./pages/index.js ***!
@@ -2337,10 +2416,30 @@ const profilePost = async data => {
 // }
 
 
+const checkBVN = async bvn => {
+  const url = _config_config__WEBPACK_IMPORTED_MODULE_1__["default"].apiUrl + "bvn/" + bvn;
+  console.log("the final url to check " + url);
+
+  try {
+    const getReq = await axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+      // console.log(response);
+      // console.log(response.data);
+      console.log("this is the response satus " + response.status);
+      return response;
+    }).catch(function (error) {
+      console.log("this is the error that occurred " + error); //return error
+
+      return;
+    });
+    return getReq;
+  } catch (error) {}
+};
+
 const axiosFuncs = {
   userRegister: userRegister,
   userLogin: userLogin,
-  profilePost: profilePost // setItemInStorage : setItemInStorage
+  profilePost: profilePost,
+  checkBVN: checkBVN // setItemInStorage : setItemInStorage
   // end of the module export bracket
 
 };
@@ -2459,7 +2558,7 @@ const localStorageFuncs = {
 
 /***/ }),
 
-/***/ 6:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -2501,6 +2600,17 @@ module.exports = require("js-cookie");
 /***/ (function(module, exports) {
 
 module.exports = require("jwt-decode");
+
+/***/ }),
+
+/***/ "lodash":
+/*!*************************!*\
+  !*** external "lodash" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("lodash");
 
 /***/ }),
 
@@ -2556,6 +2666,17 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-is");
+
+/***/ }),
+
+/***/ "react-toastify":
+/*!*********************************!*\
+  !*** external "react-toastify" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-toastify");
 
 /***/ }),
 

@@ -70,6 +70,7 @@ const EmploymentInformation = (props) => {
                 highestQualification: checkInLocalStorage("employmentInformation", "highestQualification"),
                 lgea: checkInLocalStorage("employmentInformation", "lgea"),
                 station: checkInLocalStorage("employmentInformation","station"),
+                staffCategory: checkInLocalStorage("employmentInformation","staffCategory"),
                 dateOfFirstAppointment: checkInLocalStorage("employmentInformation","dateOfFirstAppointment"),
                 dateOfConfirmation: checkInLocalStorage("employmentInformation","dateOfConfirmation"),
                 dateOfLastPromotion: checkInLocalStorage("employmentInformation","dateOfLastPromotion")
@@ -83,7 +84,7 @@ const [buttonStateB, setButtonStateB] = useState(false);
                  
 let rules = {
 
-  controlNumber: 'required',
+  controlNumber: 'required|alpha_num',
   highestQualification: 'required',
   lgea: 'required',
   station: 'required',
@@ -280,7 +281,9 @@ const handleBack = async e => {
                       </div>
             </div>
 
-            <div className="two-column-row">
+
+
+            <div className="three-column-row">
                       <div className="column">
                           <label htmlFor="lgea">LGEA   <span className="fieldError">{validation.errors.get("lgea")}</span></label>
                           <select id="lgea" onChange={handleChange} value={employmentInformation.lgea} >
@@ -289,7 +292,7 @@ const handleBack = async e => {
                               <option value={"KANO"}>KANO</option>
                               <option value={"RIVERS"}>RIVERS</option>
                           </select>
-                      </div>
+                      </div> 
                       <div className="column">
                           <label htmlFor="station">Station/School Name  <span className="fieldError">{validation.errors.get("station")}</span></label>
                           <select id="station" onChange={handleChange} value={employmentInformation.station} >
@@ -299,7 +302,20 @@ const handleBack = async e => {
                               <option value={"RIVERS"}>RIVERS</option>
                           </select>
                       </div>
+                      <div className="column">
+                          <label htmlFor="staffCategory">Staff Category <span className="fieldError">{validation.errors.get("staffCategory")}</span></label>
+                          <select id="staffCategory" onChange={handleChange} value={employmentInformation.staffCategory} >
+                              <option value="" />
+                              <option value={"Teaching"}>Teaching</option>
+                              <option value={"Non-Teaching"}>No Teaching</option>
+                             
+                          </select>
+                      </div>
+           
             </div>
+
+
+         
 
             <div className="three-column-row">
                      <div className="column">

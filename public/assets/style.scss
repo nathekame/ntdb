@@ -261,6 +261,28 @@ button:disabled {
    // padding: 20px;
 }
 
+.errorToast{
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    background-color: red;
+}
+
+.successToast{
+    font-size: 20px;
+    font-weight: bold;
+    background-color: green;
+
+}
+
+.black{
+    background-color: black;
+}
+.white-text{
+    color: white;
+    font-size: 34px;
+}
+
 
 .menu{
     background-color: $secondaryColor;
@@ -320,6 +342,12 @@ button:disabled {
 
 }
 
+.fieldSuccess{
+
+    color: green;
+
+}
+
 
 .footer{
     // this is how to include a mixin created above
@@ -361,6 +389,7 @@ button:disabled {
     background-color: white;
 
 }
+
 
 
 //to align items up and down vertically on the screen use

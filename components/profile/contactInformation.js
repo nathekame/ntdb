@@ -81,12 +81,35 @@ let rules = {
   stateOfOrigin: 'required',
   lga: 'required',
   address: 'required',
-  mobileNumber: 'required',
+  mobileNumber: 'required|numeric|mobileNumberCount',
 
 //  email: 'required|email',
 //  age: 'min:18'
 };
  
+
+
+
+const checkMobileNumberSize = (mobileNumber, requirement, attribute)=>{
+
+  const requ = _.size(mobileNumber);
+  //console.log("the requ from the size of the acc number ============ "+requ);
+
+  if(requ === 11){
+    return true
+  }
+  if(requ !== 11){
+    return false
+  }
+
+
+}
+
+
+
+Validator.register('mobileNumberCount',checkMobileNumberSize , 'Mobile Numbers Must Be 11 Digits.');
+
+
 let validation = new Validator(contactInformation, rules, { required: 'required*' });
 
 validation.fails(); // true

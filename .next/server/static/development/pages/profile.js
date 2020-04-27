@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -139,6 +139,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config_config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../config/config */ "./config/config.js");
 /* harmony import */ var validatorjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! validatorjs */ "validatorjs");
 /* harmony import */ var validatorjs__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(validatorjs__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-toastify */ "react-toastify");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_toastify__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_10__);
 var _jsxFileName = "/home/noa/ntdbProject/app/NTDB/components/auth/login.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -147,6 +151,8 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -193,8 +199,9 @@ const Login = props => {
       const localCookie = js_cookie__WEBPACK_IMPORTED_MODULE_4___default.a.get('auth');
       return localCookie ? localCookie : undefined; //    const localJWT = localStorage.getItem("jwt");
       //   return localJWT ? JSON.parse(localJWT) : '';
-    }; // connect to the db via axios and the dispatch an action based on the server response
+    };
 
+    console.log("the local JWt " + localJWT()); // connect to the db via axios and the dispatch an action based on the server response
 
     const options = {
       withCredentials: true,
@@ -216,8 +223,9 @@ const Login = props => {
       console.log("this is the returned vaalue " + isProfileComplete);
 
       if (isProfileComplete === '"1"') {
-        console.log("the token was decoded well so you are free to go");
-        router.push('/account');
+        console.log("the token was decoded well so you are free to go"); //   router.push('/account')
+
+        router.push('/success');
       }
 
       if (isProfileComplete === "null" || isProfileComplete === '"0"') {
@@ -231,7 +239,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 130,
+      lineNumber: 137,
       columnNumber: 11
     }
   }, __jsx("div", {
@@ -239,7 +247,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 132,
+      lineNumber: 139,
       columnNumber: 1
     }
   }, __jsx("form", {
@@ -248,7 +256,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135,
+      lineNumber: 142,
       columnNumber: 7
     }
   }, __jsx("div", {
@@ -256,7 +264,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 136,
+      lineNumber: 143,
       columnNumber: 11
     }
   }, __jsx("div", {
@@ -264,7 +272,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 137,
+      lineNumber: 144,
       columnNumber: 15
     }
   }, __jsx("img", {
@@ -275,7 +283,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 138,
+      lineNumber: 145,
       columnNumber: 17
     }
   })), __jsx("div", {
@@ -283,22 +291,29 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 140,
+      lineNumber: 147,
       columnNumber: 15
     }
   }, __jsx("h1", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 141,
+      lineNumber: 148,
       columnNumber: 19
     }
-  }, " Register "))), __jsx("div", {
+  }, " Login "))), __jsx(react_toastify__WEBPACK_IMPORTED_MODULE_9__["ToastContainer"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 151,
+      columnNumber: 9
+    }
+  }), __jsx("div", {
     className: "grid",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 144,
+      lineNumber: 153,
       columnNumber: 7
     }
   }, __jsx("div", {
@@ -306,7 +321,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 146,
+      lineNumber: 154,
       columnNumber: 11
     }
   }, __jsx("div", {
@@ -314,7 +329,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 147,
+      lineNumber: 155,
       columnNumber: 15
     }
   }, __jsx("label", {
@@ -322,7 +337,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 148,
+      lineNumber: 156,
       columnNumber: 15
     }
   }, "Email ", __jsx("span", {
@@ -330,7 +345,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 148,
+      lineNumber: 156,
       columnNumber: 44
     }
   }, validation.errors.get("email"))), __jsx("input", {
@@ -341,7 +356,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149,
+      lineNumber: 157,
       columnNumber: 15
     }
   })), __jsx("div", {
@@ -349,7 +364,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 154,
+      lineNumber: 162,
       columnNumber: 15
     }
   }, __jsx("label", {
@@ -357,7 +372,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 155,
+      lineNumber: 163,
       columnNumber: 15
     }
   }, "Password ", __jsx("span", {
@@ -365,7 +380,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 155,
+      lineNumber: 163,
       columnNumber: 50
     }
   }, validation.errors.get("password"))), __jsx("input", {
@@ -376,7 +391,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 156,
+      lineNumber: 164,
       columnNumber: 15
     }
   }))), __jsx("div", {
@@ -384,7 +399,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 162,
+      lineNumber: 170,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -392,14 +407,14 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 163,
+      lineNumber: 171,
       columnNumber: 15
     }
   }, __jsx("p", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 164,
+      lineNumber: 172,
       columnNumber: 15
     }
   }, "Don't have an account?    ", __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
@@ -407,14 +422,14 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 164,
+      lineNumber: 172,
       columnNumber: 44
     }
   }, __jsx("a", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 164,
+      lineNumber: 172,
       columnNumber: 59
     }
   }, "Register")))), __jsx("div", {
@@ -422,7 +437,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 166,
+      lineNumber: 174,
       columnNumber: 15
     }
   }, __jsx("button", {
@@ -430,7 +445,7 @@ const Login = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 167,
+      lineNumber: 175,
       columnNumber: 16
     }
   }, "submit")))))));
@@ -915,6 +930,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utility_axios__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utility/axios */ "./utility/axios.js");
 /* harmony import */ var validatorjs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! validatorjs */ "validatorjs");
 /* harmony import */ var validatorjs__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(validatorjs__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var react_materialize__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-materialize */ "react-materialize");
+/* harmony import */ var react_materialize__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_materialize__WEBPACK_IMPORTED_MODULE_12__);
 var _jsxFileName = "/home/noa/ntdbProject/app/NTDB/components/profile/bioInformation.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -923,6 +940,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -1113,346 +1131,57 @@ const BioInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 255,
-      columnNumber: 5
+      lineNumber: 257,
+      columnNumber: 7
     }
   }, __jsx(_layouts_navbar__WEBPACK_IMPORTED_MODULE_7__["default"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 257,
-      columnNumber: 5
+      lineNumber: 259,
+      columnNumber: 7
     }
   }), __jsx("div", {
     className: "innergrid",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 258,
-      columnNumber: 9
-    }
-  }, __jsx("div", {
-    className: "profile-form",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 260,
-      columnNumber: 13
+      columnNumber: 11
     }
-  }, __jsx("h3", {
+  }, __jsx(react_materialize__WEBPACK_IMPORTED_MODULE_12__["Row"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 262,
-      columnNumber: 19
+      columnNumber: 11
     }
-  }, "Bio Information "), __jsx("div", {
-    className: "three-column-row",
+  }, __jsx(react_materialize__WEBPACK_IMPORTED_MODULE_12__["Col"], {
+    m: 6,
+    s: 12,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 264,
-      columnNumber: 19
+      lineNumber: 263,
+      columnNumber: 15
     }
-  }, __jsx("div", {
-    className: "column",
+  }, __jsx(react_materialize__WEBPACK_IMPORTED_MODULE_12__["CardPanel"], {
+    className: "black",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 265,
+      columnNumber: 17
+    }
+  }, __jsx("span", {
+    className: "white-text",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 266,
-      columnNumber: 25
+      columnNumber: 17
     }
-  }, __jsx("label", {
-    htmlFor: "firstName",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 268,
-      columnNumber: 27
-    }
-  }, "First Name  ", __jsx("span", {
-    className: "fieldError",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 268,
-      columnNumber: 66
-    }
-  }, validation.errors.get("firstName"))), __jsx("input", {
-    className: "firstName",
-    id: "firstName",
-    onChange: handleChange,
-    value: bioInformation.firstName,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 269,
-      columnNumber: 27
-    }
-  })), __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 272,
-      columnNumber: 25
-    }
-  }, __jsx("label", {
-    htmlFor: "otherName",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 273,
-      columnNumber: 27
-    }
-  }, "Other Name "), __jsx("input", {
-    id: "otherName",
-    onChange: handleChange,
-    value: bioInformation.otherName,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 274,
-      columnNumber: 27
-    }
-  })), __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 277,
-      columnNumber: 25
-    }
-  }, __jsx("label", {
-    htmlFor: "lastName",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 278,
-      columnNumber: 27
-    }
-  }, "Last Name  ", __jsx("span", {
-    className: "fieldError",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 278,
-      columnNumber: 64
-    }
-  }, validation.errors.get("lastName"))), __jsx("input", {
-    id: "lastName",
-    onChange: handleChange,
-    value: bioInformation.lastName,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 279,
-      columnNumber: 27
-    }
-  }))), __jsx("div", {
-    className: "three-column-row",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 285,
-      columnNumber: 19
-    }
-  }, __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 286,
-      columnNumber: 23
-    }
-  }, __jsx("label", {
-    htmlFor: "gender",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 287,
-      columnNumber: 27
-    }
-  }, "Gender  ", __jsx("span", {
-    className: "fieldError",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 287,
-      columnNumber: 59
-    }
-  }, validation.errors.get("gender"))), __jsx("select", {
-    id: "gender",
-    onChange: handleChange,
-    value: bioInformation.gender,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 288,
-      columnNumber: 27
-    }
-  }, __jsx("option", {
-    value: "",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 289,
-      columnNumber: 31
-    }
-  }), __jsx("option", {
-    value: "Male",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 290,
-      columnNumber: 31
-    }
-  }, "Male"), __jsx("option", {
-    value: "Female",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 291,
-      columnNumber: 31
-    }
-  }, "Female"))), __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 294,
-      columnNumber: 23
-    }
-  }, __jsx("label", {
-    htmlFor: "dob",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 295,
-      columnNumber: 27
-    }
-  }, "Date Of Birth  ", __jsx("span", {
-    className: "fieldError",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 295,
-      columnNumber: 63
-    }
-  }, validation.errors.get("dob"))), __jsx("input", {
-    id: "dob",
-    type: "date",
-    onChange: handleDateChange,
-    value: bioInformation.dob,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 296,
-      columnNumber: 27
-    }
-  })), __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 298,
-      columnNumber: 23
-    }
-  }, __jsx("label", {
-    htmlFor: "placeOfBirth",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 299,
-      columnNumber: 27
-    }
-  }, "Place Of Birth  ", __jsx("span", {
-    className: "fieldError",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 299,
-      columnNumber: 73
-    }
-  }, validation.errors.get("placeOfBirth"))), __jsx("input", {
-    id: "placeOfBirth",
-    onChange: handleChange,
-    value: bioInformation.placeOfBirth,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 300,
-      columnNumber: 27
-    }
-  }))), __jsx("div", {
-    className: "two-column-row",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 306,
-      columnNumber: 19
-    }
-  }, __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 307,
-      columnNumber: 23
-    }
-  }, __jsx("button", {
-    size: "small",
-    color: "primary",
-    onClick: handleSaveNow,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 308,
-      columnNumber: 26
-    }
-  }, "Save And Logout")), __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 310,
-      columnNumber: 23
-    }
-  }, __jsx("button", {
-    size: "small",
-    color: "primary",
-    disabled: buttonState,
-    onClick: handleForward,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 311,
-      columnNumber: 26
-    }
-  }, "Next"))), __jsx("div", {
-    className: "one-column-row",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 315,
-      columnNumber: 19
-    }
-  }, __jsx("div", {
-    className: "column componentFooter",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 316,
-      columnNumber: 23
-    }
-  }, __jsx("span", {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 317,
-      columnNumber: 26
-    }
-  }, "1/6"))))));
+  }, "Bio Information For a simpler card with less markup, try using a card panel which just has padding and a shadow effect"), "I am a very simple card.")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (BioInformation);
@@ -1476,19 +1205,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "moment");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_loading_io__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-loading-io */ "react-loading-io");
-/* harmony import */ var react_loading_io__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_loading_io__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _layouts_navbar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../layouts/navbar */ "./components/layouts/navbar.js");
-/* harmony import */ var _utility_axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utility/axios */ "./utility/axios.js");
-/* harmony import */ var _componentUtility_composeApiData__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../componentUtility/composeApiData */ "./components/componentUtility/composeApiData.js");
-/* harmony import */ var _success__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./success */ "./components/profile/success.js");
+/* harmony import */ var _layouts_navbar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../layouts/navbar */ "./components/layouts/navbar.js");
+/* harmony import */ var _utility_axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utility/axios */ "./utility/axios.js");
+/* harmony import */ var _componentUtility_composeApiData__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../componentUtility/composeApiData */ "./components/componentUtility/composeApiData.js");
+/* harmony import */ var _success__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./success */ "./components/profile/success.js");
 var _jsxFileName = "/home/noa/ntdbProject/app/NTDB/components/profile/confirm.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
-
+ //import { Eclipse } from "react-loading-io";
 
  // import Staff from '../partials/profile/staff';
 // import Corper from '../partials/profile/corper';
@@ -1555,7 +1282,7 @@ const Confirm = props => {
 
     let dataToCompose = commonData; //  dataToCompose.profilePic = profilePicData;
 
-    const dataCompose = _componentUtility_composeApiData__WEBPACK_IMPORTED_MODULE_8__["default"].composeFullProfileData(dataToCompose, filesToCompose); //  console.log("this is the data going out "+JSON.stringify(data));
+    const dataCompose = _componentUtility_composeApiData__WEBPACK_IMPORTED_MODULE_7__["default"].composeFullProfileData(dataToCompose, filesToCompose); //  console.log("this is the data going out "+JSON.stringify(data));
     // const sData = JSON.stringify(data);
     // console.log("the data to send in to the db "+sData);
     // const fData = new FormData();
@@ -1574,7 +1301,7 @@ const Confirm = props => {
     // console.log("this is the profile pic "+formData.get("profiePic"));
     // let api = await axiosFuncs.profilePost(dataToSend);
 
-    let api = await _utility_axios__WEBPACK_IMPORTED_MODULE_7__["default"].profilePost(dataCompose);
+    let api = await _utility_axios__WEBPACK_IMPORTED_MODULE_6__["default"].profilePost(dataCompose);
     console.log("this is the status " + api.status);
 
     if (api.data === "error") {
@@ -1636,16 +1363,7 @@ const Confirm = props => {
         lineNumber: 191,
         columnNumber: 19
       }
-    }, __jsx(react_loading_io__WEBPACK_IMPORTED_MODULE_5__["Eclipse"], {
-      size: 100,
-      color: "black",
-      __self: undefined,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 192,
-        columnNumber: 26
-      }
-    }), ";", __jsx("h3", {
+    }, __jsx("h3", {
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
@@ -1662,7 +1380,7 @@ const Confirm = props => {
         lineNumber: 207,
         columnNumber: 5
       }
-    }, __jsx(_layouts_navbar__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, __jsx(_layouts_navbar__WEBPACK_IMPORTED_MODULE_5__["default"], {
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
@@ -2773,10 +2491,25 @@ const ContactInformation = props => {
     stateOfOrigin: 'required',
     lga: 'required',
     address: 'required',
-    mobileNumber: 'required' //  email: 'required|email',
+    mobileNumber: 'required|numeric|mobileNumberCount' //  email: 'required|email',
     //  age: 'min:18'
 
   };
+
+  const checkMobileNumberSize = (mobileNumber, requirement, attribute) => {
+    const requ = _.size(mobileNumber); //console.log("the requ from the size of the acc number ============ "+requ);
+
+
+    if (requ === 11) {
+      return true;
+    }
+
+    if (requ !== 11) {
+      return false;
+    }
+  };
+
+  validatorjs__WEBPACK_IMPORTED_MODULE_7___default.a.register('mobileNumberCount', checkMobileNumberSize, 'Mobile Numbers Must Be 11 Digits.');
   let validation = new validatorjs__WEBPACK_IMPORTED_MODULE_7___default.a(contactInformation, rules, {
     required: 'required*'
   });
@@ -2906,14 +2639,14 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 249,
+      lineNumber: 272,
       columnNumber: 6
     }
   }, __jsx(_layouts_navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 250,
+      lineNumber: 273,
       columnNumber: 7
     }
   }), __jsx("div", {
@@ -2921,7 +2654,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 252,
+      lineNumber: 275,
       columnNumber: 9
     }
   }, __jsx("div", {
@@ -2929,14 +2662,14 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 254,
+      lineNumber: 277,
       columnNumber: 13
     }
   }, __jsx("h3", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 256,
+      lineNumber: 279,
       columnNumber: 13
     }
   }, "Contact Information"), __jsx("div", {
@@ -2944,7 +2677,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 258,
+      lineNumber: 281,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -2952,7 +2685,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 259,
+      lineNumber: 282,
       columnNumber: 23
     }
   }, __jsx("label", {
@@ -2960,7 +2693,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 260,
+      lineNumber: 283,
       columnNumber: 27
     }
   }, "State Of Origin  ", __jsx("span", {
@@ -2968,7 +2701,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 260,
+      lineNumber: 283,
       columnNumber: 75
     }
   }, validation.errors.get("stateOfOrigin"))), __jsx("select", {
@@ -2978,7 +2711,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 261,
+      lineNumber: 284,
       columnNumber: 27
     }
   }, __jsx("option", {
@@ -2986,7 +2719,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 262,
+      lineNumber: 285,
       columnNumber: 31
     }
   }), __jsx("option", {
@@ -2994,7 +2727,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 263,
+      lineNumber: 286,
       columnNumber: 31
     }
   }, "NIGER"))), __jsx("div", {
@@ -3002,7 +2735,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 266,
+      lineNumber: 289,
       columnNumber: 23
     }
   }, __jsx("label", {
@@ -3010,7 +2743,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 267,
+      lineNumber: 290,
       columnNumber: 27
     }
   }, "LGA   ", __jsx("span", {
@@ -3018,7 +2751,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 267,
+      lineNumber: 290,
       columnNumber: 54
     }
   }, validation.errors.get("lga"))), __jsx("select", {
@@ -3028,7 +2761,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 268,
+      lineNumber: 291,
       columnNumber: 27
     }
   }, __jsx("option", {
@@ -3036,7 +2769,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 269,
+      lineNumber: 292,
       columnNumber: 31
     }
   }), __jsx("option", {
@@ -3044,7 +2777,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 270,
+      lineNumber: 293,
       columnNumber: 31
     }
   }, "DELTA"), __jsx("option", {
@@ -3052,7 +2785,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 271,
+      lineNumber: 294,
       columnNumber: 31
     }
   }, "KANO"), __jsx("option", {
@@ -3060,7 +2793,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 272,
+      lineNumber: 295,
       columnNumber: 31
     }
   }, "RIVERS")))), __jsx("div", {
@@ -3068,7 +2801,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 277,
+      lineNumber: 300,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -3076,7 +2809,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 282,
+      lineNumber: 305,
       columnNumber: 19
     }
   }, __jsx("label", {
@@ -3084,7 +2817,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 283,
+      lineNumber: 306,
       columnNumber: 21
     }
   }, "Mobile Number   ", __jsx("span", {
@@ -3092,7 +2825,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 283,
+      lineNumber: 306,
       columnNumber: 67
     }
   }, validation.errors.get("mobileNumber"))), __jsx("input", {
@@ -3102,7 +2835,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 284,
+      lineNumber: 307,
       columnNumber: 21
     }
   }))), __jsx("div", {
@@ -3110,7 +2843,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 288,
+      lineNumber: 311,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -3118,7 +2851,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 289,
+      lineNumber: 312,
       columnNumber: 19
     }
   }, __jsx("label", {
@@ -3126,7 +2859,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 290,
+      lineNumber: 313,
       columnNumber: 21
     }
   }, "Address   ", __jsx("span", {
@@ -3134,7 +2867,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 290,
+      lineNumber: 313,
       columnNumber: 56
     }
   }, validation.errors.get("address"))), __jsx("textarea", {
@@ -3144,7 +2877,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 291,
+      lineNumber: 314,
       columnNumber: 21
     }
   }))), __jsx("div", {
@@ -3152,7 +2885,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 298,
+      lineNumber: 321,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -3160,7 +2893,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 299,
+      lineNumber: 322,
       columnNumber: 23
     }
   }, __jsx("button", {
@@ -3172,7 +2905,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 300,
+      lineNumber: 323,
       columnNumber: 26
     }
   }, " Back ")), __jsx("div", {
@@ -3180,7 +2913,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 305,
+      lineNumber: 328,
       columnNumber: 23
     }
   }, __jsx("button", {
@@ -3191,7 +2924,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 306,
+      lineNumber: 329,
       columnNumber: 26
     }
   }, "Next"))), __jsx("div", {
@@ -3199,7 +2932,7 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 311,
+      lineNumber: 334,
       columnNumber: 19
     }
   }, __jsx("div", {
@@ -3207,14 +2940,14 @@ const ContactInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 312,
+      lineNumber: 335,
       columnNumber: 23
     }
   }, __jsx("span", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 313,
+      lineNumber: 336,
       columnNumber: 26
     }
   }, "2/6"))))));
@@ -3307,6 +3040,7 @@ const EmploymentInformation = props => {
     highestQualification: Object(_componentUtility_persistLocalToState__WEBPACK_IMPORTED_MODULE_5__["default"])("employmentInformation", "highestQualification"),
     lgea: Object(_componentUtility_persistLocalToState__WEBPACK_IMPORTED_MODULE_5__["default"])("employmentInformation", "lgea"),
     station: Object(_componentUtility_persistLocalToState__WEBPACK_IMPORTED_MODULE_5__["default"])("employmentInformation", "station"),
+    staffCategory: Object(_componentUtility_persistLocalToState__WEBPACK_IMPORTED_MODULE_5__["default"])("employmentInformation", "staffCategory"),
     dateOfFirstAppointment: Object(_componentUtility_persistLocalToState__WEBPACK_IMPORTED_MODULE_5__["default"])("employmentInformation", "dateOfFirstAppointment"),
     dateOfConfirmation: Object(_componentUtility_persistLocalToState__WEBPACK_IMPORTED_MODULE_5__["default"])("employmentInformation", "dateOfConfirmation"),
     dateOfLastPromotion: Object(_componentUtility_persistLocalToState__WEBPACK_IMPORTED_MODULE_5__["default"])("employmentInformation", "dateOfLastPromotion")
@@ -3320,7 +3054,7 @@ const EmploymentInformation = props => {
     1: setButtonStateB
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
   let rules = {
-    controlNumber: 'required',
+    controlNumber: 'required|alpha_num',
     highestQualification: 'required',
     lgea: 'required',
     station: 'required',
@@ -3454,14 +3188,14 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 261,
+      lineNumber: 262,
       columnNumber: 6
     }
   }, __jsx(_layouts_navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 262,
+      lineNumber: 263,
       columnNumber: 7
     }
   }), __jsx("div", {
@@ -3469,7 +3203,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 264,
+      lineNumber: 265,
       columnNumber: 9
     }
   }, __jsx("div", {
@@ -3477,14 +3211,14 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 266,
+      lineNumber: 267,
       columnNumber: 13
     }
   }, __jsx("h3", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 268,
+      lineNumber: 269,
       columnNumber: 13
     }
   }, " Employment Information "), __jsx("div", {
@@ -3492,7 +3226,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 270,
+      lineNumber: 271,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -3500,7 +3234,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 271,
+      lineNumber: 272,
       columnNumber: 19
     }
   }, __jsx("label", {
@@ -3508,7 +3242,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 272,
+      lineNumber: 273,
       columnNumber: 21
     }
   }, "Address   ", __jsx("span", {
@@ -3516,7 +3250,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 272,
+      lineNumber: 273,
       columnNumber: 62
     }
   }, validation.errors.get("controlNumber"))), __jsx("input", {
@@ -3526,7 +3260,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 273,
+      lineNumber: 274,
       columnNumber: 21
     }
   })), __jsx("div", {
@@ -3534,7 +3268,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 276,
+      lineNumber: 277,
       columnNumber: 23
     }
   }, __jsx("label", {
@@ -3542,7 +3276,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 277,
+      lineNumber: 278,
       columnNumber: 27
     }
   }, "Highest Qualification ", __jsx("span", {
@@ -3550,7 +3284,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 277,
+      lineNumber: 278,
       columnNumber: 87
     }
   }, validation.errors.get("highestQualification"))), __jsx("input", {
@@ -3560,15 +3294,15 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 278,
+      lineNumber: 279,
       columnNumber: 27
     }
   }))), __jsx("div", {
-    className: "two-column-row",
+    className: "three-column-row",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 283,
+      lineNumber: 286,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -3576,7 +3310,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 284,
+      lineNumber: 287,
       columnNumber: 23
     }
   }, __jsx("label", {
@@ -3584,7 +3318,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 285,
+      lineNumber: 288,
       columnNumber: 27
     }
   }, "LGEA   ", __jsx("span", {
@@ -3592,7 +3326,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 285,
+      lineNumber: 288,
       columnNumber: 56
     }
   }, validation.errors.get("lgea"))), __jsx("select", {
@@ -3602,7 +3336,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 286,
+      lineNumber: 289,
       columnNumber: 27
     }
   }, __jsx("option", {
@@ -3610,7 +3344,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 287,
+      lineNumber: 290,
       columnNumber: 31
     }
   }), __jsx("option", {
@@ -3618,7 +3352,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 288,
+      lineNumber: 291,
       columnNumber: 31
     }
   }, "DELTA"), __jsx("option", {
@@ -3626,7 +3360,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 289,
+      lineNumber: 292,
       columnNumber: 31
     }
   }, "KANO"), __jsx("option", {
@@ -3634,7 +3368,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 290,
+      lineNumber: 293,
       columnNumber: 31
     }
   }, "RIVERS"))), __jsx("div", {
@@ -3642,7 +3376,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 293,
+      lineNumber: 296,
       columnNumber: 23
     }
   }, __jsx("label", {
@@ -3650,7 +3384,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 294,
+      lineNumber: 297,
       columnNumber: 27
     }
   }, "Station/School Name  ", __jsx("span", {
@@ -3658,7 +3392,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 294,
+      lineNumber: 297,
       columnNumber: 73
     }
   }, validation.errors.get("station"))), __jsx("select", {
@@ -3668,7 +3402,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 295,
+      lineNumber: 298,
       columnNumber: 27
     }
   }, __jsx("option", {
@@ -3676,7 +3410,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 296,
+      lineNumber: 299,
       columnNumber: 31
     }
   }), __jsx("option", {
@@ -3684,7 +3418,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 297,
+      lineNumber: 300,
       columnNumber: 31
     }
   }, "DELTA"), __jsx("option", {
@@ -3692,7 +3426,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 298,
+      lineNumber: 301,
       columnNumber: 31
     }
   }, "KANO"), __jsx("option", {
@@ -3700,15 +3434,73 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 299,
+      lineNumber: 302,
       columnNumber: 31
     }
-  }, "RIVERS")))), __jsx("div", {
+  }, "RIVERS"))), __jsx("div", {
+    className: "column",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 305,
+      columnNumber: 23
+    }
+  }, __jsx("label", {
+    htmlFor: "staffCategory",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 306,
+      columnNumber: 27
+    }
+  }, "Staff Category ", __jsx("span", {
+    className: "fieldError",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 306,
+      columnNumber: 73
+    }
+  }, validation.errors.get("staffCategory"))), __jsx("select", {
+    id: "staffCategory",
+    onChange: handleChange,
+    value: employmentInformation.staffCategory,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 307,
+      columnNumber: 27
+    }
+  }, __jsx("option", {
+    value: "",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 308,
+      columnNumber: 31
+    }
+  }), __jsx("option", {
+    value: "Teaching",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 309,
+      columnNumber: 31
+    }
+  }, "Teaching"), __jsx("option", {
+    value: "Non-Teaching",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 310,
+      columnNumber: 31
+    }
+  }, "No Teaching")))), __jsx("div", {
     className: "three-column-row",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 304,
+      lineNumber: 320,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -3716,7 +3508,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 305,
+      lineNumber: 321,
       columnNumber: 22
     }
   }, __jsx("label", {
@@ -3724,7 +3516,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 306,
+      lineNumber: 322,
       columnNumber: 27
     }
   }, "Date of First Appointment  ", __jsx("span", {
@@ -3732,7 +3524,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 306,
+      lineNumber: 322,
       columnNumber: 94
     }
   }, validation.errors.get("dateOfFirstAppointment"))), __jsx("input", {
@@ -3743,7 +3535,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 307,
+      lineNumber: 323,
       columnNumber: 27
     }
   })), __jsx("div", {
@@ -3751,7 +3543,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 309,
+      lineNumber: 325,
       columnNumber: 23
     }
   }, __jsx("label", {
@@ -3759,7 +3551,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 310,
+      lineNumber: 326,
       columnNumber: 27
     }
   }, "Date of Confirmation ", __jsx("span", {
@@ -3767,7 +3559,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 310,
+      lineNumber: 326,
       columnNumber: 84
     }
   }, validation.errors.get("dateOfConfirmation"))), __jsx("input", {
@@ -3778,7 +3570,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 311,
+      lineNumber: 327,
       columnNumber: 27
     }
   })), __jsx("div", {
@@ -3786,7 +3578,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 313,
+      lineNumber: 329,
       columnNumber: 23
     }
   }, __jsx("label", {
@@ -3794,7 +3586,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 314,
+      lineNumber: 330,
       columnNumber: 27
     }
   }, "Date Of Last Promotion  ", __jsx("span", {
@@ -3802,7 +3594,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 314,
+      lineNumber: 330,
       columnNumber: 88
     }
   }, validation.errors.get("dateOfLastPromotion"))), __jsx("input", {
@@ -3813,7 +3605,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 315,
+      lineNumber: 331,
       columnNumber: 27
     }
   }))), __jsx("div", {
@@ -3821,7 +3613,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 322,
+      lineNumber: 338,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -3829,7 +3621,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 323,
+      lineNumber: 339,
       columnNumber: 18
     }
   }, __jsx("button", {
@@ -3841,7 +3633,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 324,
+      lineNumber: 340,
       columnNumber: 26
     }
   }, " Back ")), __jsx("div", {
@@ -3849,7 +3641,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 327,
+      lineNumber: 343,
       columnNumber: 23
     }
   }, __jsx("button", {
@@ -3860,7 +3652,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 328,
+      lineNumber: 344,
       columnNumber: 26
     }
   }, "Next"))), __jsx("div", {
@@ -3868,7 +3660,7 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 332,
+      lineNumber: 348,
       columnNumber: 19
     }
   }, __jsx("div", {
@@ -3876,14 +3668,14 @@ const EmploymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 333,
+      lineNumber: 349,
       columnNumber: 23
     }
   }, __jsx("span", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 334,
+      lineNumber: 350,
       columnNumber: 26
     }
   }, "4/6"))))));
@@ -3978,6 +3770,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _utility_jwt__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utility/jwt */ "./utility/jwt.js");
 /* harmony import */ var _componentUtility_composeApiData__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../componentUtility/composeApiData */ "./components/componentUtility/composeApiData.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_11__);
 var _jsxFileName = "/home/noa/ntdbProject/app/NTDB/components/profile/nextOfKinInformation.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -3986,6 +3780,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -4048,10 +3843,26 @@ const NextOfKinInformation = props => {
     fullName: 'required',
     relationship: 'required',
     address: 'required',
-    mobileNumber: 'required' //  email: 'required|email',
+    emailAddress: 'email',
+    mobileNumber: 'required|numeric|mobileNumberCount' //  email: 'required|email',
     //  age: 'min:18'
 
   };
+
+  const checkMobileNumberSize = (mobileNumber, requirement, attribute) => {
+    const requ = lodash__WEBPACK_IMPORTED_MODULE_11___default.a.size(mobileNumber); //console.log("the requ from the size of the acc number ============ "+requ);
+
+
+    if (requ === 11) {
+      return true;
+    }
+
+    if (requ !== 11) {
+      return false;
+    }
+  };
+
+  validatorjs__WEBPACK_IMPORTED_MODULE_7___default.a.register('mobileNumberCount', checkMobileNumberSize, 'Mobile Numbers Must Be 11 Digits.');
   let validation = new validatorjs__WEBPACK_IMPORTED_MODULE_7___default.a(nextOfKinInformation, rules, {
     required: 'required*'
   });
@@ -4167,7 +3978,7 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 242,
+      lineNumber: 266,
       columnNumber: 1
     }
   }, __jsx("div", {
@@ -4175,14 +3986,14 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 243,
+      lineNumber: 267,
       columnNumber: 6
     }
   }, __jsx(_layouts_navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 244,
+      lineNumber: 268,
       columnNumber: 7
     }
   }), __jsx("div", {
@@ -4190,7 +4001,7 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 246,
+      lineNumber: 270,
       columnNumber: 9
     }
   }, __jsx("div", {
@@ -4198,170 +4009,18 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 248,
+      lineNumber: 272,
       columnNumber: 13
     }
   }, __jsx("h3", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 250,
+      lineNumber: 274,
       columnNumber: 13
     }
   }, "Next Of Kin Information "), __jsx("div", {
     className: "two-column-row",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 252,
-      columnNumber: 13
-    }
-  }, __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 253,
-      columnNumber: 23
-    }
-  }, __jsx("label", {
-    htmlFor: "fullName",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 254,
-      columnNumber: 27
-    }
-  }, "Full Name  ", __jsx("span", {
-    className: "fieldError",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 254,
-      columnNumber: 64
-    }
-  }, validation.errors.get("fullName"))), __jsx("input", {
-    id: "fullName",
-    onChange: handleChange,
-    value: nextOfKinInformation.fullName,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 255,
-      columnNumber: 27
-    }
-  })), __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 258,
-      columnNumber: 23
-    }
-  }, __jsx("label", {
-    htmlFor: "relationship",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 259,
-      columnNumber: 27
-    }
-  }, "Relationship ", __jsx("span", {
-    className: "fieldError",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 259,
-      columnNumber: 70
-    }
-  }, validation.errors.get("relationship"))), __jsx("input", {
-    id: "relationship",
-    onChange: handleChange,
-    value: nextOfKinInformation.relationship,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 260,
-      columnNumber: 27
-    }
-  }))), __jsx("div", {
-    className: "two-column-row",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 265,
-      columnNumber: 13
-    }
-  }, __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 266,
-      columnNumber: 19
-    }
-  }, __jsx("label", {
-    htmlFor: "emailAddress",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 267,
-      columnNumber: 21
-    }
-  }, "Email Address   ", __jsx("span", {
-    className: "fieldError",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 267,
-      columnNumber: 67
-    }
-  }, validation.errors.get("emailAddress"))), __jsx("input", {
-    id: "emailAddress",
-    onChange: handleChange,
-    value: nextOfKinInformation.emailAddress,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 268,
-      columnNumber: 21
-    }
-  })), __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 270,
-      columnNumber: 19
-    }
-  }, __jsx("label", {
-    htmlFor: "mobileNumber",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 271,
-      columnNumber: 21
-    }
-  }, "Mobile Number   ", __jsx("span", {
-    className: "fieldError",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 271,
-      columnNumber: 67
-    }
-  }, validation.errors.get("mobileNumber"))), __jsx("input", {
-    id: "mobileNumber",
-    onChange: handleChange,
-    value: nextOfKinInformation.mobileNumber,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 272,
-      columnNumber: 21
-    }
-  }))), __jsx("div", {
-    className: "one-column-row",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -4374,6 +4033,158 @@ const NextOfKinInformation = props => {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 277,
+      columnNumber: 23
+    }
+  }, __jsx("label", {
+    htmlFor: "fullName",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 278,
+      columnNumber: 27
+    }
+  }, "Full Name  ", __jsx("span", {
+    className: "fieldError",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 278,
+      columnNumber: 64
+    }
+  }, validation.errors.get("fullName"))), __jsx("input", {
+    id: "fullName",
+    onChange: handleChange,
+    value: nextOfKinInformation.fullName,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 279,
+      columnNumber: 27
+    }
+  })), __jsx("div", {
+    className: "column",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 282,
+      columnNumber: 23
+    }
+  }, __jsx("label", {
+    htmlFor: "relationship",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 283,
+      columnNumber: 27
+    }
+  }, "Relationship ", __jsx("span", {
+    className: "fieldError",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 283,
+      columnNumber: 70
+    }
+  }, validation.errors.get("relationship"))), __jsx("input", {
+    id: "relationship",
+    onChange: handleChange,
+    value: nextOfKinInformation.relationship,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 284,
+      columnNumber: 27
+    }
+  }))), __jsx("div", {
+    className: "two-column-row",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 289,
+      columnNumber: 13
+    }
+  }, __jsx("div", {
+    className: "column",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 290,
+      columnNumber: 19
+    }
+  }, __jsx("label", {
+    htmlFor: "emailAddress",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 291,
+      columnNumber: 21
+    }
+  }, "Email Address   ", __jsx("span", {
+    className: "fieldError",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 291,
+      columnNumber: 67
+    }
+  }, validation.errors.get("emailAddress"))), __jsx("input", {
+    id: "emailAddress",
+    onChange: handleChange,
+    value: nextOfKinInformation.emailAddress,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 292,
+      columnNumber: 21
+    }
+  })), __jsx("div", {
+    className: "column",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 294,
+      columnNumber: 19
+    }
+  }, __jsx("label", {
+    htmlFor: "mobileNumber",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 295,
+      columnNumber: 21
+    }
+  }, "Mobile Number   ", __jsx("span", {
+    className: "fieldError",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 295,
+      columnNumber: 67
+    }
+  }, validation.errors.get("mobileNumber"))), __jsx("input", {
+    id: "mobileNumber",
+    onChange: handleChange,
+    value: nextOfKinInformation.mobileNumber,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 296,
+      columnNumber: 21
+    }
+  }))), __jsx("div", {
+    className: "one-column-row",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 300,
+      columnNumber: 13
+    }
+  }, __jsx("div", {
+    className: "column",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 301,
       columnNumber: 19
     }
   }, __jsx("label", {
@@ -4381,7 +4192,7 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 278,
+      lineNumber: 302,
       columnNumber: 21
     }
   }, "Address   ", __jsx("span", {
@@ -4389,7 +4200,7 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 278,
+      lineNumber: 302,
       columnNumber: 56
     }
   }, validation.errors.get("address"))), __jsx("textarea", {
@@ -4399,7 +4210,7 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 279,
+      lineNumber: 303,
       columnNumber: 21
     }
   }))), __jsx("div", {
@@ -4407,7 +4218,7 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 286,
+      lineNumber: 310,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -4415,7 +4226,7 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 287,
+      lineNumber: 311,
       columnNumber: 23
     }
   }, __jsx("button", {
@@ -4427,7 +4238,7 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 288,
+      lineNumber: 312,
       columnNumber: 26
     }
   }, " Back ")), __jsx("div", {
@@ -4435,7 +4246,7 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 293,
+      lineNumber: 317,
       columnNumber: 23
     }
   }, __jsx("button", {
@@ -4446,7 +4257,7 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 294,
+      lineNumber: 318,
       columnNumber: 26
     }
   }, "Next"))), __jsx("div", {
@@ -4454,7 +4265,7 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 299,
+      lineNumber: 323,
       columnNumber: 19
     }
   }, __jsx("div", {
@@ -4462,14 +4273,14 @@ const NextOfKinInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 300,
+      lineNumber: 324,
       columnNumber: 23
     }
   }, __jsx("span", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 301,
+      lineNumber: 325,
       columnNumber: 26
     }
   }, "3/6")))))));
@@ -4503,6 +4314,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _utility_jwt__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utility/jwt */ "./utility/jwt.js");
 /* harmony import */ var _componentUtility_composeApiData__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../componentUtility/composeApiData */ "./components/componentUtility/composeApiData.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_11__);
 var _jsxFileName = "/home/noa/ntdbProject/app/NTDB/components/profile/paymentInformation.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -4511,6 +4324,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -4543,7 +4357,8 @@ const PaymentInformation = props => {
     bankName: Object(_componentUtility_persistLocalToState__WEBPACK_IMPORTED_MODULE_5__["default"])("paymentInformation", "bankName"),
     accountName: Object(_componentUtility_persistLocalToState__WEBPACK_IMPORTED_MODULE_5__["default"])("paymentInformation", "accountName"),
     accountNumber: Object(_componentUtility_persistLocalToState__WEBPACK_IMPORTED_MODULE_5__["default"])("paymentInformation", "accountNumber"),
-    bvn: Object(_componentUtility_persistLocalToState__WEBPACK_IMPORTED_MODULE_5__["default"])("paymentInformation", "bvn")
+    bvn: Object(_componentUtility_persistLocalToState__WEBPACK_IMPORTED_MODULE_5__["default"])("paymentInformation", "bvn") //   isBvnUnique: checkInLocalStorage("paymentInformation", "isBvnUnique")
+
   });
   const {
     0: buttonStateF,
@@ -4553,14 +4368,63 @@ const PaymentInformation = props => {
     0: buttonStateB,
     1: setButtonStateB
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const {
+    0: isUnique,
+    1: setIsUnique
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])();
   let rules = {
     bankName: 'required',
     accountName: 'required',
-    accountNumber: 'required',
-    bvn: 'required' //  email: 'required|email',
+    accountNumber: 'required|numeric|accNumberCount',
+    bvn: 'required|numeric|bvnCount' // isBvnUnique:'bvnC'
+    //  email: 'required|email',
     //  age: 'min:18'
 
+  }; //   const checkBVN = (bvn, requirement, attribute)=>{
+  //     console.log("i am checking the bvn  for validation "+bvn);
+  //     console.log("i am checking the bvn  for requirement "+requirement);
+  //     console.log("i am checking the bvn  for attribute "+attribute);
+  //     //return value.match(/^\d{3}-\d{3}-\d{4}$/);
+  //     //const requ = _.isEmpty({name:12});
+  //     const requ =  isUnique;
+  //     console.log("the requ "+requ);
+  //     return requ;
+  //   //  return false
+  // }
+
+  const checkBVNSize = (bvn, requirement, attribute) => {
+    // console.log("i am checking the bvn  for validation "+bvn);
+    // console.log("i am checking the bvn  for requirement "+requirement);
+    // console.log("i am checking the bvn  for attribute "+attribute);
+    const requ = lodash__WEBPACK_IMPORTED_MODULE_11___default.a.size(bvn);
+
+    console.log("the requ from the size of the bvn ============ " + requ);
+
+    if (requ === 11) {
+      return true;
+    }
+
+    if (requ !== 11) {
+      return false;
+    }
   };
+
+  const checkAccNumberSize = (accNumber, requirement, attribute) => {
+    const requ = lodash__WEBPACK_IMPORTED_MODULE_11___default.a.size(accNumber); //console.log("the requ from the size of the acc number ============ "+requ);
+
+
+    if (requ === 10) {
+      return true;
+    }
+
+    if (requ !== 10) {
+      return false;
+    }
+  }; //Validator.register('bvnC',checkBVN , 'Your :attribute is not unique.');
+
+
+  validatorjs__WEBPACK_IMPORTED_MODULE_7___default.a.register('bvnCount', checkBVNSize, 'Your BVN must be 11 digits.');
+  validatorjs__WEBPACK_IMPORTED_MODULE_7___default.a.register('accNumberCount', checkAccNumberSize, 'Your Account Number must be 10 digits.');
   let validation = new validatorjs__WEBPACK_IMPORTED_MODULE_7___default.a(paymentInformation, rules, {
     required: 'required*'
   });
@@ -4574,14 +4438,7 @@ const PaymentInformation = props => {
     } else {
       setButtonStateF(true);
     }
-  }, [paymentInformation]); //   useEffect(() => {
-  //         if (paymentInformation.profileStep === sessionProStep ) {
-  //                 setButtonStateB(true);
-  //               //  console.log("the   buttonStete "+paymentInformation.profileStep);  
-  //           }else{
-  //                 setButtonStateB(false);
-  //       }
-  //   });
+  }, [paymentInformation]);
 
   const handleChange = e => {
     e.preventDefault();
@@ -4627,6 +4484,69 @@ const PaymentInformation = props => {
     }
   };
 
+  const handleBVNValidation = async () => {
+    const currentBVN = paymentInformation.bvn;
+    const confirm = checkBVNSize(currentBVN);
+    console.log(" thi confirmation if it is reall on " + confirm);
+
+    if (confirm === true) {
+      const output = await _utility_axios__WEBPACK_IMPORTED_MODULE_6__["default"].checkBVN(currentBVN);
+      const status = output.status;
+
+      if (status === 200) {
+        setIsUnique(false);
+        setIsUnique(false);
+      }
+
+      if (status === 201) {
+        setButtonStateF(false);
+        setIsUnique(true);
+      }
+    } // console.log(" the out put of the externaal check "+JSON.stringify(output));
+    // return output
+
+  };
+
+  const validationCheck = () => {
+    if (isUnique === true) {
+      return __jsx("div", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 232,
+          columnNumber: 9
+        }
+      }, __jsx("span", {
+        className: "fieldSuccess",
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 233,
+          columnNumber: 9
+        }
+      }, "Validation Passed"));
+    }
+
+    if (isUnique === false) {
+      return __jsx("div", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 241,
+          columnNumber: 9
+        }
+      }, __jsx("span", {
+        className: "fieldError",
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 242,
+          columnNumber: 9
+        }
+      }, "Validation Failed"));
+    }
+  };
+
   const handleSaveNow = async e => {
     //  console.log("i am here to save first foitiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
     e.preventDefault();
@@ -4665,14 +4585,14 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 180,
+      lineNumber: 291,
       columnNumber: 5
     }
   }, __jsx(_layouts_navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 181,
+      lineNumber: 292,
       columnNumber: 7
     }
   }), __jsx("div", {
@@ -4680,7 +4600,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 183,
+      lineNumber: 294,
       columnNumber: 9
     }
   }, __jsx("div", {
@@ -4688,14 +4608,14 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 185,
+      lineNumber: 296,
       columnNumber: 13
     }
   }, __jsx("h3", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 187,
+      lineNumber: 298,
       columnNumber: 13
     }
   }, "Payment Information"), __jsx("div", {
@@ -4703,7 +4623,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 189,
+      lineNumber: 300,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -4711,7 +4631,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 190,
+      lineNumber: 301,
       columnNumber: 17
     }
   }, __jsx("label", {
@@ -4719,7 +4639,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 191,
+      lineNumber: 302,
       columnNumber: 21
     }
   }, "Bank Name ", __jsx("span", {
@@ -4727,7 +4647,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 191,
+      lineNumber: 302,
       columnNumber: 57
     }
   }, validation.errors.get("bankName"))), __jsx("select", {
@@ -4737,7 +4657,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 192,
+      lineNumber: 303,
       columnNumber: 21
     }
   }, __jsx("option", {
@@ -4745,7 +4665,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 193,
+      lineNumber: 304,
       columnNumber: 25
     }
   }), __jsx("option", {
@@ -4753,7 +4673,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 194,
+      lineNumber: 305,
       columnNumber: 25
     }
   }, "UBA"), __jsx("option", {
@@ -4761,7 +4681,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 195,
+      lineNumber: 306,
       columnNumber: 25
     }
   }, "GTB"), __jsx("option", {
@@ -4769,7 +4689,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 196,
+      lineNumber: 307,
       columnNumber: 25
     }
   }, "FCMB")))), __jsx("div", {
@@ -4777,7 +4697,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 201,
+      lineNumber: 312,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -4785,7 +4705,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 202,
+      lineNumber: 313,
       columnNumber: 19
     }
   }, __jsx("label", {
@@ -4793,7 +4713,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 203,
+      lineNumber: 314,
       columnNumber: 21
     }
   }, "Account Name   ", __jsx("span", {
@@ -4801,7 +4721,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 203,
+      lineNumber: 314,
       columnNumber: 65
     }
   }, validation.errors.get("accountName"))), __jsx("input", {
@@ -4811,7 +4731,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 204,
+      lineNumber: 315,
       columnNumber: 21
     }
   }))), __jsx("div", {
@@ -4819,7 +4739,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 209,
+      lineNumber: 320,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -4827,7 +4747,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 210,
+      lineNumber: 321,
       columnNumber: 19
     }
   }, __jsx("label", {
@@ -4835,7 +4755,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 211,
+      lineNumber: 322,
       columnNumber: 21
     }
   }, "Account Number   ", __jsx("span", {
@@ -4843,7 +4763,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 211,
+      lineNumber: 322,
       columnNumber: 69
     }
   }, validation.errors.get("accountNumber"))), __jsx("input", {
@@ -4853,7 +4773,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 212,
+      lineNumber: 323,
       columnNumber: 21
     }
   }))), __jsx("div", {
@@ -4861,7 +4781,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 217,
+      lineNumber: 328,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -4869,7 +4789,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 218,
+      lineNumber: 329,
       columnNumber: 19
     }
   }, __jsx("label", {
@@ -4877,16 +4797,16 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 219,
+      lineNumber: 330,
       columnNumber: 21
     }
-  }, "Bank Verification Number(bvn)   ", __jsx("span", {
+  }, "Bank Verification Number(bvn)  ", validationCheck(), "  ", __jsx("span", {
     className: "fieldError",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 219,
-      columnNumber: 74
+      lineNumber: 330,
+      columnNumber: 94
     }
   }, validation.errors.get("bvn"))), __jsx("input", {
     id: "bvn",
@@ -4895,15 +4815,30 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 220,
+      lineNumber: 331,
       columnNumber: 21
     }
-  }))), __jsx("div", {
+  }), __jsx("span", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 333,
+      columnNumber: 21
+    }
+  }, __jsx("button", {
+    onClick: handleBVNValidation,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 333,
+      columnNumber: 28
+    }
+  }, "Verify BVN")))), __jsx("div", {
     className: "two-column-row",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 232,
+      lineNumber: 345,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -4911,7 +4846,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 233,
+      lineNumber: 346,
       columnNumber: 23
     }
   }, __jsx("button", {
@@ -4922,7 +4857,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 234,
+      lineNumber: 347,
       columnNumber: 26
     }
   }, "Back")), __jsx("div", {
@@ -4930,7 +4865,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 237,
+      lineNumber: 350,
       columnNumber: 23
     }
   }, __jsx("button", {
@@ -4941,7 +4876,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 238,
+      lineNumber: 351,
       columnNumber: 26
     }
   }, "Next"))), __jsx("div", {
@@ -4949,7 +4884,7 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 242,
+      lineNumber: 355,
       columnNumber: 19
     }
   }, __jsx("div", {
@@ -4957,14 +4892,14 @@ const PaymentInformation = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 243,
+      lineNumber: 356,
       columnNumber: 23
     }
   }, __jsx("span", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 244,
+      lineNumber: 357,
       columnNumber: 26
     }
   }, "5/6"))))));
@@ -4998,6 +4933,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utility_axios__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utility/axios */ "./utility/axios.js");
 /* harmony import */ var validatorjs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! validatorjs */ "validatorjs");
 /* harmony import */ var validatorjs__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(validatorjs__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_10__);
 var _jsxFileName = "/home/noa/ntdbProject/app/NTDB/components/profile/profilePic.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -5006,6 +4943,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -5097,8 +5035,7 @@ const ProfilePic = props => {
   const handleCompleteCrop = (crop, pixelCrop) => {
     console.log("the crop and the pixel " + JSON.stringify(crop) + JSON.stringify(pixelCrop));
     const canvasRef = imagePreviewCanvasRef.current;
-    const imgSrc = profilePic.profilePicUrl;
-    Object(_fileUtility__WEBPACK_IMPORTED_MODULE_7__["image64toCanvasRef"])(canvasRef, imgSrc, crop);
+    const imgSrc = profilePic.profilePicUrl; // image64toCanvasRef(canvasRef, imgSrc, crop)
   }; // save the successfully cropped image to state 
 
 
@@ -5217,6 +5154,32 @@ const ProfilePic = props => {
     }
   };
 
+  const checkForImage = () => {
+    const em = lodash__WEBPACK_IMPORTED_MODULE_10___default.a.isEmpty(profilePic.profilePicUrl);
+
+    if (!em) {
+      return __jsx("div", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 298,
+          columnNumber: 7
+        }
+      }, __jsx("img", {
+        src: profilePic.profilePicUrl,
+        alt: "logo",
+        height: "170px",
+        width: "200px",
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 299,
+          columnNumber: 10
+        }
+      }));
+    }
+  };
+
   const handleSaveNow = async e => {
     //  console.log("i am here to save first foitiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
     e.preventDefault(); // const data =  {...profilePic,  profileStep: profilePic.profileStep+1};
@@ -5232,14 +5195,14 @@ const ProfilePic = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 315,
+      lineNumber: 331,
       columnNumber: 5
     }
   }, __jsx(_layouts_navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 316,
+      lineNumber: 332,
       columnNumber: 7
     }
   }), __jsx("div", {
@@ -5247,7 +5210,7 @@ const ProfilePic = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 318,
+      lineNumber: 334,
       columnNumber: 9
     }
   }, __jsx("div", {
@@ -5255,14 +5218,14 @@ const ProfilePic = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 320,
+      lineNumber: 336,
       columnNumber: 13
     }
   }, __jsx("h3", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 322,
+      lineNumber: 338,
       columnNumber: 13
     }
   }, "Profile Pic"), __jsx("div", {
@@ -5270,7 +5233,7 @@ const ProfilePic = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 325,
+      lineNumber: 341,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -5278,7 +5241,7 @@ const ProfilePic = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 326,
+      lineNumber: 342,
       columnNumber: 19
     }
   }, __jsx("div", {
@@ -5286,7 +5249,7 @@ const ProfilePic = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 328,
+      lineNumber: 344,
       columnNumber: 21
     }
   }, "Drag you mouse over the image to crop or click the button below to skip"), __jsx("input", {
@@ -5296,15 +5259,23 @@ const ProfilePic = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 329,
+      lineNumber: 345,
       columnNumber: 21
     }
-  }))), __jsx("div", {
+  })), __jsx("div", {
+    className: "column profilePicPreview",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 349,
+      columnNumber: 19
+    }
+  }, checkForImage())), __jsx("div", {
     className: "two-column-row",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 335,
+      lineNumber: 380,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -5312,71 +5283,7 @@ const ProfilePic = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 336,
-      columnNumber: 19
-    }
-  }, __jsx(react_image_crop__WEBPACK_IMPORTED_MODULE_5___default.a, {
-    src: profilePic.profilePicUrl,
-    onImageLoaded: handleImageLoaded,
-    onComplete: handleCompleteCrop,
-    circularCrop: "true",
-    crop: profilePic.crop,
-    onChange: handleCrop,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 338,
-      columnNumber: 23
-    }
-  }), __jsx("button", {
-    style: conStyle.notCropped,
-    onClick: handleImageSaveWithoutCrop,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 346,
-      columnNumber: 23
-    }
-  }, " Skip Cropping And Upload Image ")), __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 350,
-      columnNumber: 19
-    }
-  }, __jsx("canvas", {
-    ref: imagePreviewCanvasRef,
-    style: styles,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 351,
-      columnNumber: 21
-    }
-  }), __jsx("button", {
-    style: conStyle.cropped,
-    onClick: handleImageSaveWithCrop,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 352,
-      columnNumber: 21
-    }
-  }, " Upload  Cropped Image "))), __jsx("div", {
-    className: "two-column-row",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 361,
-      columnNumber: 13
-    }
-  }, __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 362,
+      lineNumber: 381,
       columnNumber: 23
     }
   }, __jsx("button", {
@@ -5387,7 +5294,7 @@ const ProfilePic = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 363,
+      lineNumber: 382,
       columnNumber: 26
     }
   }, "Back")), __jsx("div", {
@@ -5395,7 +5302,7 @@ const ProfilePic = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 366,
+      lineNumber: 385,
       columnNumber: 23
     }
   }, __jsx("button", {
@@ -5406,7 +5313,7 @@ const ProfilePic = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 367,
+      lineNumber: 386,
       columnNumber: 26
     }
   }, "Next"))), __jsx("div", {
@@ -5414,7 +5321,7 @@ const ProfilePic = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 371,
+      lineNumber: 390,
       columnNumber: 23
     }
   }, __jsx("div", {
@@ -5422,14 +5329,14 @@ const ProfilePic = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 372,
+      lineNumber: 391,
       columnNumber: 23
     }
   }, __jsx("span", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 373,
+      lineNumber: 392,
       columnNumber: 26
     }
   }, "6/6"))))));
@@ -7231,6 +7138,17 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
+/***/ "./node_modules/react-toastify/dist/ReactToastify.css":
+/*!************************************************************!*\
+  !*** ./node_modules/react-toastify/dist/ReactToastify.css ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./pages/profile.js":
 /*!**************************!*\
   !*** ./pages/profile.js ***!
@@ -8002,10 +7920,30 @@ const profilePost = async data => {
 // }
 
 
+const checkBVN = async bvn => {
+  const url = _config_config__WEBPACK_IMPORTED_MODULE_1__["default"].apiUrl + "bvn/" + bvn;
+  console.log("the final url to check " + url);
+
+  try {
+    const getReq = await axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+      // console.log(response);
+      // console.log(response.data);
+      console.log("this is the response satus " + response.status);
+      return response;
+    }).catch(function (error) {
+      console.log("this is the error that occurred " + error); //return error
+
+      return;
+    });
+    return getReq;
+  } catch (error) {}
+};
+
 const axiosFuncs = {
   userRegister: userRegister,
   userLogin: userLogin,
-  profilePost: profilePost // setItemInStorage : setItemInStorage
+  profilePost: profilePost,
+  checkBVN: checkBVN // setItemInStorage : setItemInStorage
   // end of the module export bracket
 
 };
@@ -8151,7 +8089,7 @@ const Logout = () => {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!********************************!*\
   !*** multi ./pages/profile.js ***!
   \********************************/
@@ -8284,14 +8222,25 @@ module.exports = require("react-is");
 
 /***/ }),
 
-/***/ "react-loading-io":
-/*!***********************************!*\
-  !*** external "react-loading-io" ***!
-  \***********************************/
+/***/ "react-materialize":
+/*!************************************!*\
+  !*** external "react-materialize" ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("react-loading-io");
+module.exports = require("react-materialize");
+
+/***/ }),
+
+/***/ "react-toastify":
+/*!*********************************!*\
+  !*** external "react-toastify" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-toastify");
 
 /***/ }),
 

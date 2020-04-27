@@ -6,10 +6,18 @@ import AuthContextProvider from './contexts/authContext'
 
 import ProfileContextProvider from './contexts/profileContext'
 
+import { ToastContainer , toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+
+toast.configure();
 
 class MyApp extends App {
+
+  
   render() {
+
+ 
     const { Component, pageProps } = this.props;
     return (
       <div>

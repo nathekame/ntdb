@@ -1,5 +1,6 @@
 const withSass = require('@zeit/next-sass');
 const withCSS = require("@zeit/next-css");
+const path = require("path");
 module.exports = withCSS(withSass({
    webpack (config, options) {
        config.module.rules.push({
@@ -12,6 +13,8 @@ module.exports = withCSS(withSass({
            }
        });
 
+       config.resolve.modules.push(path.resolve("./"));
        return config;
    }
 }));
+

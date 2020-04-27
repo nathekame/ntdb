@@ -20,6 +20,8 @@ import axiosFuncs from '../../utility/axios';
 
 import Validator from 'validatorjs';
 
+import _ from 'lodash'
+
 
 
  //   const cropper = React.createRef(null);
@@ -124,7 +126,7 @@ const handleCompleteCrop = (crop, pixelCrop) => {
 
   const imgSrc = profilePic.profilePicUrl
 
-  image64toCanvasRef(canvasRef, imgSrc, crop)
+ // image64toCanvasRef(canvasRef, imgSrc, crop)
 
 }
 
@@ -287,6 +289,20 @@ const handleBack = async e => {
         }
 
 
+const checkForImage = ()=>{
+
+ const em = _.isEmpty(profilePic.profilePicUrl);
+
+  if(!em){
+    return (
+      <div>
+         <img src={profilePic.profilePicUrl} alt="logo" height="170px" width="200px"/>
+      </div>
+    )
+  }
+}
+
+
 const handleSaveNow = async e => {
 
 
@@ -327,12 +343,15 @@ const handleSaveNow = async e => {
                                       
                     <div style={conStyle.notCropped} >Drag you mouse over the image to crop or click the button below to skip</div>
                     <input  type='file' id="profilePic" onChange={(e)=>handleImageChange(e)} />
-                 
+                    
                       
                   </div>
+                  <div className="column profilePicPreview">
+                   {checkForImage()}
+                  </div>
             </div>
-
-            <div className="two-column-row">
+{/* 
+            <div className="one-column-row">
                   <div className="column">
                                       
                       <ReactCrop 
@@ -351,8 +370,8 @@ const handleSaveNow = async e => {
                     <canvas ref={imagePreviewCanvasRef} style={styles} ></canvas> 
                     <button  style={conStyle.cropped} onClick={handleImageSaveWithCrop}> Upload  Cropped Image </button>
         
-                  </div>
-            </div>
+                  </div> 
+            </div>*/}
 
 
 

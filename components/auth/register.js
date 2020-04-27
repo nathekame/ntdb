@@ -13,6 +13,12 @@ import Link from 'next/link'
 import Validator from 'validatorjs';
 import axiosFuncs from '../../utility/axios';
 import localStorageFuncs from '../../utility/localStorage';
+import _ from 'lodash';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+//import 'materialize-css';
 
 
 
@@ -26,16 +32,21 @@ const Register = (props) => {
             email: '',
             password: '',
             cpassword:'',
-            fileNumber:''
+            controlNumber:''
           
           }
       );
+
+      const [buttonState, setButtonState] = useState(true);
+
+      const [ regError, setRegError ] = useState({errorMsg: ''});
+
 
       let rules = {
         email: 'required|email',
         password: 'required',
         cpassword: 'required|same:password',
-        fileNumber: 'required'
+        controlNumber: 'required'
       };
       
       let validation = new Validator(userReg, rules, { required: 'required*' });
@@ -48,7 +59,7 @@ const Register = (props) => {
           setUserReg({ ...userReg, [e.target.id]: e.target.value })
     
       }
-      
+
     const  handleSubmit = async (e) => {
 
         e.preventDefault();
@@ -58,30 +69,77 @@ const Register = (props) => {
         const data = {
           email: userReg.email,
           password: userReg.password,
-          fileNumber: userReg.fileNumber
+          controlNumber: userReg.controlNumber
         }
 
         
         let api = await axiosFuncs.userRegister(data);
         const token = api.data.userToken;
-        console.log("this is the status from the register"+api.status);
+        const apiMsg = api.data.msg;
+        console.log("this is the status from the register ====>>> "+api.status);
+        console.log("this is the data from the register ====>>> "+JSON.stringify(api.data));
+        console.log("this is the data from the register ====>>> "+api.data.msg);
          if(api.data === "error" ){
            console.log("the log is error");
            router.push('/');
           }
+        if(api.status === 200 ){
+       //   const [ regError, setRegError ] = useState({errorMsg: ''});
+         // setUserReg({ ...userReg, [e.target.id]: e.target.value })
+        //    setRegError({...regError, errorMsg:  api.data.msg});
+            
+            toast(apiMsg, {
+              type: toast.TYPE.ERROR,
+              className: 'errorToast'
+            })
+          
+            router.push('/');
+           }
          if (api.status === 201) {
            console.log("the log is success"+api.status);
               if(token){
                 Cookie.set("auth", token);
                 localStorageFuncs.setItemInStorage("auth", token);
                }
+            toast("Registration Success", {
+                type: toast.TYPE.SUCCESS,
+                className: 'successToast'
+              })
            router.push('/profile')
            
          }
 
+       //  console.log("the erro "+regError.errorMsg);
+
     }
+
+    useEffect(() => {
+
+      if (validation.passes()) {
+              setButtonState(false);
+             // console.log("the   buttonStete "+buttonState);  
+         }else{
+          setButtonState(true);
+        
+     }
+      },[userReg]);
       
 
+  const checkForError = ()=> {
+
+    const val = regError.errorMsg
+    const isEmp = _.size(val);
+    if(isEmp > 0){
+      console.log("it is true that hteres omething there look at it "+val);
+
+    }
+    if(isEmp === 0){
+        console.log(" na lie ooo nothig dey inside "+val);
+    }
+
+  }
+
+ 
         
       return (
 
@@ -97,19 +155,23 @@ const Register = (props) => {
                                   <img src="/images/ubelogo.jpeg" alt="logo" height="200px" width="600px"/>
                                 </div>
                                 <div className="column">
-                                <h1> Register </h1>
+                                    <h1> Register </h1>
                                 </div>
                           </div>
+
+                     <ToastContainer />
+                  
+
+                        
                         <div className="grid">
-                       
                             <div className="one-column-row">
                                 <div className="column"> 
                                 <label htmlFor="email">Email <span className="fieldError">{validation.errors.get("email")}</span></label>
                                 <input onChange={handleChange}  name="email" id="email" type="email" />
                                 </div>
                                 <div className="column"> 
-                                <label htmlFor="fileNumber">File Number <span className="fieldError">{validation.errors.get("fileNumber")}</span></label>
-                                <input onChange={handleChange}  name="fileNumber" id="fileNumber" type="text" />
+                                <label htmlFor="controlNumber">Control Number <span className="fieldError">{validation.errors.get("controlNumber")}</span></label>
+                                <input onChange={handleChange}  name="controlNumber" id="controlNumber" type="text" />
                                 </div>
                               
                             
@@ -129,7 +191,8 @@ const Register = (props) => {
                                 <p>Already Registered?  <Link href="/login"><a>Login</a></Link></p>
                                 </div>
                                 <div className="column"> 
-                                 <button className="button">submit</button>
+                                 <button className="button" disabled={buttonState}>submit</button>
+                                 
                                 </div>
                               
                               </div>
