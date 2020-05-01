@@ -1,17 +1,13 @@
-//import React, { useContext, useEffect ,useRef } from 'react'
-
 import React, { useContext } from 'react'
 
 //import '../../public/assets/style.scss';
-import '../../public/assets/mobile.scss'
 import Menu from './menu';
 
 import { ProfileContext } from '../../store/contexts/profileContext'
 import Logout from '../../utility/logout'
-
-//import M from 'materialize-css'
 import { FaBars } from 'react-icons/fa';
 
+import '../../public/assets/mobile.scss'
 
 
  const Navbar = () => {
