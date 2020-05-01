@@ -29,5 +29,8 @@
     "react-materialize": "^3.8.10",
     "react-toastify": "^5.5.0",
     "validatorjs": "^3.18.1"
+  },
+  "devDependencies": {
+    "webpack-filter-warnings-plugin": "^1.2.1"
   }
 }
