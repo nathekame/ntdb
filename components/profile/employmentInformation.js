@@ -16,6 +16,9 @@ import jwtFuncs from '../../utility/jwt';
 import composeApiData from '../componentUtility/composeApiData';
 
 
+import 'materialize-css/dist/css/materialize.min.css'
+
+
 //import localStorageFuncs from '../../../utility/localStorage'
 
 

@@ -17,6 +17,12 @@ import composeApiData from '../componentUtility/composeApiData';
 import _ from 'lodash'
  //   const cropper = React.createRef(null);
 
+ import 'materialize-css/dist/css/materialize.min.css'
+
+
+
+
+
 const PaymentInformation = (props) => {
 
 //   const coVal = Cookie.get("auth");

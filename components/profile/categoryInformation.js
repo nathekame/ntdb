@@ -6,6 +6,7 @@ import ProfileContextProvider from '../../store/contexts/profileContext'
 import TeachingInformation from '../../components/profile/teachingInformation';
 import NonTeachingInformation from '../../components/profile/nonTeachingInformation';
 
+import 'materialize-css/dist/css/materialize.min.css'
 
 
 const CategoryInformation =(props)=> {

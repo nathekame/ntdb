@@ -4,6 +4,7 @@ import '../../public/assets/style.scss';
 import Logout from '../../utility/logout'
 
 import Navbar from '../layouts/navbar'
+import 'materialize-css/dist/css/materialize.min.css'
 
 
 const Success =()=> {

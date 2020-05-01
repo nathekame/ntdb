@@ -18,6 +18,7 @@ import _ from 'lodash'
 
 //import localStorageFuncs from '../../../utility/localStorage'
 
+import 'materialize-css/dist/css/materialize.min.css'
 
 
  //   const cropper = React.createRef(null);

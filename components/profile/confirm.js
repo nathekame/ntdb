@@ -18,6 +18,8 @@ import Navbar from '../layouts/navbar'
  import composeApiData from '../componentUtility/composeApiData';
 import Success from './success';
 
+import 'materialize-css/dist/css/materialize.min.css'
+
 
 
  //   const cropper = React.createRef(null);
