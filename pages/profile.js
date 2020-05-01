@@ -193,7 +193,6 @@ const Profile = (props) => {
             return (
 
                     <ProfileContextProvider >
-                        <Navbar />  
                         <ContactInformation currentStep={profileStepState} updatestep={proStep}  />
                     </ProfileContextProvider>
             )
@@ -201,7 +200,6 @@ const Profile = (props) => {
           //  console.log("i dey case 3 now i wan render");
             return (
                     <ProfileContextProvider >
-                        <Navbar />   
                         <GuarantorInformation currentStep={profileStepState} updatestep={proStep}  />
                     </ProfileContextProvider>
             )
@@ -211,7 +209,6 @@ const Profile = (props) => {
                 return (
 
                     <ProfileContextProvider >
-                        <Navbar />  
                         <EmploymentInformation updatestep={proStep} />
                     </ProfileContextProvider>
                    
@@ -220,7 +217,6 @@ const Profile = (props) => {
             return (
 
                 <ProfileContextProvider>  
-                    <Navbar />  
                     <CategoryInformation updatestep={proStep} />
                 </ProfileContextProvider>
                
@@ -230,28 +226,24 @@ const Profile = (props) => {
         case 6:
                 return (
                      <ProfileContextProvider >
-                        <Navbar />  
                         <PaymentInformation updatestep={proStep}  />
                     </ProfileContextProvider>
                 )
         case 7:
                     return (
                          <ProfileContextProvider >
-                            <Navbar />  
                             <ProfilePic updatestep={proStep}  />
                         </ProfileContextProvider>
                     )
         case 8:
                         return (
                             <ProfileContextProvider >
-                                <Navbar />  
                                 <Confirm updatestep={proStep}  />
                             </ProfileContextProvider>
                         )
          case 9:
                         return (
                             <ProfileContextProvider >
-                                <Navbar />  
                                 <Success updatestep={finishStep}  />
                             </ProfileContextProvider>
                         )
