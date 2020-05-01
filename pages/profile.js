@@ -7,7 +7,6 @@ import BioInformation  from '../components/profile/bioInformation'
 
 import ContactInformation  from '../components/profile/contactInformation'
 
-import NextOfKinInformation from '../components/profile/nextOfKinInformation';
 
 import PaymentInformation  from '../components/profile/paymentInformation'
 
@@ -33,6 +32,7 @@ import Cookie from 'js-cookie'
 import ProfileContextProvider from '../store/contexts/profileContext'
 
 import { ProfileContext } from '../store/contexts/profileContext'
+
 import { isMoment } from 'moment';
 import { AuthContextProvider } from '../store/contexts/authContext';
 import { useRouter, Router } from 'next/router';
@@ -42,6 +42,11 @@ import _ from 'lodash';
 
 import '../public/assets/style.scss'
 import Success from '../components/profile/success';
+import GuarantorInformation from '../components/profile/guarantorInformation';
+import TeachingInformation from '../components/profile/teachingInformation';
+import NonTeachingInformation from '../components/profile/nonTeachingInformation';
+import CategoryInformation from '../components/profile/categoryInformation';
+import Navbar from '../components/layouts/navbar';
 
 
 //const token = localStorage.getItem("jwt");
@@ -57,6 +62,8 @@ const Profile = (props) => {
     const lCookie = Cookie.get('auth'); 
     console.log("the l cookie "+lCookie);
  //   const localStorageAuth = localStorageFuncs.getItemFromStorage("auth");
+
+   
 
  if(lCookie == undefined){
     //   console.log("no cookie founnd ");
@@ -166,7 +173,7 @@ const Profile = (props) => {
   
   //  const profileStep = jwtFuncs.jwtProfileStep(token);
  
-  
+
 
 
     switch(profileStepState) {
@@ -176,6 +183,7 @@ const Profile = (props) => {
                 
                 
                     <ProfileContextProvider >
+                        <Navbar />   
                         <BioInformation currentStep={profileStepState} updatestep={proStep} />
                     </ProfileContextProvider>
                
@@ -185,6 +193,7 @@ const Profile = (props) => {
             return (
 
                     <ProfileContextProvider >
+                        <Navbar />  
                         <ContactInformation currentStep={profileStepState} updatestep={proStep}  />
                     </ProfileContextProvider>
             )
@@ -192,7 +201,8 @@ const Profile = (props) => {
           //  console.log("i dey case 3 now i wan render");
             return (
                     <ProfileContextProvider >
-                        <NextOfKinInformation currentStep={profileStepState} updatestep={proStep}  />
+                        <Navbar />   
+                        <GuarantorInformation currentStep={profileStepState} updatestep={proStep}  />
                     </ProfileContextProvider>
             )
         case 4:
@@ -201,31 +211,47 @@ const Profile = (props) => {
                 return (
 
                     <ProfileContextProvider >
+                        <Navbar />  
                         <EmploymentInformation updatestep={proStep} />
                     </ProfileContextProvider>
                    
             )
         case 5:
+            return (
+
+                <ProfileContextProvider>  
+                    <Navbar />  
+                    <CategoryInformation updatestep={proStep} />
+                </ProfileContextProvider>
+               
+            )
+              
+          //  return categoryCheck(userCategory)
+        case 6:
                 return (
                      <ProfileContextProvider >
+                        <Navbar />  
                         <PaymentInformation updatestep={proStep}  />
                     </ProfileContextProvider>
                 )
-        case 6:
+        case 7:
                     return (
                          <ProfileContextProvider >
+                            <Navbar />  
                             <ProfilePic updatestep={proStep}  />
                         </ProfileContextProvider>
                     )
-        case 7:
+        case 8:
                         return (
                             <ProfileContextProvider >
+                                <Navbar />  
                                 <Confirm updatestep={proStep}  />
                             </ProfileContextProvider>
                         )
-         case 8:
+         case 9:
                         return (
                             <ProfileContextProvider >
+                                <Navbar />  
                                 <Success updatestep={finishStep}  />
                             </ProfileContextProvider>
                         )

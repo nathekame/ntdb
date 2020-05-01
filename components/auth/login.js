@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Link from 'next/link'
 
@@ -14,8 +14,10 @@ import config from '../../config/config';
 
 import Validator from 'validatorjs';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer , toast } from 'react-toastify';
+
+//import 'materialize-css/dist/css/materialize.css'
+import 'react-toastify/dist/ReactToastify.min.css';
 
 
 
@@ -33,6 +35,8 @@ const Login = (props) => {
           }
       );
 
+      const [buttonState, setButtonState] = useState(true);
+
     
       let rules = {
         email: 'required|email',
@@ -40,7 +44,7 @@ const Login = (props) => {
  
       };
       
-      let validation = new Validator(user, rules, { required: 'required*' });
+      let validation = new Validator(user, rules, { required: '*' });
     
       validation.fails(); // true
       validation.passes(); // false
@@ -86,15 +90,30 @@ const Login = (props) => {
        let apiCall = await axios.post(url, user);
 
 
-       console.log("API response "+apiCall.data.userToken);
+       console.log("API response "+apiCall.data.msg);
 
        const token = apiCall.data.userToken;
+       const apiMsg = apiCall.data.msg;
+
+       if(!token){
+         
+          toast(apiMsg, {
+            type: toast.TYPE.ERROR,
+            className: 'errorToast'
+          })
+      
+       }
 
        if(token){
 
             Cookie.set("auth", token);
 
             localStorageFuncs.setItemInStorage("auth", token);
+
+            toast("Login Success", {
+              type: toast.TYPE.SUCCESS,
+              className: 'successToast'
+            })
 
           
             // decode the token and return the users details
@@ -129,63 +148,68 @@ const Login = (props) => {
 
       }
 
+      useEffect(() => {
+
+        if (validation.passes()) {
+                setButtonState(false);
+               // console.log("the   buttonStete "+buttonState);  
+           }else{
+            setButtonState(true);
+          
+       }
+        },[user]);
+        
+
 
         
       return (
 
-
-          <div className="pagegrid">
-
-<div className="innergrid">
-    
-
-      <form className="form"  onSubmit={handleSubmit} >
-          <div className="one-column-row">
-              <div className="column">
-                <img src="/images/ubelogo.jpeg" alt="logo" height="200px" width="600px"/>
-              </div>
-              <div className="column">
-                  <h1> Login </h1>
-              </div>
-        </div>
-        <ToastContainer />
-
-      <div className="grid">
-          <div className="one-column-row">
-              <div className="column"> 
-              <label htmlFor="email">Email <span className="fieldError">{validation.errors.get("email")}</span></label>
-              <input onChange={handleChange}  name="email" id="email" type="email" />
-              </div>
-           
-            
-          
-              <div className="column"> 
-              <label htmlFor="password">Password <span className="fieldError">{validation.errors.get("password")}</span></label>
-              <input onChange={handleChange}  name="password" id="password" type="password" />
-              </div>
-             
-            
-            </div>
-
-            <div className="two-column-row">
-              <div className="column"> 
-              <p>Don't have an account?    <Link href="/"><a>Register</a></Link></p>
-              </div>
-              <div className="column"> 
-               <button className="button">submit</button>
-              </div>
-            
-            </div>
-      </div>
-
+                 
+           <div className="container">
               
-      </form>
+              <div className="row">      
+          
+                <ToastContainer></ToastContainer>
+                    <div className="content">
+                        <form className="form " className="col s12 " onSubmit={handleSubmit} >
+                            <div className="formPadding z-depth-2">
+                                <div className="row">
+                                        <div className="">
+                                            <img class="responsive-img formLogo" src="/images/ubelogo.jpeg" alt="logo" />
+                                        </div>
+                                </div>
+                                <div className="row">
+                                         <h4 className="center">Login</h4>
+                                </div>
+                                <div className="row">
+                                      <div className="col s12">
+                                          <label htmlFor="email"><h6><span className="text">Email</span> <span className="fieldError">{validation.errors.get("email")}</span></h6></label>
+                                          <input onChange={handleChange}  name="email" id="email" type="email" />
+                                      </div>                                                
+                                </div>                    
+                                <div className="row">
+                                    <div className="col s12"> 
+                                            <label htmlFor="password"><h6><span className="text">Password</span> <span className="fieldError">{validation.errors.get("password")}</span></h6></label>
+                                            <input onChange={handleChange}  name="password" id="password" type="password" />
+                                    </div>
+                                </div>
+                       
+                                <div className="row">
+                                    <div className="col s6"> 
+                                        <h6>Don't have an account?   <Link href="/"><a>Register</a></Link></h6>
+                                    </div>
+                                    <div className="col s6"> 
+                                      <button className="button black" disabled={buttonState}>Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+              </div>
 
+        </div>
     
-</div>
-</div>
-
-
 
 
 

@@ -5,7 +5,7 @@ import { ProfileContext } from '../../store/contexts/profileContext'
 import Navbar from '../layouts/navbar'
 
 
-import '../../public/assets/style.scss';
+//import '../../public/assets/style.scss';
 import Logout from '../../utility/logout'
 import checkInLocalStorage from '../componentUtility/persistLocalToState';
 import axiosFuncs from '../../utility/axios';
@@ -110,7 +110,7 @@ const checkMobileNumberSize = (mobileNumber, requirement, attribute)=>{
 Validator.register('mobileNumberCount',checkMobileNumberSize , 'Mobile Numbers Must Be 11 Digits.');
 
 
-let validation = new Validator(contactInformation, rules, { required: 'required*' });
+let validation = new Validator(contactInformation, rules, { required: '*', numeric: 'Mobile Number Must Be Digits' });
 
 validation.fails(); // true
 validation.passes(); // false
@@ -269,77 +269,116 @@ const handleSaveNow = async e => {
 
   return (
 
-     <div className="pagegrid">
-      <Navbar />
-
-        <div className="innergrid">
-
-            <div className="profile-form" >
-
-            <h3>Contact Information</h3>
-
-            <div className="two-column-row">
-                      <div className="column">                  
-                          <label htmlFor="stateOfOrigin">State Of Origin  <span className="fieldError">{validation.errors.get("stateOfOrigin")}</span></label>
-                          <select id="stateOfOrigin" onChange={handleChange} value={contactInformation.stateOfOrigin}>
-                              <option value="" />
-                              <option value={"NIGER"}>NIGER</option>
-                          </select>
-                      </div>
-                      <div className="column">
-                          <label htmlFor="lga">LGA   <span className="fieldError">{validation.errors.get("lga")}</span></label>
-                          <select id="lga" onChange={handleChange} value={contactInformation.lga} >
-                              <option value="" />
-                              <option value={"DELTA"}>DELTA</option>
-                              <option value={"KANO"}>KANO</option>
-                              <option value={"RIVERS"}>RIVERS</option>
-                          </select>
-                      </div>
-            </div>
-
-            <div className="one-column-row">
-                  {/* <div className="column">
-                    <label htmlFor="controlNumber">Address   <span className="fieldError">{validation.errors.get("controlNumber")}</span></label>               
-                  <input id="controlNumber"  onChange={handleChange} value={contactInformation.controlNumber} />                 
-                  </div> */}
-                  <div className="column">
-                    <label htmlFor="mobileNumber">Mobile Number   <span className="fieldError">{validation.errors.get("mobileNumber")}</span></label>
-                    <input id="mobileNumber"  onChange={handleChange} value={contactInformation.mobileNumber} />    
-                  </div>
-            </div>
-
-            <div className="one-column-row">
-                  <div className="column">
-                    <label htmlFor="address">Address   <span className="fieldError">{validation.errors.get("address")}</span></label>               
-                    <textarea id="address" onChange={handleChange} value={contactInformation.address}></textarea>               
-                  </div>
-           
-            </div>
-
-      
-
-            <div className="two-column-row">
-                      <div className="column">
-                         <button variant="outlined"   size="small" color="primary" disabled={buttonStateB} onClick={handleBack}>	Back </button>
-                      </div>
-                      {/* <div className="column">
-                         <button  size="small" color="primary"  onClick={handleSaveNow}>Save And Logout</button>
-                      </div> */}
-                      <div className="column">
-                         <button size="small" color="primary" disabled={buttonStateF} onClick={handleForward}>Next</button>
-                      </div>
-                  </div>
 
 
-                  <div className="one-column-row">
-                      <div className="column componentFooter">
-                         <span>2/6</span>
-                      </div>
-                  </div>
-            </div>
+
+
+
+   <div className="container">
+              
+              <div className="row">      
+          
+                  
+                    <div className="">
+
+ 			            <div className="profileForm">
+
+
+                            <div className="formPadding z-depth-2">
+                               
+                                <div className="row">
+                                         <h4 className="center">Contact Information</h4>
+                                </div>
+                                <div className="row">
+                                      <div className="col s12 m12 l6">
+                                        <label htmlFor="stateOfOrigin"><h6><span className="text">State Of Origin</span> <span className="fieldError">{validation.errors.get("stateOfOrigin")}</span></h6></label>                              
+                                        <select id="stateOfOrigin" onChange={handleChange} value={contactInformation.stateOfOrigin} className="browser-default select">
+                                            <option value="" />
+                                            <option value={"NIGER"}>NIGER</option>
+                                        </select>
+                                
+                                      </div>  
+                                      <div className="col s12 m12 l6">
+                                        <label htmlFor="lga"><h6><span className="text">LGA</span> <span className="fieldError">{validation.errors.get("lga")}</span></h6></label>                              
+                                        <select id="lga" onChange={handleChange} value={contactInformation.lga} className="browser-default select" >
+                                            <option value="" />
+                                            <option value={"AGAIE"}>AGAIE</option>
+                                            <option value={"AGWARA"}>AGWARA</option>
+                                            <option value={"BIDA"}>BIDA</option>
+                                            <option value={"BORGU"}>BORGU</option>
+                                            <option value={"BOSSO"}>BOSSO</option>
+                                            <option value={"CHANCHAGA"}>CHANCHAGA</option>
+                                            <option value={"EDATI"}>EDATI</option>
+                                            <option value={"GBAKO"}>GBAKO</option>
+                                            <option value={"GURARA"}>GURARA</option>
+                                            <option value={"KATCHA"}>KATCHA</option>
+                                            <option value={"KONTAGORA"}>KONTAGORA</option>
+                                            <option value={"LAPAI"}>LAPAI</option>
+                                            <option value={"LAVUN"}>LAVUN</option>
+                                            <option value={"MAGAMA"}>MAGAMA</option>
+                                            <option value={"MARIGA"}>MARIGA</option>
+                                            <option value={"MASHEGU"}>MASHEGU</option>
+                                            <option value={"MOKWA"}>MOKWA</option>
+                                            <option value={"MUNYA"}>MUNYA</option>
+                                            <option value={"PAIKORO"}>PAIKORO</option>
+                                            <option value={"RAFI"}>RAFI</option>
+                                            <option value={"RIJAU"}>RIJAU</option>
+                                            <option value={"SHIRORO"}>SHIRORO</option>
+                                            <option value={"SULEJA"}>SULEJA</option>
+                                            <option value={"TAFA"}>TAFA</option>
+                                            <option value={"WUSHISHI"}>WUSHISHI</option>
+                                        </select>
+					                                   
+                                      </div>
+                                                                                     
+                                </div>  
+
+
+                    
+                 
+                                <div className="row">
+                                    <div className="col s12"> 
+                                        <label htmlFor="mobileNumber"><h6><span className="text">Mobie Number</span> <span className="fieldError">{validation.errors.get("mobileNumber")}</span></h6></label>                              
+                                        <input id="mobileNumber"  onChange={handleChange} value={contactInformation.mobileNumber} />          
+                                    </div>
+  				                  
+                                
+                                </div>
+
+                                <div className="row">
+                                    <div className="col s12">
+                                        <label htmlFor="address"><h6><span className="text">Address</span> <span className="fieldError">{validation.errors.get("address")}</span></h6></label>                              
+                                        <textarea id="address" onChange={handleChange} value={contactInformation.address}></textarea>  
+
+                                    </div>
+                                </div>
+                    
+
+                                <div className="row">
+                                    <div className="col s6"> 
+                                      <button className="button black"  disabled={buttonStateB} onClick={handleBack}>Back </button>     
+                                    </div>
+                                    <div className="col s6"> 
+                                       <button className="button black" disabled={buttonStateF} onClick={handleForward}>Next</button>
+                                    </div>
+                                </div>
+
+                                <div className="row">
+                                    <div className="column componentFooter">
+                                        <span>2/6</span>
+                                    </div>
+                                </div>
+                         </div>
+
+                    </div>
+		        </div>
+                    
+              </div>
 
         </div>
-    </div>
+
+
+
 
 
 

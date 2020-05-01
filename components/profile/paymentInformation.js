@@ -4,7 +4,7 @@ import { ProfileContext } from '../../store/contexts/profileContext'
 
 import Navbar from '../layouts/navbar'
 
-import '../../public/assets/style.scss';
+//import '../../public/assets/style.scss';
 import Logout from '../../utility/logout'
 import checkInLocalStorage from '../componentUtility/persistLocalToState';
 import axiosFuncs from '../../utility/axios';
@@ -55,13 +55,15 @@ const PaymentInformation = (props) => {
   const [buttonStateB, setButtonStateB] = useState(false);
 
   const [isUnique, setIsUnique ] = useState();
+
+  const [isVerified, setIsVerified ] = useState(false);
                   
   let rules = {
 
     bankName: 'required',
     accountName: 'required',
     accountNumber: 'required|numeric|accNumberCount',
-    bvn: 'required|numeric|bvnCount',
+    bvn: 'required|numeric|bvnCount|checkIfVerified',
     
    // isBvnUnique:'bvnC'
    
@@ -96,7 +98,7 @@ const checkBVNSize = (bvn, requirement, attribute)=>{
   // console.log("i am checking the bvn  for attribute "+attribute);
 
   const requ = _.size(bvn);
-  console.log("the requ from the size of the bvn ============ "+requ);
+  console.log("the requ from the size of the bvn ============ "+paymentInformation.bvn);
 
   if(requ === 11){
     return true
@@ -111,7 +113,7 @@ const checkBVNSize = (bvn, requirement, attribute)=>{
 const checkAccNumberSize = (accNumber, requirement, attribute)=>{
 
   const requ = _.size(accNumber);
-  //console.log("the requ from the size of the acc number ============ "+requ);
+  console.log("the requ from the size of the acc number ============ "+requ);
 
   if(requ === 10){
     return true
@@ -124,12 +126,28 @@ const checkAccNumberSize = (accNumber, requirement, attribute)=>{
 }
 
 
+const checkIfVerified = () => {
+
+    const verify = isVerified;
+
+    if(verify === true){
+      return true
+    }
+    if(verify === false){
+    return false
+    }
+
+
+
+}
+
   //Validator.register('bvnC',checkBVN , 'Your :attribute is not unique.');
   Validator.register('bvnCount',checkBVNSize , 'Your BVN must be 11 digits.');
+  Validator.register('checkIfVerified',checkIfVerified , 'You Must Verify your BVN First.');
   Validator.register('accNumberCount',checkAccNumberSize , 'Your Account Number must be 10 digits.');
   
   
-  let validation = new Validator(paymentInformation, rules, { required: 'required*' });
+  let validation = new Validator(paymentInformation, rules, { required: '*', numeric: 'Field Must Digits' });
 
   validation.fails(); // true
   validation.passes(); // false
@@ -207,10 +225,12 @@ const handleBVNValidation = async () => {
     if (status === 200) {
       setIsUnique(false);
       setIsUnique(false);
+      setIsVerified(false);
     }
     if (status === 201) {
       setButtonStateF(false);
       setIsUnique(true);
+      setIsVerified(true);
     }
 
   }
@@ -288,79 +308,113 @@ const handleSaveNow = async e => {
 
 
 
-    <div className="pagegrid">
-      <Navbar />
 
-        <div className="innergrid">
 
-            <div className="profile-form" >
 
-            <h3>Payment Information</h3>
 
-            <div className="one-column-row">
-                <div className="column">
-                    <label htmlFor="bankName">Bank Name <span className="fieldError">{validation.errors.get("bankName")}</span></label>
-                    <select id='bankName' onChange={handleChange} value={paymentInformation.bankName} >
-                        <option value="" />
-                        <option value={"UBA"}>UBA</option>
-                        <option value={"GTB"}>GTB</option>
-                        <option value={"FCMB"}>FCMB</option>
-                    </select>
+
+                <div className="container">
+                    
+                    <div className="row">      
+                
+                        
+                            <div className="">
+
+                                <div className="profileForm">
+
+
+                                    <div className="formPadding z-depth-2">
+                                    
+                                        <div className="row">
+                                                <h4 className="center">Payment Information</h4>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col s12">
+                                                <label htmlFor="bankName"><h6><span className="text">Bank Name</span> <span className="fieldError">{validation.errors.get("bankName")}</span></h6></label>                                   
+                                                <select id='bankName' onChange={handleChange} value={paymentInformation.bankName} className="browser-default select" >
+                                                    <option value="" />
+                                                    <option value={"ACCESS BANK"}>ACCESS BANK</option>
+                                                    <option value={"ACCESS BANK PLC(DIAMOND)"}>ACCESS BANK PLC(DIAMOND)</option>
+                                                    <option value={"CITI BANK"}>CITI BANK</option>
+                                                    <option value={"ECOBANK"}>ECOBANK</option>
+                                                    <option value={"ENTERPRISE BANK"}>ENTERPRISE BANK</option>
+                                                    <option value={"FCMB(FIRST CITY MONUMENT BANK)"}>FCMB(FIRST CITY MONUMENT BANK)</option>
+                                                    <option value={"FIDELITY BANK"}>FIDELITY BANK</option>
+                                                    <option value={"FIRST BANK OF NIGERIA"}>FIRST BANK OF NIGERIA</option>
+                                                    <option value={"GTBANK PLC"}>GTBANK PLC</option>
+                                                    <option value={"HERITAGE BANK"}>HERITAGE BANK</option>
+                                                    <option value={"JAIZ BANK"}>JAIZ BANK</option>
+                                                    <option value={"KEYSTONE BANK"}>KEYSTONE BANK</option>
+                                                    <option value={"POLARIS BANK (FORMERLY KNOWN AS SKYE BANK)"}>POLARIS BANK (FORMERLY KNOWN AS SKYE BANK)</option>
+                                                    <option value={"PROVIDUS BANK"}>PROVIDUS BANK</option>
+                                                    <option value={"STANBIC IBTC BANK"}>STANBIC IBTC BANK</option>
+                                                    <option value={"STANDARD CHARTERED BANK"}>STANDARD CHARTERED BANK</option>
+                                                    <option value={"STERLING BANK"}>STERLING BANK</option>
+                                                    <option value={"SUNTRUST BANK"}>SUNTRUST BANK</option>
+                                                    <option value={"UBA BANK (UNITED BANK FOR AFRICA)"}>UBA BANK (UNITED BANK FOR AFRICA)</option>
+                                                    <option value={"UNION BANK"}>UNION BANK</option>
+                                                    <option value={"UNITY BANK"}>UNITY BANK</option>
+                                                    <option value={"WEMA BANK"}>WEMA BANK</option>
+                                                    <option value={"ZENITH BANK"}>ZENITH BANK</option>
+                                                </select>
+                                                            
+                                            </div>  
+                                                                                        
+                                        </div>  
+                        
+                                        <div className="row">
+                                            <div className="col s12"> 
+                                              <label htmlFor="accountName"><h6><span className="text">Account Name</span> <span className="fieldError">{validation.errors.get("accountName")}</span></h6></label>                                   
+                                              <input id="accountName" onChange={handleChange} value={paymentInformation.accountName} />                          
+                                            </div>
+                                    
+                                        </div>
+                            
+                                        <div className="row">
+                                            <div className="col s12"> 
+                                              <label htmlFor="accountNumber"><h6><span className="text">Account Number</span> <span className="fieldError">{validation.errors.get("accountNumber")}</span></h6></label>                                   
+                                              <input id="accountNumber" onChange={handleChange} value={paymentInformation.accountNumber}/>               
+                                            </div>
+                                                            
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col s12 m9 l10"> 
+                                                <label htmlFor="bvn"><h6><span className="text">Bank Verification Number(BVN)</span>{validationCheck()}<span className="fieldError">{validation.errors.get("bvn")}</span></h6></label>                                   
+                                                <input id="bvn" onChange={handleChange} value={paymentInformation.bvn} />  
+                                            </div>
+                                            <div className="col s12 m3 l2"> 
+                                                <div className="hidden">Hidden</div>
+                                                <button onClick={handleBVNValidation}>Verify BVN</button>
+                                             </div>
+                                                            
+                                        </div>
+
+
+
+                                        <div className="row">
+                                            <div className="col s6"> 
+                                            <button className="button black"  disabled={buttonStateB} onClick={handleBack}>Back </button>     
+                                            </div>
+                                            <div className="col s6"> 
+                                            <button className="button black" disabled={buttonStateF} onClick={handleForward}>Next</button>
+                                            </div>
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="column componentFooter">
+                                                <span>5/6</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </div>
+                            
+                    </div>
+
                 </div>
-            </div>
 
-            <div className="one-column-row">
-                  <div className="column">
-                    <label htmlFor="accountName">Account Name   <span className="fieldError">{validation.errors.get("accountName")}</span></label>               
-                    <input id="accountName" onChange={handleChange} value={paymentInformation.accountName} />         
-                  </div>
-            </div>
-
-
-            <div className="one-column-row">
-                  <div className="column">
-                    <label htmlFor="accountNumber">Account Number   <span className="fieldError">{validation.errors.get("accountNumber")}</span></label>               
-                    <input id="accountNumber" onChange={handleChange} value={paymentInformation.accountNumber}/>               
-                  </div>
-            </div>
-
-
-            <div className="one-column-row">
-                  <div className="column">
-                    <label htmlFor="bvn">Bank Verification Number(bvn)  {validationCheck()}  <span className="fieldError">{validation.errors.get("bvn")}</span></label>               
-                    <input id="bvn" onChange={handleChange} value={paymentInformation.bvn} />  
-                  
-                    <span ><button onClick={handleBVNValidation}>Verify BVN</button></span>             
-                  </div>
-            </div>
-
-
-
-
-
-
-
-
-
-            <div className="two-column-row">
-                      <div className="column">
-                         <button disabled={buttonStateB}  size="small" color="primary" onClick={handleBack}>Back</button>
-                      </div>
-                  
-                      <div className="column">
-                         <button disabled={buttonStateF} size="small" color="primary" onClick={handleForward}>Next</button>
-                      </div>
-                  </div>
-
-                  <div className="one-column-row">
-                      <div className="column componentFooter">
-                         <span>5/6</span>
-                      </div>
-                  </div>
-
-            </div>
-        </div>
-    </div>
 
 
 

@@ -190,7 +190,10 @@ if (loading === true) {
               <div className="innergrid">
                   <div className="successContainer" >
                          {/* <Eclipse size={100} color="black" />; */}
-                         <h3>Creating Your Profile...</h3>
+                         <div className="progress">
+                            <div className="indeterminate"></div>
+                        </div>
+                          <h3>Creating Your Profile...</h3>
                   </div>  
               </div>
           </div>
@@ -204,255 +207,210 @@ if (loading === true) {
   return (
 
 
-    <div className="confirmationPage">
-      <Navbar />
-
-        <div className="innergrid">
-
-            <div className="profile-form" >
-
-            
-
-            <div className="profileGroup">
-                <div className="one-column-row">
-                          <div className="column">
-                            <div className="profilePicPreview"><img src={profileData.profile.profilePic.profilePicUrl} alt="profilePic" height="70px" width="200px"/></div>
-                          </div>
-                </div>
-                <div className="one-column-row">
-                          <div className="column">
-                            <div className="profilePicPreview">
-
-                               <h1>My Profile Preview</h1>
-                          </div>
-                          </div>
-                </div>
-            </div>
 
 
-            <div className="profileGroup">
-                    <h3>Bio Information</h3>
-                    <div className="three-column-row">
+            <div className="container">
+                        
+                        <div className="row">      
                     
-                    <div className="column">
-                          <label htmlFor="firstName">First Name: </label>
-                          <span id="firstName">{myProfileDetails.firstName}</span>
-                    </div>
-                    <div className="column">
-                          <label htmlFor="otherName">Other Name: </label>
-                          <span id="otherName">{myProfileDetails.otherName}</span>
-                    </div>
-                    <div className="column">
-                          <label htmlFor="lastName">Last Name: </label>
-                          <span id="lastName">{myProfileDetails.lastName}</span>
-                    </div>
-               
-              </div>
+                            
+                             
 
-              <div className="three-column-row">
-                    <div className="column">
-                          <label htmlFor="gender">Gender: </label>
-                          <span id="gender">{myProfileDetails.gender}</span>
-                    </div>
-                    <div className="column">
-                          <label htmlFor="dob">Date Of Birth: </label>
-                          <span id="dob">{myProfileDetails.dob}</span>
-                    </div>
-                    <div className="column">
-                          <label htmlFor="placeOfBirth">Place Of Birth: </label>
-                          <span id="placeOfBirth">{myProfileDetails.placeOfBirth}</span>
-                    </div>
-              </div>
+                                  <div className="profileForm">
 
 
-            </div>
-        
+                                      <div className="formPadding z-depth-1">
+                                        
+                                          <div className="row">
+                                                  <h4 className="center">Profile Preview</h4>
+                                          </div>
+                                          <div className="row">
+                                                <div className="col s12">
+                                                    <div className="profilePicPreview"><img className="responsive-img formLogo" src={profileData.profile.profilePic.profilePicUrl} alt="profilePic" height="70px" width="200px"/></div>
+                                                </div>
+                                          </div>
+                                          <div className="row">
 
-            <div className="profileGroup">
-                <h3>Contact Information</h3>
+                                                 
 
-
-                <div className="three-column-row">
-                      <div className="column ">
-                              <label htmlFor="stateOfOrigin">State of Origin: </label>
-                              <span id="stateOfOrigin">{myProfileDetails.stateOfOrigin}</span>
-                      </div>
-                      <div className="column ">
-                     
-                      </div>
-                      <div className="column ">
-                              <label htmlFor="lga">LGA: </label>
-                              <span id="lga">{myProfileDetails.lga}</span>
-                      </div>
-            </div>
-
-            <div className="three-column-row">
-                  <div className="column">
-                              <label htmlFor="controlNumber">Control Number: </label>
-                              <span id="controlNumber">{myProfileDetails.controlNumber}</span>
-                  </div>
-                  <div className="column ">
-                     
-                     </div>
-                  <div className="column">
-                              <label htmlFor="mobileNumber">Mobile Number: </label>
-                              <span id="mobileNumber">{myProfileDetails.mobileNumber}</span>
-                  </div>
-            </div>
-
-            <div className="one-column-row">
-                  <div className="column">
-                              <label htmlFor="address">Address: </label>
-                              <span id="controlNumber">{myProfileDetails.address}</span>
-                  </div>
-            </div>
+                                                  <div className="card-panel">
+                                                    <h3>Bio Information</h3>
+                                                    <div className="row">
+                                                        
+                                                        <div className="col s4"> 
+                                                          <label htmlFor="firstName"><h6><span className="text">First Name:</span></h6></label>
+                                                          <span id="firstName">{myProfileDetails.firstName}</span>
+                                                        </div>
+                                                        <div className="col s4">
+                                                          <label htmlFor="otherName"><h6><span className="text">Other Name:</span></h6></label>
+                                                          <span id="otherName">{myProfileDetails.otherName}</span>                                  
+                                                        </div>
+                                                        <div className="col s4"> 
+                                                          <label htmlFor="lastName"><h6><span className="text">Last Name:</span></h6></label>
+                                                          <span id="lastName">{myProfileDetails.lastName}</span>                                  
+                                   
+                                                        </div>
+                                                    </div>
 
 
-
-            </div>
-           
-            <div className="profileGroup">
-              <h3>Next Of Kin Information</h3>
-
-
-
-              <div className="three-column-row">
-                       <div className="column">
-                              <label htmlFor="fullName">Full Name: </label>
-                              <span id="fullName">{myProfileDetails.fullName}</span>
-                       </div>
-                       <div className="column ">
-                     
-                     </div>
-                       <div className="column">
-                              <label htmlFor="relationship">Relationship: </label>
-                              <span id="relationship">{myProfileDetails.relationship}</span>
-                       </div>
-            </div>
-
-            <div className="three-column-row">
-                  <div className="column">
-                          <label htmlFor="emailAddress">Email Address: </label>
-                          <span id="emailAddress">{myProfileDetails.emailAddress}</span>
-                   </div>
-                   <div className="column ">
-                     
-                     </div>
-                   <div className="column">
-                        <label htmlFor="mobileNumber">Mobile Number: </label>
-                        <span id="mobileNumber">{myProfileDetails.mobileNumber}</span>
-                    </div>
-            </div>
-
-            <div className="one-column-row">
-                   <div className="column">
-                        <label htmlFor="address">Address: </label>
-                        <span id="address">{myProfileDetails.address}</span>
-                     </div>
-           
-            </div>
+                                                    <div className="row">
+                                                        <div className="col s4">
+                                                              <label htmlFor="gender"><h6><span className="text">Gender:</span></h6></label>
+                                                              <span id="gender">{myProfileDetails.gender}</span>
+                                                        </div>
+                                                        <div className="col s4">
+                                                              <label htmlFor="dob"><h6><span className="text">Date Of Birth:</span></h6></label>
+                                                              <span id="dob">{myProfileDetails.dob}</span>
+                                                        </div>
+                                                        <div className="col s4">
+                                                              <label htmlFor="placeOfBirth"><h6><span className="text">Place Of Birth:</span></h6></label>
+                                                              <span id="placeOfBirth">{myProfileDetails.placeOfBirth}</span>
+                                                        </div>
+                                                    </div>
 
 
+                                                  </div>
 
-            </div>
+                                                  <div className="card-panel">
+                                                    <h3>Contact Information</h3>
+                                                    <div className="row">
+                                                       
+                                                        <div className="col s6"> 
+                                                          <label htmlFor="stateOfOrigin"><h6><span className="text">State Of Origin:</span></h6></label>
+                                                          <span id="stateOfOrigin">{myProfileDetails.stateOfOrigin}</span>
+                                                        </div>
+                                                        <div className="col s6">
+                                                          <label htmlFor="lga"><h6><span className="text">LGA:</span></h6></label>
+                                                          <span id="lga">{myProfileDetails.lga}</span>                                  
+                                                        </div>
+                                                    
+                                                    </div>
+
+                                                    <div className="row">
+                                                       
+                                                       <div className="col s6"> 
+                                                         <label htmlFor="email"><h6><span className="text">Email:</span></h6></label>
+                                                         <span id="email">{myProfileDetails.email}</span>
+                                                       </div>
+                                                       <div className="col s6">
+                                                         <label htmlFor="mobileNumber"><h6><span className="text">Mobile Number:</span></h6></label>
+                                                         <span id="mobileNumber">{myProfileDetails.mobileNumber}</span>                                  
+                                                       </div>
+                                                   
+                                                    </div>
+
+                                                    <div className="row">
+                                                       
+                                                      <div className="col s12"> 
+                                                         <label htmlFor="address"><h6><span className="text">Address:</span></h6></label>
+                                                         <span id="address">{myProfileDetails.address}</span>                                  
+                                                      </div>
+                                                   
+                                                    </div>
+
+                                                </div>
+
+                                                <div className="card-panel">
+                                                    <h3>Guarantor Information</h3>
+                                                    <div className="row">
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div className="card-panel">
+                                                    <h3>Employment Information</h3>
+                                                    <div className="row">
+                                                        <div className="col s6"> 
+                                                          <label htmlFor="controlNumber"><h6><span className="text">Control Number:</span></h6></label>
+                                                          <span id="controlNumber">{myProfileDetails.controlNumber}</span>
+                                                        </div>
+                                                        <div className="col s6">
+                                                          <label htmlFor="highestQualification"><h6><span className="text">Highest Qualification:</span></h6></label>
+                                                          <span id="highestQualification">{myProfileDetails.highestQualification}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="row">
+                                                        <div className="col s6"> 
+                                                          <label htmlFor="lgea"><h6><span className="text">LGEA:</span></h6></label>
+                                                          <span id="lgea">{myProfileDetails.controlNumber}</span>
+                                                        </div>
+                                                        <div className="col s6">
+                                                          <label htmlFor="station"><h6><span className="text">Station:</span></h6></label>
+                                                          <span id="station">{myProfileDetails.station}</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="row">
+                                                          <div className="col s4">
+                                                                <label htmlFor="dateOfFirstAppointment"><h6><span className="text">Date Of First Appointment:</span></h6></label>
+                                                                <span id="dateOfFirstAppointment">{myProfileDetails.dateOfFirstAppointment}</span>
+                                                          </div>
+                                                          <div className="col s4">
+                                                                <label htmlFor="dateOfConfirmation"><h6><span className="text">Date Of Confirmation:</span></h6></label>
+                                                                <span id="dateOfConfirmation">{myProfileDetails.dateOfConfirmation}</span>
+                                                          </div>
+                                                          <div className="col s4">
+                                                                <label htmlFor="dateOfLastPromotion"><h6><span className="text">Date Of Last Promotion</span></h6></label>
+                                                                <span id="dateOfLastPromotion">{myProfileDetails.dateOfLastPromotion}</span>
+                                                          </div>
+                                                  
+                                                  
 
 
-            <div className="profileGroup">
-               <h3>Employment information</h3>
+                                                </div>
 
-               <div className="three-column-row">
-                      <div className="column">
-                            <label htmlFor="controlNumber">Control Number: </label>
-                            <span id="controlNumber">{myProfileDetails.controlNumber}</span>
-                      </div>
-                      <div className="column ">
-                     
-                     </div>
 
-                      <div className="column">
-                            <label htmlFor="highestQualification">Highest Qualification: </label>
-                            <span id="highestQualification">{myProfileDetails.highestQualification}</span>
-                      </div>
-            </div>
+                                                <div className="card-panel">
+                                                    <h3>Payment Information</h3>
+                                                    <div className="row">
+                                                   
+                                                        <div className="col s3">
+                                                          <label htmlFor="bankName"><h6><span className="text">Bank Name:</span></h6></label>
+                                                          <span id="bankName">{myProfileDetails.bankName}</span>
+                                                        </div>
+                                                        <div className="col s3">
+                                                          <label htmlFor="accountName"><h6><span className="text">Account Name:</span></h6></label>
+                                                          <span id="accountName">{myProfileDetails.accountName}</span>
+                                                        </div>
+                                                        <div className="col s3">
+                                                          <label htmlFor="accountNumber"><h6><span className="text">Account Number:</span></h6></label>
+                                                          <span id="accountNumber">{myProfileDetails.accountNumber}</span>
+                                                        </div>
+                                                        <div className="col s3">
+                                                          <label htmlFor="bvn"><h6><span className="text">BVN:</span></h6></label>
+                                                          <span id="bvn">{myProfileDetails.bvn}</span>
+                                                        </div>
+                                                
+                                                    </div>
 
-            <div className="three-column-row">
-                      <div className="column">
-                            <label htmlFor="lgea">LGEA: </label>
-                            <span id="lgea">{myProfileDetails.lgea}</span>
-                      </div>
-                      <div className="column ">
-                     
-                     </div>
-                      <div className="column">
-                            <label htmlFor="station">Station: </label>
-                            <span id="station">{myProfileDetails.station}</span>
-                      </div>
-            </div>
+                                                </div>
+                                         
+                                          </div>  
+                              
 
-            <div className="three-column-row">
-                      <div className="column">
-                            <label htmlFor="dateOfFirstAppointment">Highest Qualification: </label>
-                            <span id="dateOfFirstAppointment">{myProfileDetails.dateOfFirstAppointment}</span>
-                      </div>
-                      <div className="column">
-                            <label htmlFor="dateOfConfirmation">Date Of Confirmation: </label>
-                            <span id="dateOfConfirmation">{myProfileDetails.dateOfConfirmation}</span>
-                      </div>
-                      <div className="column">
-                            <label htmlFor="dateOfLastPromotion">Date Of Last Promotion: </label>
-                            <span id="dateOfLastPromotion">{myProfileDetails.dateOfLastPromotion}</span>
-                      </div>
-           
-            </div>
+                                          <div className="row">
+                                              <div className="col s6"> 
+                                                <button className="button black" onClick={handleBack}>Back </button>     
+                                              </div>
+                                              <div className="col s6"> 
+                                                <button className="button black"  onClick={handleSaveNow}>My Details Are Fine Save Now</button>
+                                              </div>
+                                          </div>
 
-      
+                                      </div>
 
-              </div>
-
-            <div className="profileGroup">
-               <h3>Payment Information</h3>
-
-                    <div className="four-column-row">
-                              <div className="column">
-                                <label htmlFor="bankName">Bank Name: </label>
-                                <span id="bankName">{myProfileDetails.bankName}</span>
                               </div>
-                              <div className="column">
-                                <label htmlFor="accountName">Account Name: </label>
-                                <span id="accountName">{myProfileDetails.accountName}</span>
-                              </div>
-                              <div className="column">
-                                <label htmlFor="accountNumber">Account Number: </label>
-                                <span id="accountNumber">{myProfileDetails.accountNumber}</span>
-                              </div>
-                              <div className="column">
-                                <label htmlFor="bvn">BVN: </label>
-                                <span id="bvn">{myProfileDetails.bvn}</span>
-                      </div>
+                            </div>
+                              
+                        
 
-                </div>
-
-
-
-            </div>
-
-       
-
-            <div className="two-column-row">
-                      <div className="column">
-                         <button variant="outlined"   size="small" color="primary" onClick={handleBack}>	Back </button>
-                      </div>
-                      <div className="column">
-                         <button  size="small" color="primary" onClick={handleSaveNow}>My Details Are Fine Save Now</button>
-                      </div>                
                   </div>
 
-            </div>
         </div>
-    </div>
 
 
-  )
+      )
 
   }
 }

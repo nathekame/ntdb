@@ -296,7 +296,7 @@ const checkForImage = ()=>{
   if(!em){
     return (
       <div>
-         <img class="responsive-img formLogo" src={profilePic.profilePicUrl} alt="logo" height="170px" width="200px"/>
+         <img src={profilePic.profilePicUrl} alt="logo" height="170px" width="200px"/>
       </div>
     )
   }
@@ -328,71 +328,75 @@ const handleSaveNow = async e => {
 
 
 
+    <div className="pagegrid">
+      <Navbar />
+
+        <div className="innergrid">
+
+            <div className="profile-form" >
+
+            <h3>Profile Pic</h3>
+
+
+            <div className="one-column-row">
+                  <div className="column">
+                                      
+                    <div style={conStyle.notCropped} >Drag you mouse over the image to crop or click the button below to skip</div>
+                    <input  type='file' id="profilePic" onChange={(e)=>handleImageChange(e)} />
+                    
+                      
+                  </div>
+                  <div className="column profilePicPreview">
+                   {checkForImage()}
+                  </div>
+            </div>
+{/* 
+            <div className="one-column-row">
+                  <div className="column">
+                                      
+                      <ReactCrop 
+                      src={profilePic.profilePicUrl}
+                      onImageLoaded={handleImageLoaded}
+                      onComplete={handleCompleteCrop} 
+                      circularCrop="true"
+                      crop={profilePic.crop} 
+                      onChange={handleCrop} />
+
+                      <button style={conStyle.notCropped} onClick={handleImageSaveWithoutCrop}> Skip Cropping And Upload Image </button>
+
+              
+                  </div>
+                  <div className="column">
+                    <canvas ref={imagePreviewCanvasRef} style={styles} ></canvas> 
+                    <button  style={conStyle.cropped} onClick={handleImageSaveWithCrop}> Upload  Cropped Image </button>
+        
+                  </div> 
+            </div>*/}
 
 
 
-                <div className="container">
-                            
-                            <div className="row">      
-                        
-                                
-                                    <div className="">
-
-                                        <div className="profileForm">
 
 
-                                            <div className="formPadding z-depth-2">
-                                            
-                                                <div className="row">
-                                                        <h4 className="center">Profile Picture</h4>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col s12">
-                                                         <input  type='file' id="profilePic" onChange={(e)=>handleImageChange(e)} />
-                       
-                                                    </div>                                                  
-                                                </div>  
-                                
-                                                <div className="row">
-                                                    <div className="col s12"> 
-                                                        <div className="profilePicPreview">
-                                                        {checkForImage()}
-                                                        </div>
-                                                                                        
-                                                    </div>
+            <div className="two-column-row">
+                      <div className="column">
+                         <button disabled={buttonStateB}  size="small" color="primary" onClick={handleBack}>Back</button>
+                      </div>
+                  
+                      <div className="column">
+                         <button disabled={buttonStateF} size="small" color="primary" onClick={handleForward}>Next</button>
+                      </div>
+                
+                </div>
+                      <div className="one-column-row">
+                      <div className="column componentFooter">
+                         <span>6/6</span>
+                      </div>
+                  </div>
+                 
 
-
-                                                </div>
-                                    
-
-
-
-
-
-                                                <div className="row">
-                                                    <div className="col s6"> 
-                                                    <button className="button black"  disabled={buttonStateB} onClick={handleBack}>Back </button>     
-                                                    </div>
-                                                    <div className="col s6"> 
-                                                    <button className="button black" disabled={buttonStateF} onClick={handleForward}>Next</button>
-                                                    </div>
-                                                </div>
-
-                                                <div className="row">
-                                                    <div className="column componentFooter">
-                                                        <span>6/6</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                    </div>
-                                 </div>
-                                    
-                            </div>
-
-                        </div>
-
-
+            </div>
+        </div>
+    </div>
 
 
 

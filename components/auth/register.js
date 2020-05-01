@@ -19,7 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 //import 'materialize-css';
-
+//import 'materialize-css/dist/css/materialize.min.css'
 
 
 const Register = (props) => {
@@ -49,7 +49,7 @@ const Register = (props) => {
         controlNumber: 'required'
       };
       
-      let validation = new Validator(userReg, rules, { required: 'required*' });
+      let validation = new Validator(userReg, rules, { required: '*', same:'Password Mismatch' });
     
       validation.fails(); // true
       validation.passes(); // false
@@ -143,67 +143,71 @@ const Register = (props) => {
         
       return (
 
-        
-            <div className="pagegrid">
+            
+       
+           <div className="container">
+              
+                  <div className="row">      
+              
+                    <ToastContainer />
+                        <div className="content">
+                            <form className="form " className="col s12 " onSubmit={handleSubmit} >
+                                <div className="formPadding z-depth-2">
+                                    <div className="row">
+                                            <div className="">
+                                                <img class="responsive-img formLogo" src="/images/ubelogo.jpeg" alt="logo" />
+                                            </div>
+                                    </div>
+                                    <div className="row">
+                                             <h4 className="center">Register</h4>
+                                    </div>
 
-                  <div className="innergrid">
-                      
+                                    <div className="row">
+                                          <div className="col s12">
+                                              <label htmlFor="email"><h6><span className="text">Email</span> <span className="fieldError">{validation.errors.get("email")}</span></h6></label>
+                                              <input onChange={handleChange}  name="email" id="email" type="email" />
+                                          </div>
+                                                      
+                                    </div>
 
-                        <form className="form"  onSubmit={handleSubmit} >
-                            <div className="one-column-row">
-                                <div className="column">
-                                  <img src="/images/ubelogo.jpeg" alt="logo" height="200px" width="600px"/>
-                                </div>
-                                <div className="column">
-                                    <h1> Register </h1>
-                                </div>
-                          </div>
+                                    <div className="row">
+                                          <div className="col s12"> 
+                                              <label htmlFor="controlNumber"><h6><span className="text">Control Number</span> <span className="fieldError">{validation.errors.get("controlNumber")}</span></h6></label>
+                                              <input onChange={handleChange}  name="controlNumber" id="controlNumber" type="text" />
+                                          </div>                  
+                                    </div>
 
-                     <ToastContainer />
-                  
+                                    <div className="row">
+                                        <div className="col s12"> 
+                                                <label htmlFor="password"><h6><span className="text">Password</span> <span className="fieldError">{validation.errors.get("password")}</span></h6></label>
+                                                <input onChange={handleChange}  name="password" id="password" type="password" />
+                                        </div>
+                                    </div>
 
-                        
-                        <div className="grid">
-                            <div className="one-column-row">
-                                <div className="column"> 
-                                <label htmlFor="email">Email <span className="fieldError">{validation.errors.get("email")}</span></label>
-                                <input onChange={handleChange}  name="email" id="email" type="email" />
-                                </div>
-                                <div className="column"> 
-                                <label htmlFor="controlNumber">Control Number <span className="fieldError">{validation.errors.get("controlNumber")}</span></label>
-                                <input onChange={handleChange}  name="controlNumber" id="controlNumber" type="text" />
-                                </div>
-                              
-                            
-                                <div className="column"> 
-                                <label htmlFor="password">Password <span className="fieldError">{validation.errors.get("password")}</span></label>
-                                <input onChange={handleChange}  name="password" id="password" type="password" />
-                                </div>
-                                <div className="column"> 
-                                <label htmlFor="cpassword">Confirm Password <span className="fieldError">{validation.errors.get("cpassword")}</span></label>
-                                <input onChange={handleChange}  name="cpassword" id="cpassword" type="password" />
-                                </div>
-                              
-                              </div>
+                                    <div className="row">
+                                            <div className="col s12"> 
+                                            <label htmlFor="cpassword"><h6><span className="text">Confirm Password</span> <span className="fieldError">{validation.errors.get("cpassword")}</span></h6></label>
+                                                <input onChange={handleChange}  name="cpassword" id="cpassword" type="password" />
+                                              </div>
+                                    </div>
 
-                              <div className="two-column-row">
-                                <div className="column"> 
-                                <p>Already Registered?  <Link href="/login"><a>Login</a></Link></p>
+                                    <div className="row">
+                                        <div className="col s6"> 
+                                            <h6>Already Registered ?  <Link href="/login"><a>Login</a></Link></h6>
+                                        </div>
+                                        <div className="col s6"> 
+                                          <button className="button black" disabled={buttonState}>Submit</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="column"> 
-                                 <button className="button" disabled={buttonState}>submit</button>
-                                 
-                                </div>
-                              
-                              </div>
+                            </form>
                         </div>
-
-                                
-                        </form>
-
-                      
+                        
                   </div>
+
             </div>
+        
+            
       )
 }
 

@@ -6,14 +6,19 @@ import AuthContextProvider from './contexts/authContext'
 
 import ProfileContextProvider from './contexts/profileContext'
 
-import { ToastContainer , toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import '../public/assets/style.scss'
+
+import 'materialize-css/dist/css/materialize.min.css'
+
+// import { ToastContainer , toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 
-toast.configure();
+//toast.configure();
 
 class MyApp extends App {
-
   
   render() {
 
@@ -24,11 +29,14 @@ class MyApp extends App {
         <div>
           <Head>
             // stuff.....
+           
           </Head>
         </div>
         <AuthContextProvider>
             <ProfileContextProvider>
+               
                 <Component {...pageProps} />
+         
            </ProfileContextProvider>
         </AuthContextProvider>
       </div>

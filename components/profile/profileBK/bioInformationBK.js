@@ -1,6 +1,4 @@
 import React, { useState,useEffect, useContext } from 'react'
-//import ReactDOM from 'react-dom';
-
 
 import moment from 'moment'
 
@@ -15,9 +13,7 @@ import logout from '../../utility/logout';
 
 import Navbar from '../layouts/navbar'
 
-//import '../../public/assets/style.scss';
-
-
+import '../../public/assets/style.scss';
 import Logout from '../../utility/logout'
 import checkInLocalStorage from '../componentUtility/persistLocalToState'
 import axiosFuncs from '../../utility/axios'
@@ -31,9 +27,6 @@ import Validator from 'validatorjs';
 //   backgroundColor: 'blue',
 //  // backgroundImage: 'url(' + imgUrl + ')',
 // };
-
-import 'materialize-css/dist/css/materialize.min.css'
-
 
 
 
@@ -112,7 +105,7 @@ let rules = {
 //  age: 'min:18'
 };
  
-let validation = new Validator(bioInformation, rules, { required: '*' });
+let validation = new Validator(bioInformation, rules, { required: 'required*' });
 
 validation.fails(); // true
 validation.passes(); // false
@@ -257,87 +250,83 @@ useEffect(() => {
 
 
 
-
   return (
 
+    <div className="pagegrid">
+      
+    <Navbar />
+        <div className="innergrid">
 
-         <div className="container">
-              
-              <div className="row">      
-          
-                    <div className="">
-                       <div className="profileForm">
+            <div className="profile-form" >
 
+                  <h3>Bio Information </h3>
 
-                            <div className="formPadding z-depth-2">
-                               
-                                <div className="row">
-                                      <h4 className="center">Bio Information</h4>
-                                </div>
-                                <div className="row">
-                                      <div className="col s12 m12 l4">
-					                                <label htmlFor="firstName"><h6><span className="text">First Name</span> <span className="fieldError">{validation.errors.get("firstName")}</span></h6></label>
-                                          <input id="firstName" onChange={handleChange}  value={bioInformation.firstName} />                                   
-                                      </div>  
-                                      <div className="col s12 m12 l4">
-					                                <label htmlFor="otherName"><h6><span className="text">Other Name</span> <span className="fieldError">{validation.errors.get("otherName")}</span></h6></label>
-                                          <input id="otherName" onChange={handleChange}  value={bioInformation.otherName} />                                   
-                                      </div>
-                                      <div className="col s12 m12 l4">
-					                                <label htmlFor="lastName"><h6><span className="text">Last Name</span> <span className="fieldError">{validation.errors.get("lastName")}</span></h6></label>
-                                          <input id="lastName" onChange={handleChange}  value={bioInformation.lastName} />                                   
-                                      </div>                                                  
-                                </div>  
-                            
-                                <div className="row">
-                                    <div className="col s12 m12 l4"> 
-                                          <label htmlFor="gender"><h6><span className="text">Gender</span> <span className="fieldError">{validation.errors.get("gender")}</span></h6></label>
-                                          <select id="gender" onChange={handleChange} value={bioInformation.gender} className="browser-default select">
-                                             <option value="" />
-                                            <option value={"Male"}>Male</option>
-                                            <option value={"Female"}>Female</option>
-                                          </select>
-                                    </div>
-  				                          <div className="col s12 m12 l4">
-                                        <label htmlFor="dob"><h6><span className="text">Date Of Birth</span> <span className="fieldError">{validation.errors.get("dob")}</span></h6></label>
-                                        <input id="dob" type="date" onChange={handleDateChange} value={bioInformation.dob}  /> 
-                                                       
-                                    </div>
-                                    <div className="col s12 m12 l4"> 
-                                        <label htmlFor="placeOfBirth"><h6><span className="text">Place Of Birth</span> <span className="fieldError">{validation.errors.get("placeOfBirth")}</span></h6></label>
-                                        <input id="placeOfBirth" onChange={handleChange} value={bioInformation.placeOfBirth}  />                                 
-                                    </div>
-                                </div>
-                       
-
-
-
-                                <div className="row">
-                                    <div className="col s6"> 
-                                                              
-                                    </div>
-                                    <div className="col s6"> 
-                                      <button className="button black" disabled={buttonState} onClick={handleForward}>Next</button>
-                                    </div>
-                                </div>
-
-                                <div className="row">
-                                      <div className="column componentFooter">
-                                        <span>1/6</span>
-                                      </div>
-                                </div>
-                            </div>
-
-                            </div>
-                    </div>
+                  <div className="three-column-row">
                     
+                        <div className="column">
+                        
+                          <label htmlFor="firstName">First Name  <span className="fieldError">{validation.errors.get("firstName")}</span></label> 
+                          <input className="firstName" id="firstName" onChange={handleChange}  value={bioInformation.firstName} />
+                
+                        </div> 
+                        <div className="column">
+                          <label htmlFor="otherName">Other Name </label>
+                          <input id="otherName" onChange={handleChange} value={bioInformation.otherName}  />
+                         
+                        </div> 
+                        <div className="column">
+                          <label htmlFor="lastName">Last Name  <span className="fieldError">{validation.errors.get("lastName")}</span></label>
+                          <input id="lastName" onChange={handleChange} value={bioInformation.lastName}  />
+                         
+                        </div>
+                   
+                  </div>
+
+                  <div className="three-column-row">
+                      <div className="column">
+                          <label htmlFor="gender">Gender  <span className="fieldError">{validation.errors.get("gender")}</span></label>
+                          <select id="gender" onChange={handleChange} value={bioInformation.gender}  >
+                              <option value="" />
+                              <option value={"Male"}>Male</option>
+                              <option value={"Female"}>Female</option>
+                          </select>
+                      </div>
+                      <div className="column">
+                          <label htmlFor="dob">Date Of Birth  <span className="fieldError">{validation.errors.get("dob")}</span></label>
+                          <input id="dob" type="date" onChange={handleDateChange} value={bioInformation.dob}  />
+                      </div>
+                      <div className="column">
+                          <label htmlFor="placeOfBirth">Place Of Birth  <span className="fieldError">{validation.errors.get("placeOfBirth")}</span></label>
+                          <input id="placeOfBirth" onChange={handleChange} value={bioInformation.placeOfBirth}  />
+                      </div>
+                  </div>
+
+                  
+
+                  <div className="two-column-row">
+                      <div className="column">
+                         <button  size="small" color="primary" onClick={handleSaveNow}>Save And Logout</button>
+                      </div>
+                      <div className="column">
+                         <button size="small" color="primary" disabled={buttonState} onClick={handleForward}>Next</button>
+                      </div>
+                  </div>
+
+                  <div className="one-column-row">
+                      <div className="column componentFooter">
+                         <span>1/6</span>
+                      </div>
+                  </div>
+
               </div>
 
-        </div>
-    
+              </div>
+              
+     
+
+    </div>
 
 
-   
   )
 }
 

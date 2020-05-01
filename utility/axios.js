@@ -8,6 +8,50 @@ import Cookie from 'js-cookie'
 
 
 
+const home = async(token) =>{
+
+    const url = config.apiUrl;
+
+    const options = {
+        withCredentials: true,
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      } 
+    try {
+
+        const res =  await axios.get(url, options).then(function (response) {
+            // handle success
+                    console.log("this is the response "+response);
+                    console.log(response.data);
+                    console.log(response.status);
+                    console.log(response.statusText);
+                    console.log(response.headers);
+                    console.log(response.config);
+                    return response
+
+                    }).catch(function (error) {
+                    // //                                                               // handle error
+                    console.log("this is the error "+error);
+                    //   console.log("this is the error "+response);
+
+                    return null
+
+                    });
+
+    
+        return  res
+        
+    } catch (error) {
+        
+    }
+
+
+
+}
+
+
+
 const userRegister = async (data) => {
 
     const url = config.apiUrl+"register";
@@ -175,6 +219,7 @@ const checkBVN = async (bvn)=> {
 
 const axiosFuncs = {
 
+    home:home,
     userRegister: userRegister,
     userLogin: userLogin,
     profilePost: profilePost,

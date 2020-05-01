@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
-import '../public/assets/style.scss'
 import Login from '../components/auth/login';
+
+import '../public/assets/style.scss'
+import 'materialize-css/dist/css/materialize.min.css'
+
 
 
 const Signin =()=> {

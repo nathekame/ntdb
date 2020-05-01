@@ -1,35 +1,75 @@
+//import React, { useContext, useEffect ,useRef } from 'react'
+
 import React, { useContext } from 'react'
-import '../../public/assets/style.scss';
+
+//import '../../public/assets/style.scss';
+import '../../public/assets/mobile.scss'
 import Menu from './menu';
 
 import { ProfileContext } from '../../store/contexts/profileContext'
 import Logout from '../../utility/logout'
 
+//import M from 'materialize-css'
+import { FaBars } from 'react-icons/fa';
 
-function Navbar() {
+
+
+ const Navbar = () => {
 
     const { dispatch  } = useContext(ProfileContext);
 
 
-    const handleLogout = ()=>{
+   const  myFunction =()=>{
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += "  responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
+
+   const handleLogout = ()=>{
         dispatch({type: 'CLEAR_CONTEXT'});
         Logout();
     }
 
-    return (
-      
-            <nav className="navbar">
-                <div className="two-column-row">
-                    <div className="column"> <img src="/images/ubelogo.jpeg" alt="logo" height="70px" width="200px"/></div>
-                    <div id="navLogout" className="navLogout"><a onClick={handleLogout}> <img src="/images/logout.png" alt="logo" height="30px" width="30px"/></a></div>
-                </div>
-                <div id="pageTitle" className="one-column-row">
-                    <div className="navTitle"> <h4>NIGER STATE UNIVERSAL BASIC EDUCATION TEACHERS DATABASE</h4></div>
-                </div>
-            </nav>
-      
-    )
+    //   const  myFunction =()=>{
+    //     var x = document.getElementById("mobileLinks");
+    //     if (x.style.display === "block") {
+    //       x.style.display = "none";
+    //     } else {
+    //       x.style.display = "block";
+    //     }
+    //   }
 
+        return (
+
+                    <div>
+                        <div className="topnav" id="myTopnav">
+                       
+                                   <img src="/images/ubelogo.jpeg" alt="logo" height="110px" width="280px"/>
+                               
+                                   <a onClick={handleLogout}> Logout</a>
+                                    
+                                    <a href="#">Reports</a>
+                                    <a href="#">Entries</a>
+                                    <a href="#">My Account</a>
+                                    
+                                    <a href="#" className="icon" onClick={myFunction}>
+                                    <FaBars />
+                                    </a>
+                             
+                      
+                       
+                        </div>
+                    </div>
+    
+             
+         
+                
+        )
+    
 }
+
 
 export default Navbar

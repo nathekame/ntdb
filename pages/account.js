@@ -3,6 +3,7 @@ import React, {  useEffect } from 'react'
 // import useSWR , { SWRConfig } from 'swr'
 
 import '../public/assets/style.scss'
+import 'materialize-css/dist/css/materialize.min.css'
 
 import Head from 'next/head'
 
@@ -98,10 +99,12 @@ const handleLogout = () =>{
 return (
   <div>
   
-        <ProfileContextProvider >     
+        <ProfileContextProvider >  
+        <Navbar />   
               <div className="pagegrid">    
+          
                   <div className="innergrid">
-                  <Navbar />
+                  
                       <h1>sthis is the acout page</h1>
                       <h1>sthis is the acout page</h1>
                       <h1>sthis is the acout page</h1> <h1>sthis is the acout page</h1>

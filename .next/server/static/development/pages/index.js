@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -166,6 +166,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
  //import 'materialize-css';
+//import 'materialize-css/dist/css/materialize.min.css'
 
 const Register = props => {
   const router = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])();
@@ -195,7 +196,8 @@ const Register = props => {
     controlNumber: 'required'
   };
   let validation = new validatorjs__WEBPACK_IMPORTED_MODULE_6___default.a(userReg, rules, {
-    required: 'required*'
+    required: '*',
+    same: 'Password Mismatch'
   });
   validation.fails(); // true
 
@@ -278,120 +280,144 @@ const Register = props => {
   };
 
   return __jsx("div", {
-    className: "pagegrid",
+    className: "container",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 147,
-      columnNumber: 13
+      lineNumber: 148,
+      columnNumber: 12
     }
   }, __jsx("div", {
-    className: "innergrid",
+    className: "row",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149,
+      lineNumber: 150,
       columnNumber: 19
     }
-  }, __jsx("form", {
-    className: "form",
-    onSubmit: handleSubmit,
+  }, __jsx(react_toastify__WEBPACK_IMPORTED_MODULE_10__["ToastContainer"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 152,
-      columnNumber: 25
+      columnNumber: 21
     }
-  }, __jsx("div", {
-    className: "one-column-row",
+  }), __jsx("div", {
+    className: "content",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 153,
-      columnNumber: 29
+      columnNumber: 25
     }
-  }, __jsx("div", {
-    className: "column",
+  }, __jsx("form", {
+    className: "form ",
+    className: "col s12 ",
+    onSubmit: handleSubmit,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 154,
-      columnNumber: 33
+      columnNumber: 29
     }
-  }, __jsx("img", {
-    src: "/images/ubelogo.jpeg",
-    alt: "logo",
-    height: "200px",
-    width: "600px",
+  }, __jsx("div", {
+    className: "formPadding z-depth-2",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 155,
-      columnNumber: 35
+      columnNumber: 33
     }
-  })), __jsx("div", {
-    className: "column",
+  }, __jsx("div", {
+    className: "row",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 156,
+      columnNumber: 37
+    }
+  }, __jsx("div", {
+    className: "",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 157,
-      columnNumber: 33
+      columnNumber: 45
     }
-  }, __jsx("h1", {
+  }, __jsx("img", {
+    class: "responsive-img formLogo",
+    src: "/images/ubelogo.jpeg",
+    alt: "logo",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 158,
+      columnNumber: 49
+    }
+  }))), __jsx("div", {
+    className: "row",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 161,
       columnNumber: 37
     }
-  }, " Register "))), __jsx(react_toastify__WEBPACK_IMPORTED_MODULE_10__["ToastContainer"], {
+  }, __jsx("h4", {
+    className: "center",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 162,
-      columnNumber: 22
+      columnNumber: 46
     }
-  }), __jsx("div", {
-    className: "grid",
+  }, "Register")), __jsx("div", {
+    className: "row",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 165,
+      columnNumber: 37
+    }
+  }, __jsx("div", {
+    className: "col s12",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 166,
-      columnNumber: 25
-    }
-  }, __jsx("div", {
-    className: "one-column-row",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 167,
-      columnNumber: 29
-    }
-  }, __jsx("div", {
-    className: "column",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 168,
-      columnNumber: 33
+      columnNumber: 43
     }
   }, __jsx("label", {
     htmlFor: "email",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 169,
-      columnNumber: 33
+      lineNumber: 167,
+      columnNumber: 47
     }
-  }, "Email ", __jsx("span", {
+  }, __jsx("h6", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 167,
+      columnNumber: 70
+    }
+  }, __jsx("span", {
+    className: "text",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 167,
+      columnNumber: 74
+    }
+  }, "Email"), " ", __jsx("span", {
     className: "fieldError",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 169,
-      columnNumber: 62
+      lineNumber: 167,
+      columnNumber: 110
     }
-  }, validation.errors.get("email"))), __jsx("input", {
+  }, validation.errors.get("email")))), __jsx("input", {
     onChange: handleChange,
     name: "email",
     id: "email",
@@ -399,34 +425,57 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 170,
-      columnNumber: 33
+      lineNumber: 168,
+      columnNumber: 47
     }
-  })), __jsx("div", {
-    className: "column",
+  }))), __jsx("div", {
+    className: "row",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 172,
-      columnNumber: 33
+      lineNumber: 173,
+      columnNumber: 37
+    }
+  }, __jsx("div", {
+    className: "col s12",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 174,
+      columnNumber: 43
     }
   }, __jsx("label", {
     htmlFor: "controlNumber",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 173,
-      columnNumber: 33
+      lineNumber: 175,
+      columnNumber: 47
     }
-  }, "Control Number ", __jsx("span", {
+  }, __jsx("h6", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 175,
+      columnNumber: 78
+    }
+  }, __jsx("span", {
+    className: "text",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 175,
+      columnNumber: 82
+    }
+  }, "Control Number"), " ", __jsx("span", {
     className: "fieldError",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 173,
-      columnNumber: 79
+      lineNumber: 175,
+      columnNumber: 127
     }
-  }, validation.errors.get("controlNumber"))), __jsx("input", {
+  }, validation.errors.get("controlNumber")))), __jsx("input", {
     onChange: handleChange,
     name: "controlNumber",
     id: "controlNumber",
@@ -434,34 +483,57 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 174,
-      columnNumber: 33
+      lineNumber: 176,
+      columnNumber: 47
     }
-  })), __jsx("div", {
-    className: "column",
+  }))), __jsx("div", {
+    className: "row",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 178,
-      columnNumber: 33
+      lineNumber: 180,
+      columnNumber: 37
+    }
+  }, __jsx("div", {
+    className: "col s12",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 181,
+      columnNumber: 41
     }
   }, __jsx("label", {
     htmlFor: "password",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 179,
-      columnNumber: 33
+      lineNumber: 182,
+      columnNumber: 49
     }
-  }, "Password ", __jsx("span", {
+  }, __jsx("h6", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 182,
+      columnNumber: 75
+    }
+  }, __jsx("span", {
+    className: "text",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 182,
+      columnNumber: 79
+    }
+  }, "Password"), " ", __jsx("span", {
     className: "fieldError",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 179,
-      columnNumber: 68
+      lineNumber: 182,
+      columnNumber: 118
     }
-  }, validation.errors.get("password"))), __jsx("input", {
+  }, validation.errors.get("password")))), __jsx("input", {
     onChange: handleChange,
     name: "password",
     id: "password",
@@ -469,34 +541,57 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 180,
-      columnNumber: 33
+      lineNumber: 183,
+      columnNumber: 49
     }
-  })), __jsx("div", {
-    className: "column",
+  }))), __jsx("div", {
+    className: "row",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 182,
-      columnNumber: 33
+      lineNumber: 187,
+      columnNumber: 37
+    }
+  }, __jsx("div", {
+    className: "col s12",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 188,
+      columnNumber: 45
     }
   }, __jsx("label", {
     htmlFor: "cpassword",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 183,
-      columnNumber: 33
+      lineNumber: 189,
+      columnNumber: 45
     }
-  }, "Confirm Password ", __jsx("span", {
+  }, __jsx("h6", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 189,
+      columnNumber: 72
+    }
+  }, __jsx("span", {
+    className: "text",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 189,
+      columnNumber: 76
+    }
+  }, "Confirm Password"), " ", __jsx("span", {
     className: "fieldError",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 183,
-      columnNumber: 77
+      lineNumber: 189,
+      columnNumber: 123
     }
-  }, validation.errors.get("cpassword"))), __jsx("input", {
+  }, validation.errors.get("cpassword")))), __jsx("input", {
     onChange: handleChange,
     name: "cpassword",
     id: "cpassword",
@@ -504,65 +599,65 @@ const Register = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 184,
-      columnNumber: 33
+      lineNumber: 190,
+      columnNumber: 49
     }
   }))), __jsx("div", {
-    className: "two-column-row",
+    className: "row",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 189,
-      columnNumber: 31
+      lineNumber: 194,
+      columnNumber: 37
     }
   }, __jsx("div", {
-    className: "column",
+    className: "col s6",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 190,
-      columnNumber: 33
+      lineNumber: 195,
+      columnNumber: 41
     }
-  }, __jsx("p", {
+  }, __jsx("h6", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 191,
-      columnNumber: 33
+      lineNumber: 196,
+      columnNumber: 45
     }
-  }, "Already Registered?  ", __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
+  }, "Already Registered ?  ", __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
     href: "/login",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 191,
-      columnNumber: 57
+      lineNumber: 196,
+      columnNumber: 71
     }
   }, __jsx("a", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 191,
-      columnNumber: 77
+      lineNumber: 196,
+      columnNumber: 91
     }
   }, "Login")))), __jsx("div", {
-    className: "column",
+    className: "col s6",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 193,
-      columnNumber: 33
+      lineNumber: 198,
+      columnNumber: 41
     }
   }, __jsx("button", {
-    className: "button",
+    className: "button black",
     disabled: buttonState,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 194,
-      columnNumber: 34
+      lineNumber: 199,
+      columnNumber: 43
     }
-  }, "submit")))))));
+  }, "Submit"))))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Register); //export default  withStyles(Register);
@@ -579,7 +674,8 @@ const Register = props => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 const config = {
-  apiUrl: "http://localhost:5000/" // testEnv : "this is a test string"
+  apiUrl: "http://localhost:5000/" //  apiUrl:  'https://ntdbapi.herokuapp.com/'
+  // testEnv : "this is a test string"
 
 };
 /* harmony default export */ __webpack_exports__["default"] = (config);
@@ -2292,7 +2388,7 @@ const Home = () => {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 11,
-      columnNumber: 25
+      columnNumber: 18
     }
   });
 };
@@ -2330,6 +2426,35 @@ __webpack_require__.r(__webpack_exports__);
  //import cookieFuncs from './cookies';
 
 
+
+const home = async token => {
+  const url = _config_config__WEBPACK_IMPORTED_MODULE_1__["default"].apiUrl;
+  const options = {
+    withCredentials: true,
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  };
+
+  try {
+    const res = await axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url, options).then(function (response) {
+      // handle success
+      console.log("this is the response " + response);
+      console.log(response.data);
+      console.log(response.status);
+      console.log(response.statusText);
+      console.log(response.headers);
+      console.log(response.config);
+      return response;
+    }).catch(function (error) {
+      // //                                                               // handle error
+      console.log("this is the error " + error); //   console.log("this is the error "+response);
+
+      return null;
+    });
+    return res;
+  } catch (error) {}
+};
 
 const userRegister = async data => {
   const url = _config_config__WEBPACK_IMPORTED_MODULE_1__["default"].apiUrl + "register";
@@ -2436,6 +2561,7 @@ const checkBVN = async bvn => {
 };
 
 const axiosFuncs = {
+  home: home,
   userRegister: userRegister,
   userLogin: userLogin,
   profilePost: profilePost,
@@ -2558,7 +2684,7 @@ const localStorageFuncs = {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

@@ -5,9 +5,9 @@ const AdminLinks =()=> {
     return (
         <div>
           
-               <li><a href="#"></a>My Account</li>
-               <li><a href="#"></a>Profile</li>
-               <li><a href="#"></a>CBT</li>
+               <a href="#">My Account</a>
+               <a href="#">Profile</a>
+               <a href="#">CBT</a>
          
         </div>
     )

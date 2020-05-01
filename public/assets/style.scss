@@ -23,6 +23,7 @@ $titleFontFamily: 'Cabin', sans-serif;
 $bodyTextFontFamily: 'Kanit', sans-serif;
 $bodyFontFamily: 'Nunito', sans-serif;
 
+$textColor: #212121;
 
 
 $titleFontSize: 30px;
@@ -89,7 +90,7 @@ li{
 
 /*base styles*/
 body{
-    background: whitesmoke;
+    background: $backgroundColor;
 }
 
 
@@ -107,7 +108,7 @@ input, textarea{
     margin: 8px 0;
     box-sizing: border-box;
     border: none;
-    border-bottom: 2px solid $primaryColor;
+    border-bottom: 1px solid grey;
 }
 
 input:focus {
@@ -275,9 +276,25 @@ button:disabled {
 
 }
 
-.black{
-    background-color: black;
+.text{
+    color: $textColor;
+    font-family: $bodyFontFamily;
 }
+
+.center{
+    text-align: center;
+   // align-self: center;
+}
+
+.formLogo{
+ 
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+      
+}
+
 .white-text{
     color: white;
     font-size: 34px;
@@ -304,10 +321,17 @@ button:disabled {
 
 
   .page{
-     // display: grid;
+    display: grid;
+    //justify-items: center;
+   // align-self: center;
+   // justify-self: center;
+  //  justify-content: center;
+   // align-content: center;
+   // margin: 400px;
+    padding: 20px;
     //  grid-template-columns: 1fr;
      // grid-template-columns: 20vw auto;
-     padding: 30px;
+   //  padding: 30px;
      max-width: 100%;
   }
 
@@ -333,7 +357,6 @@ button:disabled {
 }
 
 
-  
 
 
 .fieldError{
@@ -346,6 +369,10 @@ button:disabled {
 
     color: green;
 
+}
+
+.hidden{
+    visibility: hidden;
 }
 
 
@@ -516,12 +543,50 @@ button:disabled {
 
 }
 
-.card{
-    display: grid;
-    background-color: $primaryColor;
-    padding: 10px;
+// .card{
+//     display: grid;
+//     background-color: $primaryColor;
+//     padding: 10px;
+
+// }
+
+.content{
+    padding: 100px;
+   // margin: 5px;
+    margin: 150px;
+    margin-top: 0px;
+}
+
+.formPadding {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+   
+}
+
+.profileForm{
+    margin-top: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
 }
+
+
+.select{
+    position: relative;
+    font-family: $bodyTextFontFamily;
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+
+
 
 .successContainer{
     display: grid;
@@ -605,6 +670,22 @@ button:disabled {
       display:none;
       }
 
+      .content{
+        padding: 100px;
+       //  margin: 5px;
+         margin: 150px;
+         margin-top: 0px;
+    }
+    
+    .formPadding {
+       padding-left: 50px;
+       padding-right: 50px;
+       padding-top: 20px;
+       padding-bottom: 20px;
+       
+    }
+    
+
 }
 
 
@@ -613,6 +694,26 @@ button:disabled {
     .sidebar {
       display:none
       }
+
+      .content{
+        padding: 100px;
+        margin: 150px;
+        margin-top: 0px;
+    }
+    
+    .formPadding {
+    //    padding-left: 200px;
+    //    padding-right: 200px;
+    //    padding-top: 50px;
+    //    padding-bottom: 50px;
+
+       padding-left: 50px;
+       padding-right: 50px;
+       padding-top: 20px;
+       padding-bottom: 20px;
+       
+    }
+    
 
 }
 
@@ -627,6 +728,21 @@ button:disabled {
     //     background-color: $secondaryColor;
         
     //   }
+
+    .content{
+        padding: 100px;
+        margin: 150px;
+        margin-top: 0px;
+    }
+    
+    .formPadding {
+       padding-left: 50px;
+       padding-right: 50px;
+       padding-top: 50px;
+       padding-bottom: 50px;
+       
+    }
+    
 
     
   .page{

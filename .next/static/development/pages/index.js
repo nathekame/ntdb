@@ -56,8 +56,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
  //import 'materialize-css';
+//import 'materialize-css/dist/css/materialize.min.css'
 
 var Register = function Register(props) {
+  var _jsx;
+
   var router = Object(next_router__WEBPACK_IMPORTED_MODULE_4__["useRouter"])();
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])({
@@ -86,7 +89,8 @@ var Register = function Register(props) {
     controlNumber: 'required'
   };
   var validation = new validatorjs__WEBPACK_IMPORTED_MODULE_8___default.a(userReg, rules, {
-    required: 'required*'
+    required: '*',
+    same: 'Password Mismatch'
   });
   validation.fails(); // true
 
@@ -183,120 +187,140 @@ var Register = function Register(props) {
   };
 
   return __jsx("div", {
-    className: "pagegrid",
+    className: "container",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 147,
-      columnNumber: 13
+      lineNumber: 148,
+      columnNumber: 12
     }
   }, __jsx("div", {
-    className: "innergrid",
+    className: "row",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149,
+      lineNumber: 150,
       columnNumber: 19
     }
-  }, __jsx("form", {
-    className: "form",
-    onSubmit: handleSubmit,
+  }, __jsx(react_toastify__WEBPACK_IMPORTED_MODULE_12__["ToastContainer"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 152,
-      columnNumber: 25
+      columnNumber: 21
     }
-  }, __jsx("div", {
-    className: "one-column-row",
+  }), __jsx("div", {
+    className: "content",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 153,
-      columnNumber: 29
+      columnNumber: 25
     }
-  }, __jsx("div", {
-    className: "column",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 154,
-      columnNumber: 33
-    }
-  }, __jsx("img", {
-    src: "/images/ubelogo.jpeg",
-    alt: "logo",
-    height: "200px",
-    width: "600px",
+  }, __jsx("form", (_jsx = {
+    className: "form "
+  }, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_jsx, "className", "col s12 "), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_jsx, "onSubmit", handleSubmit), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_jsx, "__self", _this), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_jsx, "__source", {
+    fileName: _jsxFileName,
+    lineNumber: 154,
+    columnNumber: 29
+  }), _jsx), __jsx("div", {
+    className: "formPadding z-depth-2",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 155,
-      columnNumber: 35
+      columnNumber: 33
     }
-  })), __jsx("div", {
-    className: "column",
+  }, __jsx("div", {
+    className: "row",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 156,
+      columnNumber: 37
+    }
+  }, __jsx("div", {
+    className: "",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 157,
-      columnNumber: 33
+      columnNumber: 45
     }
-  }, __jsx("h1", {
+  }, __jsx("img", {
+    "class": "responsive-img formLogo",
+    src: "/images/ubelogo.jpeg",
+    alt: "logo",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 158,
+      columnNumber: 49
+    }
+  }))), __jsx("div", {
+    className: "row",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 161,
       columnNumber: 37
     }
-  }, " Register "))), __jsx(react_toastify__WEBPACK_IMPORTED_MODULE_12__["ToastContainer"], {
+  }, __jsx("h4", {
+    className: "center",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 162,
-      columnNumber: 22
+      columnNumber: 46
     }
-  }), __jsx("div", {
-    className: "grid",
+  }, "Register")), __jsx("div", {
+    className: "row",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 165,
+      columnNumber: 37
+    }
+  }, __jsx("div", {
+    className: "col s12",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 166,
-      columnNumber: 25
-    }
-  }, __jsx("div", {
-    className: "one-column-row",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 167,
-      columnNumber: 29
-    }
-  }, __jsx("div", {
-    className: "column",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 168,
-      columnNumber: 33
+      columnNumber: 43
     }
   }, __jsx("label", {
     htmlFor: "email",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 169,
-      columnNumber: 33
+      lineNumber: 167,
+      columnNumber: 47
     }
-  }, "Email ", __jsx("span", {
+  }, __jsx("h6", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 167,
+      columnNumber: 70
+    }
+  }, __jsx("span", {
+    className: "text",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 167,
+      columnNumber: 74
+    }
+  }, "Email"), " ", __jsx("span", {
     className: "fieldError",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 169,
-      columnNumber: 62
+      lineNumber: 167,
+      columnNumber: 110
     }
-  }, validation.errors.get("email"))), __jsx("input", {
+  }, validation.errors.get("email")))), __jsx("input", {
     onChange: handleChange,
     name: "email",
     id: "email",
@@ -304,34 +328,57 @@ var Register = function Register(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 170,
-      columnNumber: 33
+      lineNumber: 168,
+      columnNumber: 47
     }
-  })), __jsx("div", {
-    className: "column",
+  }))), __jsx("div", {
+    className: "row",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 172,
-      columnNumber: 33
+      lineNumber: 173,
+      columnNumber: 37
+    }
+  }, __jsx("div", {
+    className: "col s12",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 174,
+      columnNumber: 43
     }
   }, __jsx("label", {
     htmlFor: "controlNumber",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 173,
-      columnNumber: 33
+      lineNumber: 175,
+      columnNumber: 47
     }
-  }, "Control Number ", __jsx("span", {
+  }, __jsx("h6", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 175,
+      columnNumber: 78
+    }
+  }, __jsx("span", {
+    className: "text",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 175,
+      columnNumber: 82
+    }
+  }, "Control Number"), " ", __jsx("span", {
     className: "fieldError",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 173,
-      columnNumber: 79
+      lineNumber: 175,
+      columnNumber: 127
     }
-  }, validation.errors.get("controlNumber"))), __jsx("input", {
+  }, validation.errors.get("controlNumber")))), __jsx("input", {
     onChange: handleChange,
     name: "controlNumber",
     id: "controlNumber",
@@ -339,34 +386,57 @@ var Register = function Register(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 174,
-      columnNumber: 33
+      lineNumber: 176,
+      columnNumber: 47
     }
-  })), __jsx("div", {
-    className: "column",
+  }))), __jsx("div", {
+    className: "row",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 178,
-      columnNumber: 33
+      lineNumber: 180,
+      columnNumber: 37
+    }
+  }, __jsx("div", {
+    className: "col s12",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 181,
+      columnNumber: 41
     }
   }, __jsx("label", {
     htmlFor: "password",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 179,
-      columnNumber: 33
+      lineNumber: 182,
+      columnNumber: 49
     }
-  }, "Password ", __jsx("span", {
+  }, __jsx("h6", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 182,
+      columnNumber: 75
+    }
+  }, __jsx("span", {
+    className: "text",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 182,
+      columnNumber: 79
+    }
+  }, "Password"), " ", __jsx("span", {
     className: "fieldError",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 179,
-      columnNumber: 68
+      lineNumber: 182,
+      columnNumber: 118
     }
-  }, validation.errors.get("password"))), __jsx("input", {
+  }, validation.errors.get("password")))), __jsx("input", {
     onChange: handleChange,
     name: "password",
     id: "password",
@@ -374,34 +444,57 @@ var Register = function Register(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 180,
-      columnNumber: 33
+      lineNumber: 183,
+      columnNumber: 49
     }
-  })), __jsx("div", {
-    className: "column",
+  }))), __jsx("div", {
+    className: "row",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 182,
-      columnNumber: 33
+      lineNumber: 187,
+      columnNumber: 37
+    }
+  }, __jsx("div", {
+    className: "col s12",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 188,
+      columnNumber: 45
     }
   }, __jsx("label", {
     htmlFor: "cpassword",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 183,
-      columnNumber: 33
+      lineNumber: 189,
+      columnNumber: 45
     }
-  }, "Confirm Password ", __jsx("span", {
+  }, __jsx("h6", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 189,
+      columnNumber: 72
+    }
+  }, __jsx("span", {
+    className: "text",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 189,
+      columnNumber: 76
+    }
+  }, "Confirm Password"), " ", __jsx("span", {
     className: "fieldError",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 183,
-      columnNumber: 77
+      lineNumber: 189,
+      columnNumber: 123
     }
-  }, validation.errors.get("cpassword"))), __jsx("input", {
+  }, validation.errors.get("cpassword")))), __jsx("input", {
     onChange: handleChange,
     name: "cpassword",
     id: "cpassword",
@@ -409,65 +502,65 @@ var Register = function Register(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 184,
-      columnNumber: 33
+      lineNumber: 190,
+      columnNumber: 49
     }
   }))), __jsx("div", {
-    className: "two-column-row",
+    className: "row",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 189,
-      columnNumber: 31
+      lineNumber: 194,
+      columnNumber: 37
     }
   }, __jsx("div", {
-    className: "column",
+    className: "col s6",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 190,
-      columnNumber: 33
+      lineNumber: 195,
+      columnNumber: 41
     }
-  }, __jsx("p", {
+  }, __jsx("h6", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 191,
-      columnNumber: 33
+      lineNumber: 196,
+      columnNumber: 45
     }
-  }, "Already Registered?  ", __jsx(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
+  }, "Already Registered ?  ", __jsx(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
     href: "/login",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 191,
-      columnNumber: 57
+      lineNumber: 196,
+      columnNumber: 71
     }
   }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 191,
-      columnNumber: 77
+      lineNumber: 196,
+      columnNumber: 91
     }
   }, "Login")))), __jsx("div", {
-    className: "column",
+    className: "col s6",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 193,
-      columnNumber: 33
+      lineNumber: 198,
+      columnNumber: 41
     }
   }, __jsx("button", {
-    className: "button",
+    className: "button black",
     disabled: buttonState,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 194,
-      columnNumber: 34
+      lineNumber: 199,
+      columnNumber: 43
     }
-  }, "submit")))))));
+  }, "Submit"))))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Register); //export default  withStyles(Register);
@@ -484,7 +577,8 @@ var Register = function Register(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var config = {
-  apiUrl: "http://localhost:5000/" // testEnv : "this is a test string"
+  apiUrl: "http://localhost:5000/" //  apiUrl:  'https://ntdbapi.herokuapp.com/'
+  // testEnv : "this is a test string"
 
 };
 /* harmony default export */ __webpack_exports__["default"] = (config);
@@ -34398,7 +34492,7 @@ var Home = function Home() {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 11,
-      columnNumber: 25
+      columnNumber: 18
     }
   });
 };
@@ -34429,15 +34523,62 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var userRegister = function userRegister(data) {
-  var url, postReq;
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function userRegister$(_context) {
+var home = function home(token) {
+  var url, options, res;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function home$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
+          url = _config_config__WEBPACK_IMPORTED_MODULE_2__["default"].apiUrl;
+          options = {
+            withCredentials: true,
+            headers: {
+              'Authorization': "Bearer ".concat(token)
+            }
+          };
+          _context.prev = 2;
+          _context.next = 5;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url, options).then(function (response) {
+            // handle success
+            console.log("this is the response " + response);
+            console.log(response.data);
+            console.log(response.status);
+            console.log(response.statusText);
+            console.log(response.headers);
+            console.log(response.config);
+            return response;
+          })["catch"](function (error) {
+            // //                                                               // handle error
+            console.log("this is the error " + error); //   console.log("this is the error "+response);
+
+            return null;
+          }));
+
+        case 5:
+          res = _context.sent;
+          return _context.abrupt("return", res);
+
+        case 9:
+          _context.prev = 9;
+          _context.t0 = _context["catch"](2);
+
+        case 11:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, null, null, [[2, 9]], Promise);
+};
+
+var userRegister = function userRegister(data) {
+  var url, postReq;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function userRegister$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
           url = _config_config__WEBPACK_IMPORTED_MODULE_2__["default"].apiUrl + "register";
-          _context.prev = 1;
-          _context.next = 4;
+          _context2.prev = 1;
+          _context2.next = 4;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(url, data).then(function (response) {
             // console.log(response);
             // console.log(response.data);
@@ -34450,16 +34591,16 @@ var userRegister = function userRegister(data) {
           }));
 
         case 4:
-          postReq = _context.sent;
-          return _context.abrupt("return", postReq);
+          postReq = _context2.sent;
+          return _context2.abrupt("return", postReq);
 
         case 8:
-          _context.prev = 8;
-          _context.t0 = _context["catch"](1);
+          _context2.prev = 8;
+          _context2.t0 = _context2["catch"](1);
 
         case 10:
         case "end":
-          return _context.stop();
+          return _context2.stop();
       }
     }
   }, null, null, [[1, 8]], Promise);
@@ -34467,9 +34608,9 @@ var userRegister = function userRegister(data) {
 
 var userLogin = function userLogin() {
   var options, url, res;
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function userLogin$(_context2) {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function userLogin$(_context3) {
     while (1) {
-      switch (_context2.prev = _context2.next) {
+      switch (_context3.prev = _context3.next) {
         case 0:
           options = {
             withCredentials: true,
@@ -34479,7 +34620,7 @@ var userLogin = function userLogin() {
           }; // Make a request for a user with a given ID
 
           url = _config_config__WEBPACK_IMPORTED_MODULE_2__["default"].apiUrl;
-          _context2.next = 4;
+          _context3.next = 4;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url, options).then(function (response) {
             // handle success
             console.log("this is the response " + response);
@@ -34497,12 +34638,12 @@ var userLogin = function userLogin() {
           }));
 
         case 4:
-          res = _context2.sent;
-          return _context2.abrupt("return", res);
+          res = _context3.sent;
+          return _context3.abrupt("return", res);
 
         case 6:
         case "end":
-          return _context2.stop();
+          return _context3.stop();
       }
     }
   }, null, null, null, Promise);
@@ -34510,9 +34651,9 @@ var userLogin = function userLogin() {
 
 var profilePost = function profilePost(data) {
   var cookies, url, options, postReq;
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function profilePost$(_context3) {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function profilePost$(_context4) {
     while (1) {
-      switch (_context3.prev = _context3.next) {
+      switch (_context4.prev = _context4.next) {
         case 0:
           // console.log("this s the data that we want to put in the databasev  ooooooooooooooo "+JSON.stringify(data));
           // console.log("this is a test of the JNIJNIOI CONFIG "+config.testEnv);
@@ -34528,8 +34669,8 @@ var profilePost = function profilePost(data) {
               'Content-Type': 'multipart/form-data'
             }
           };
-          _context3.prev = 3;
-          _context3.next = 6;
+          _context4.prev = 3;
+          _context4.next = 6;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(url, data, options).then(function (response) {
             // console.log(response);
             // console.log(response.data);
@@ -34542,17 +34683,17 @@ var profilePost = function profilePost(data) {
           }));
 
         case 6:
-          postReq = _context3.sent;
-          return _context3.abrupt("return", postReq);
+          postReq = _context4.sent;
+          return _context4.abrupt("return", postReq);
 
         case 10:
-          _context3.prev = 10;
-          _context3.t0 = _context3["catch"](3);
-          console.log("an error occurd " + _context3.t0);
+          _context4.prev = 10;
+          _context4.t0 = _context4["catch"](3);
+          console.log("an error occurd " + _context4.t0);
 
         case 13:
         case "end":
-          return _context3.stop();
+          return _context4.stop();
       }
     }
   }, null, null, [[3, 10]], Promise);
@@ -34566,14 +34707,14 @@ var profilePost = function profilePost(data) {
 
 var checkBVN = function checkBVN(bvn) {
   var url, getReq;
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function checkBVN$(_context4) {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function checkBVN$(_context5) {
     while (1) {
-      switch (_context4.prev = _context4.next) {
+      switch (_context5.prev = _context5.next) {
         case 0:
           url = _config_config__WEBPACK_IMPORTED_MODULE_2__["default"].apiUrl + "bvn/" + bvn;
           console.log("the final url to check " + url);
-          _context4.prev = 2;
-          _context4.next = 5;
+          _context5.prev = 2;
+          _context5.next = 5;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
             // console.log(response);
             // console.log(response.data);
@@ -34586,22 +34727,23 @@ var checkBVN = function checkBVN(bvn) {
           }));
 
         case 5:
-          getReq = _context4.sent;
-          return _context4.abrupt("return", getReq);
+          getReq = _context5.sent;
+          return _context5.abrupt("return", getReq);
 
         case 9:
-          _context4.prev = 9;
-          _context4.t0 = _context4["catch"](2);
+          _context5.prev = 9;
+          _context5.t0 = _context5["catch"](2);
 
         case 11:
         case "end":
-          return _context4.stop();
+          return _context5.stop();
       }
     }
   }, null, null, [[2, 9]], Promise);
 };
 
 var axiosFuncs = {
+  home: home,
   userRegister: userRegister,
   userLogin: userLogin,
   profilePost: profilePost,
@@ -34724,7 +34866,7 @@ var localStorageFuncs = {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!****************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2Fhome%2Fnoa%2FntdbProject%2Fapp%2FNTDB%2Fpages%2Findex.js ***!
   \****************************************************************************************************************************/
@@ -34747,5 +34889,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js","styles"]]]);
+},[[2,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map

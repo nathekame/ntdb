@@ -20,6 +20,7 @@ import composeApiData from '../componentUtility/composeApiData';
 
 
 
+
  //   const cropper = React.createRef(null);
 
 const EmploymentInformation = (props) => {
@@ -41,6 +42,9 @@ const EmploymentInformation = (props) => {
 
 
  const { dispatch  } = useContext(ProfileContext);
+
+
+
 
 //  const checkInLocalStorage = (val) => {
 
@@ -66,31 +70,55 @@ const EmploymentInformation = (props) => {
                 // prevProfileStep:1,
                 // nextProfileStep:3,
                 profileStep:4,
-                controlNumber: checkInLocalStorage("employmentInformation","controlNumber"),
                 highestQualification: checkInLocalStorage("employmentInformation", "highestQualification"),
                 lgea: checkInLocalStorage("employmentInformation", "lgea"),
                 station: checkInLocalStorage("employmentInformation","station"),
                 staffCategory: checkInLocalStorage("employmentInformation","staffCategory"),
                 dateOfFirstAppointment: checkInLocalStorage("employmentInformation","dateOfFirstAppointment"),
+                appointmentLetterUrl: '',
+                appointmentLetterFile: '',
                 dateOfConfirmation: checkInLocalStorage("employmentInformation","dateOfConfirmation"),
-                dateOfLastPromotion: checkInLocalStorage("employmentInformation","dateOfLastPromotion")
+                confirmationLetterUrl: '',
+                confirmationLetterFile: '',
+                dateOfLastPromotion: checkInLocalStorage("employmentInformation","dateOfLastPromotion"),
+                lastPromotionLetterUrl: '',
+                lastPromotionLetterFile: '',
+                gradeLevel: checkInLocalStorage("employmentInformation","gradeLevel"),
+                step: checkInLocalStorage("employmentInformation","step"),
+               
 
-
+                
               })
 
+              
+const userCat = useState(true);
 
 const [buttonStateF, setButtonStateF] = useState(true);
 const [buttonStateB, setButtonStateB] = useState(false);
                  
 let rules = {
 
-  controlNumber: 'required|alpha_num',
+ // controlNumber: 'required|alpha_num',
   highestQualification: 'required',
   lgea: 'required',
   station: 'required',
+  staffCategory: 'required',
   dateOfFirstAppointment: 'required',
   dateOfConfirmation: 'required',
-  dateOfLastPromotion: 'required'
+  dateOfLastPromotion: 'required',
+
+  appointmentLetterUrl: 'required',
+  appointmentLetterFile: 'required',
+  confirmationLetterUrl: 'required',
+  confirmationLetterFile: 'required',
+  lastPromotionLetterUrl: 'required',
+  lastPromotionLetterFile: 'required',
+
+  gradeLevel: 'required',
+  step: 'required',
+
+
+ 
 
 
 
@@ -98,7 +126,7 @@ let rules = {
 //  age: 'min:18'
 };
  
-let validation = new Validator(employmentInformation, rules, { required: 'required*' });
+let validation = new Validator(employmentInformation, rules, { required: '*' });
 
 validation.fails(); // true
 validation.passes(); // false
@@ -149,6 +177,60 @@ const  handleChange =(e) => {
     setEmploymentInformation({ ...employmentInformation, [e.target.id]: moment(date).format('YYYY-MM-DD') })
 
   };
+
+
+
+const handleAppointmentFile = (e) => {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let elementFile = e.target.files[0];
+  //  let elementID = [e.target.id];
+    reader.onloadend = () => {    
+            setEmploymentInformation({ ...employmentInformation, appointmentLetterFile: elementFile, appointmentLetterUrl: reader.result })  
+
+    }
+  
+    reader.readAsDataURL(elementFile)
+  }
+
+  const handleConfirmationFile = (e)=>{
+
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let elementFile = e.target.files[0];
+    //  let elementID = [e.target.id];
+        reader.onloadend = () => {    
+            setEmploymentInformation({ ...employmentInformation, confirmationLetterFile: elementFile, confirmationLetterUrl: reader.result })  
+
+        }
+    
+        reader.readAsDataURL(elementFile)
+
+       
+  
+   
+
+  }
+
+  const handleLastPromoFile =(e)=>{
+
+
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let elementFile = e.target.files[0];
+    //  let elementID = [e.target.id];
+        reader.onloadend = () => {    
+            setEmploymentInformation({ ...employmentInformation, lastPromotionLetterFile: elementFile, lastPromotionLetterUrl: reader.result })  
+
+        }
+
+        reader.readAsDataURL(elementFile)
+
+  }
+
 
 
 const handleForward = async e => {
@@ -251,7 +333,6 @@ const handleBack = async e => {
 //   // checkLocalStorage("firstName");
 // })
 
-
   
 
 
@@ -259,102 +340,161 @@ const handleBack = async e => {
 
   return (
 
-     <div className="pagegrid">
-      <Navbar />
 
-        <div className="innergrid">
-
-            <div className="profile-form" >
-
-            <h3> Employment Information </h3>
-
-            <div className="two-column-row">
-                  <div className="column">
-                    <label htmlFor="controlNumber">Address   <span className="fieldError">{validation.errors.get("controlNumber")}</span></label>               
-                    <input id="controlNumber"  onChange={handleChange} value={employmentInformation.controlNumber} />                 
-                  </div>
-
-                      <div className="column">
-                          <label htmlFor="highestQualification">Highest Qualification <span className="fieldError">{validation.errors.get("highestQualification")}</span></label>
-                          <input id="highestQualification"  onChange={handleChange} value={employmentInformation.highestQualification} />        
-                     
-                      </div>
-            </div>
-
-
-
-            <div className="three-column-row">
-                      <div className="column">
-                          <label htmlFor="lgea">LGEA   <span className="fieldError">{validation.errors.get("lgea")}</span></label>
-                          <select id="lgea" onChange={handleChange} value={employmentInformation.lgea} >
-                              <option value="" />
-                              <option value={"DELTA"}>DELTA</option>
-                              <option value={"KANO"}>KANO</option>
-                              <option value={"RIVERS"}>RIVERS</option>
-                          </select>
-                      </div> 
-                      <div className="column">
-                          <label htmlFor="station">Station/School Name  <span className="fieldError">{validation.errors.get("station")}</span></label>
-                          <select id="station" onChange={handleChange} value={employmentInformation.station} >
-                              <option value="" />
-                              <option value={"DELTA"}>DELTA</option>
-                              <option value={"KANO"}>KANO</option>
-                              <option value={"RIVERS"}>RIVERS</option>
-                          </select>
-                      </div>
-                      <div className="column">
-                          <label htmlFor="staffCategory">Staff Category <span className="fieldError">{validation.errors.get("staffCategory")}</span></label>
-                          <select id="staffCategory" onChange={handleChange} value={employmentInformation.staffCategory} >
-                              <option value="" />
-                              <option value={"Teaching"}>Teaching</option>
-                              <option value={"Non-Teaching"}>No Teaching</option>
-                             
-                          </select>
-                      </div>
-           
-            </div>
-
-
-         
-
-            <div className="three-column-row">
-                     <div className="column">
-                          <label htmlFor="dateOfFirstAppointment">Date of First Appointment  <span className="fieldError">{validation.errors.get("dateOfFirstAppointment")}</span></label>
-                          <input id="dateOfFirstAppointment" type="date" onChange={handleDateChange} value={employmentInformation.dateOfFirstAppointment}  />
-                      </div> 
-                      <div className="column">
-                          <label htmlFor="dateOfConfirmation">Date of Confirmation <span className="fieldError">{validation.errors.get("dateOfConfirmation")}</span></label>
-                          <input id="dateOfConfirmation" type="date" onChange={handleDateChange} value={employmentInformation.dateOfConfirmation}  />
-                      </div> 
-                      <div className="column">
-                          <label htmlFor="dateOfLastPromotion">Date Of Last Promotion  <span className="fieldError">{validation.errors.get("dateOfLastPromotion")}</span></label>
-                          <input id="dateOfLastPromotion" type="date" onChange={handleDateChange} value={employmentInformation.dateOfLastPromotion}  />
-                      </div>
-           
-            </div>
-
-      
-
-            <div className="two-column-row">
-                 <div className="column">
-                         <button variant="outlined"   size="small" color="primary" disabled={buttonStateB} onClick={handleBack}>	Back </button>
-                      </div>
+                <div className="container">
+                    
+                    <div className="row">      
                 
-                      <div className="column">
-                         <button size="small" color="primary"  disabled={buttonStateF} onClick={handleForward}>Next</button>
-                      </div>
-                  </div>
+                        
+                            <div className="">
 
-                  <div className="one-column-row">
-                      <div className="column componentFooter">
-                         <span>4/6</span>
-                      </div>
-                  </div>
+                                 <div className="profileForm">
 
-            </div>
-        </div>
-    </div>
 
+                                    <div className="formPadding z-depth-2">
+                                    
+                                        <div className="row">
+                                                <h4 className="center">Employment Information</h4>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col s12 m12 l4">
+                                                <label htmlFor="lgea"><h6><span className="text">LGEA</span> <span className="fieldError">{validation.errors.get("lgea")}</span></h6></label>                              
+                                                <select id="lgea" onChange={handleChange} value={employmentInformation.lgea} className="browser-default select"  >
+                                                    <option value="" />
+                                                    <option value={"AGAIE"}>AGAIE</option>
+                                                    <option value={"AGWARA"}>AGWARA</option>
+                                                    <option value={"BIDA"}>BIDA</option>
+                                                    <option value={"BORGU"}>BORGU</option>
+                                                    <option value={"BOSSO"}>BOSSO</option>
+                                                    <option value={"CHANCHAGA"}>CHANCHAGA</option>
+                                                    <option value={"EDATI"}>EDATI</option>
+                                                    <option value={"GBAKO"}>GBAKO</option>
+                                                    <option value={"GURARA"}>GURARA</option>
+                                                    <option value={"KATCHA"}>KATCHA</option>
+                                                    <option value={"KONTAGORA"}>KONTAGORA</option>
+                                                    <option value={"LAPAI"}>LAPAI</option>
+                                                    <option value={"LAVUN"}>LAVUN</option>
+                                                    <option value={"MAGAMA"}>MAGAMA</option>
+                                                    <option value={"MARIGA"}>MARIGA</option>
+                                                    <option value={"MASHEGU"}>MASHEGU</option>
+                                                    <option value={"MOKWA"}>MOKWA</option>
+                                                    <option value={"MUNYA"}>MUNYA</option>
+                                                    <option value={"PAIKORO"}>PAIKORO</option>
+                                                    <option value={"RAFI"}>RAFI</option>
+                                                    <option value={"RIJAU"}>RIJAU</option>
+                                                    <option value={"SHIRORO"}>SHIRORO</option>
+                                                    <option value={"SULEJA"}>SULEJA</option>
+                                                    <option value={"TAFA"}>TAFA</option>
+                                                    <option value={"WUSHISHI"}>WUSHISHI</option>
+                                                </select>
+                                                            
+                                            </div>  
+                                            <div className="col s12 m12 l4">
+                                                    <label htmlFor="station"><h6><span className="text">Station/School</span> <span className="fieldError">{validation.errors.get("station")}</span></h6></label>                              
+                                                    <select id="station" onChange={handleChange} value={employmentInformation.station} className="browser-default select"  >
+                                                        <option value="" />
+                                                        <option value={"DELTA"}>DELTA</option>
+                                                        <option value={"KANO"}>KANO</option>
+                                                        <option value={"RIVERS"}>RIVERS</option>
+                                                    </select>                
+                                            </div>
+                                            <div className="col s12 m12 l4">
+                                                    <label htmlFor="highestQualification"><h6><span className="text">Highest Qualification</span> <span className="fieldError">{validation.errors.get("highestQualification")}</span></h6></label>                              
+                                                    <input id="highestQualification"  onChange={handleChange} value={employmentInformation.highestQualification} />        
+                                    
+                                            </div>                                                  
+                                        </div>  
+                        
+                                       
+                                        <div className="row">
+                                            <div className="col s12 m12 l6"> 
+                                                <label htmlFor="dateOfFirstAppointment"><h6><span className="text">Date of First Appointment</span> <span className="fieldError">{validation.errors.get("dateOfFirstAppointment")}</span></h6></label>                              
+                                                <input id="dateOfFirstAppointment" type="date" onChange={handleDateChange} value={employmentInformation.dateOfFirstAppointment}  />                                              
+                                            </div>
+                                            <div className="col s12 m12 l6"> 
+                                                <label htmlFor="appointmentLetter"><h6><span className="text">Upload First Appointment Letter</span> <span className="fieldError">{validation.errors.get("appointmentLetter")}</span></h6></label>                              
+                                                <input  type='file' id="appointmentLetter" onChange={(e)=>handleAppointmentFile(e)} />
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="row">
+                                            <div className="col s12 m12 l6">
+                                                <label htmlFor="dateOfConfirmation"><h6><span className="text">Date of Confirmation</span> <span className="fieldError">{validation.errors.get("dateOfConfirmation")}</span></h6></label>                              
+                                                <input id="dateOfConfirmation" type="date" onChange={handleDateChange} value={employmentInformation.dateOfConfirmation}  />                                           
+                                            </div>
+                                            <div className="col s12 m12 l6">
+                                                <label htmlFor="confirmationLetter"><h6><span className="text">Upload Confirmation Letter</span> <span className="fieldError">{validation.errors.get("confirmationLetter")}</span></h6></label>                              
+                                                <input  type='file' id="confirmationLetter" onChange={(e)=>handleConfirmationFile(e)} />    
+                                            </div>
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col s12 m12 l6">
+                                                <label htmlFor="dateOfLastPromotion"><h6><span className="text">Date Of Last Promotion</span> <span className="fieldError">{validation.errors.get("dateOfLastPromotion")}</span></h6></label>                              
+                                                <input id="dateOfLastPromotion" type="date" onChange={handleDateChange} value={employmentInformation.dateOfLastPromotion}  />                                          
+                                            </div>
+                                            <div className="col s12 m12 l6">
+                                                <label htmlFor="lastPromotionLetter"><h6><span className="text">Upload Last Promotion Letter</span> <span className="fieldError">{validation.errors.get("lastPromotionLetter")}</span></h6></label>                              
+                                                <input  type='file' id="lastPromotionLetter" onChange={(e)=>handleLastPromoFile(e)} />   
+                                            </div>
+                                        </div>
+                                       
+
+                                        <div className="row">
+                                            <div className="col s12 m12 l4"> 
+                                                <label htmlFor="staffCategory"><h6><span className="text">Staff Category</span> <span className="fieldError">{validation.errors.get("staffCategory")}</span></h6></label>                              
+                                                <select id="staffCategory" onChange={handleChange} value={employmentInformation.staffCategory} className="browser-default select">
+                                                    <option value="" />
+                                                    <option value={"Teaching"}>Teaching</option>
+                                                    <option value={"Non Teaching"}>No Teaching</option>  
+                                                </select>  
+                                            </div>
+                                            <div className="col s12 m12 l4">
+                                                <label htmlFor="gradeLevel"><h6><span className="text">Grade Level</span> <span className="fieldError">{validation.errors.get("gradeLevel")}</span></h6></label>                              
+                                                <select id="gradeLevel" onChange={handleChange} value={employmentInformation.gradeLevel} className="browser-default select"  >
+                                                        <option value="" />
+                                                        <option value={"07"}>07</option>
+                                                        <option value={"08"}>08</option>
+                                                        <option value={"09"}>09</option>
+                                                </select>
+                                            </div>
+                                            <div className="col s12 m12 l4">
+                                                <label htmlFor="step"><h6><span className="text">Step</span> <span className="fieldError">{validation.errors.get("step")}</span></h6></label>                              
+                                                <select id="step" onChange={handleChange} value={employmentInformation.step} className="browser-default select"  >
+                                                        <option value="" />
+                                                        <option value={"01"}>01</option>
+                                                        <option value={"02"}>02</option>
+                                                        <option value={"03"}>03</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+
+                                      
+                    
+                            
+                                        <div className="row">
+                                            <div className="col s6"> 
+                                            <button className="button black"  disabled={buttonStateB} onClick={handleBack}>Back </button>     
+                                            </div>
+                                            <div className="col s6"> 
+                                            <button className="button black" disabled={buttonStateF} onClick={handleForward}>Next</button>
+                                            </div>
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="column componentFooter">
+                                                <span>4/6</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                         </div>
+                            
+                    </div>
+
+                </div>
 
 
       

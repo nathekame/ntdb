@@ -4,6 +4,7 @@ import { ProfileContext } from '../../store/contexts/profileContext'
 
 import Navbar from '../layouts/navbar'
 
+
 import '../../public/assets/style.scss';
 import Logout from '../../utility/logout'
 import checkInLocalStorage from '../componentUtility/persistLocalToState';
@@ -14,7 +15,6 @@ import Cookie from 'js-cookie'
 import jwtFuncs from '../../utility/jwt';
 import composeApiData from '../componentUtility/composeApiData';
 
-import _ from 'lodash'
 
 //import localStorageFuncs from '../../../utility/localStorage'
 
@@ -22,19 +22,19 @@ import _ from 'lodash'
 
  //   const cropper = React.createRef(null);
 
-const NextOfKinInformation = (props) => {
+const ContactInformation = (props) => {
 
 
   //console.log("this is the passed in props +"+JSON.stringify(props));
  // console.log("this is the passed in props -"+props.stepremove);
 
-// const coVal = Cookie.get("auth");
+//const coVal = Cookie.get("auth");
  
 // const profileStep = (cookie) => {
 //     return cookie ? jwtFuncs.jwtProfileStep(cookie) : 1 
 //  }
 
-// const sessionProStep = profileStep(coVal);
+//const sessionProStep = profileStep(coVal);
 
 //console.log("the pro step "+sessionProStep);
 
@@ -45,7 +45,7 @@ const NextOfKinInformation = (props) => {
 //  const checkInLocalStorage = (val) => {
 
 //   const getLocalItem = localStorageFuncs.getItemFromStorage("profile");
-//   const localStorageValue = getLocalItem["nextOfKinInformation"][val]
+//   const localStorageValue = getLocalItem["contactInformation"][val]
 
 //   console.log(" i have to trouble shoot from here "+localStorageValue);
 
@@ -58,16 +58,16 @@ const NextOfKinInformation = (props) => {
 // }
 
 
- const [nextOfKinInformation, setContectInformation] = useState(
+ const [contactInformation, setContactInformation] = useState(
               {
                 // prevProfileStep:1,
                 // nextProfileStep:3,
-                profileStep:3,
-                fullName: checkInLocalStorage("nextOfKinInformation","fullName"),
-                relationship: checkInLocalStorage("nextOfKinInformation", "relationship"),
-                address: checkInLocalStorage("nextOfKinInformation", "address"),
-                emailAddress: checkInLocalStorage("nextOfKinInformation","emailAddress"),
-                mobileNumber: checkInLocalStorage("nextOfKinInformation","mobileNumber"),
+                profileStep:2,
+                stateOfOrigin: checkInLocalStorage("contactInformation","stateOfOrigin"),
+                lga: checkInLocalStorage("contactInformation", "lga"),
+                address: checkInLocalStorage("contactInformation", "address"),
+                controlNumber: checkInLocalStorage("contactInformation","controlNumber"),
+                mobileNumber: checkInLocalStorage("contactInformation","mobileNumber"),
 
 
               })
@@ -78,16 +78,16 @@ const [buttonStateB, setButtonStateB] = useState(false);
                  
 let rules = {
 
-  fullName: 'required',
-  relationship: 'required',
+  stateOfOrigin: 'required',
+  lga: 'required',
   address: 'required',
-  emailAddress: 'email',
   mobileNumber: 'required|numeric|mobileNumberCount',
 
 //  email: 'required|email',
 //  age: 'min:18'
 };
  
+
 
 
 const checkMobileNumberSize = (mobileNumber, requirement, attribute)=>{
@@ -108,9 +108,9 @@ const checkMobileNumberSize = (mobileNumber, requirement, attribute)=>{
 
 
 Validator.register('mobileNumberCount',checkMobileNumberSize , 'Mobile Numbers Must Be 11 Digits.');
-  
 
-let validation = new Validator(nextOfKinInformation, rules, { required: 'required*' });
+
+let validation = new Validator(contactInformation, rules, { required: 'required*' });
 
 validation.fails(); // true
 validation.passes(); // false
@@ -126,13 +126,13 @@ useEffect(() => {
               setButtonStateF(true);
             
          }
-    },[nextOfKinInformation]);
+    },[contactInformation]);
 
 // useEffect(() => {
 
-//       if (nextOfKinInformation.profileStep === sessionProStep ) {
+//       if (contactInformation.profileStep === sessionProStep ) {
 //               setButtonStateB(true);
-//             //  console.log("the   buttonStete "+nextOfKinInformation.profileStep);  
+//             //  console.log("the   buttonStete "+contactInformation.profileStep);  
 //          }else{
 //               setButtonStateB(false);
         
@@ -150,7 +150,7 @@ useEffect(() => {
 
 const  handleChange =(e) => {
                 e.preventDefault(); 
-                setContectInformation({ ...nextOfKinInformation, [e.target.id]: e.target.value })
+                setContactInformation({ ...contactInformation, [e.target.id]: e.target.value })
             
               }
 
@@ -158,12 +158,12 @@ const  handleChange =(e) => {
 const handleForward = async e => {
 
     e.preventDefault();
- //   dispatch({type: 'ADD_PROFILE_DATA', payload: nextOfKinInformation});
+ //   dispatch({type: 'ADD_PROFILE_DATA', payload: contactInformation});
   if (validation.passes()) { 
-      dispatch({type: 'ADD_PROFILE_DATA', payload: {nextOfKinInformation: nextOfKinInformation}});
+      dispatch({type: 'ADD_PROFILE_DATA', payload: {contactInformation: contactInformation}});
       const next = "F"
       const go = await props.updatestep(next);
-      dispatch({type: 'CURRENT_STEP', payload: nextOfKinInformation.profileStep+1});
+      dispatch({type: 'CURRENT_STEP', payload: contactInformation.profileStep+1});
       if(go){
         return go
       }
@@ -177,7 +177,7 @@ const handleBack = async e => {
 
     const next = "B"
     const go = await props.updatestep(next);
-    dispatch({type: 'CURRENT_STEP', payload: nextOfKinInformation.profileStep-1});
+    dispatch({type: 'CURRENT_STEP', payload: contactInformation.profileStep-1});
     if(go){
   
       return go
@@ -186,38 +186,44 @@ const handleBack = async e => {
 }
 
 
-// const handleSaveNow = async e => {
-
-//     e.preventDefault();
-//   //  const data = {...commonData, ...uniqueData};
+const handleSaveNow = async e => {
 
 
-//     const data = {...nextOfKinInformation,  profileStep: nextOfKinInformation.profileStep+1};
-//    // console.log("the neww contact details JJ "+JSON.stringify(data));
+  //  console.log("i am here to save first foitiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+  
+    e.preventDefault();
+  //  const data = {...commonData, ...uniqueData};
 
-//    if (validation.passes()) {  
-//      const dataToPost = composeApiData.composeFullProfileData(data);
-//     let api = await axiosFuncs.profilePost(dataToPost);
-//     if(api.data === "error" ){
-//       console.log("the log is error");
-//     }
-//     if (api.data === "success") {
-//       console.log("the log is success"+api.status);
+   // setContactInformation({ ...contactInformation, profileStep: 3 });
 
-//       // router.push('/account')
-//       dispatch({type: 'CLEAR_CONTEXT'});
-//       Logout();
+   //console.log("the neww contact details J "+JSON.stringify(contactInformation));
+
+    const data = {...contactInformation,  profileStep: contactInformation.profileStep+1};
+   // console.log("the neww contact details JJ "+JSON.stringify(data));
+
+   if (validation.passes()) {  
+     const dataToPost = composeApiData.composeFullProfileData(data);
+    let api = await axiosFuncs.profilePost(dataToPost);
+    if(api.data === "error" ){
+      console.log("the log is error");
+    }
+    if (api.data === "success") {
+      console.log("the log is success"+api.status);
+
+      // router.push('/account')
+      dispatch({type: 'CLEAR_CONTEXT'});
+      Logout();
     
-//     }
-//   }else{
-//     dispatch({type: 'CLEAR_CONTEXT'});
-//     Logout();
-//   }
+    }
+  }else{
+    dispatch({type: 'CLEAR_CONTEXT'});
+    Logout();
+  }
  
 
-//     //logout();
+    //logout();
   
-//   }
+  }
 
 
 
@@ -233,7 +239,7 @@ const handleBack = async e => {
 
 //    // console.log("i=the local storage is empty make i put something insidehinixdopd")
 //   //  const newData = {...getLocalItem, personalDetails };
-//     const setLocalItem = localStorageFuncs.setItemInStorage("profile", nextOfKinInformation);
+//     const setLocalItem = localStorageFuncs.setItemInStorage("profile", contactInformation);
 
 //     return setLocalItem;
 
@@ -263,7 +269,6 @@ const handleBack = async e => {
 
   return (
 
-<div>
      <div className="pagegrid">
       <Navbar />
 
@@ -271,36 +276,42 @@ const handleBack = async e => {
 
             <div className="profile-form" >
 
-            <h3>Next Of Kin Information </h3>
+            <h3>Contact Information</h3>
 
             <div className="two-column-row">
                       <div className="column">                  
-                          <label htmlFor="fullName">Full Name  <span className="fieldError">{validation.errors.get("fullName")}</span></label>
-                          <input id="fullName"  onChange={handleChange} value={nextOfKinInformation.fullName} />        
-        
+                          <label htmlFor="stateOfOrigin">State Of Origin  <span className="fieldError">{validation.errors.get("stateOfOrigin")}</span></label>
+                          <select id="stateOfOrigin" onChange={handleChange} value={contactInformation.stateOfOrigin}>
+                              <option value="" />
+                              <option value={"NIGER"}>NIGER</option>
+                          </select>
                       </div>
                       <div className="column">
-                          <label htmlFor="relationship">Relationship <span className="fieldError">{validation.errors.get("relationship")}</span></label>
-                          <input id="relationship"  onChange={handleChange} value={nextOfKinInformation.relationship} />        
-                     
+                          <label htmlFor="lga">LGA   <span className="fieldError">{validation.errors.get("lga")}</span></label>
+                          <select id="lga" onChange={handleChange} value={contactInformation.lga} >
+                              <option value="" />
+                              <option value={"DELTA"}>DELTA</option>
+                              <option value={"KANO"}>KANO</option>
+                              <option value={"RIVERS"}>RIVERS</option>
+                          </select>
                       </div>
             </div>
 
-            <div className="two-column-row">
-                  <div className="column">
-                    <label htmlFor="emailAddress">Email Address   <span className="fieldError">{validation.errors.get("emailAddress")}</span></label>               
-                    <input id="emailAddress"  onChange={handleChange} value={nextOfKinInformation.emailAddress} />                 
-                  </div>
+            <div className="one-column-row">
+                  {/* <div className="column">
+                    <label htmlFor="controlNumber">Address   <span className="fieldError">{validation.errors.get("controlNumber")}</span></label>               
+                  <input id="controlNumber"  onChange={handleChange} value={contactInformation.controlNumber} />                 
+                  </div> */}
                   <div className="column">
                     <label htmlFor="mobileNumber">Mobile Number   <span className="fieldError">{validation.errors.get("mobileNumber")}</span></label>
-                    <input id="mobileNumber"  onChange={handleChange} value={nextOfKinInformation.mobileNumber} />    
+                    <input id="mobileNumber"  onChange={handleChange} value={contactInformation.mobileNumber} />    
                   </div>
             </div>
 
             <div className="one-column-row">
                   <div className="column">
                     <label htmlFor="address">Address   <span className="fieldError">{validation.errors.get("address")}</span></label>               
-                    <textarea id="address" onChange={handleChange} value={nextOfKinInformation.address}></textarea>               
+                    <textarea id="address" onChange={handleChange} value={contactInformation.address}></textarea>               
                   </div>
            
             </div>
@@ -322,14 +333,14 @@ const handleBack = async e => {
 
                   <div className="one-column-row">
                       <div className="column componentFooter">
-                         <span>3/6</span>
+                         <span>2/6</span>
                       </div>
                   </div>
-
             </div>
+
         </div>
     </div>
-    </div>
+
 
 
       
@@ -337,8 +348,6 @@ const handleBack = async e => {
 }
 
 
-export default NextOfKinInformation;
-
-
+export default ContactInformation;
 
 
