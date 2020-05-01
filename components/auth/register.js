@@ -14,6 +14,7 @@ import Validator from 'validatorjs';
 import axiosFuncs from '../../utility/axios';
 import localStorageFuncs from '../../utility/localStorage';
 import _ from 'lodash';
+import 'materialize-css/dist/css/materialize.min.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

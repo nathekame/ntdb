@@ -16,7 +16,7 @@ import Validator from 'validatorjs';
 
 import { ToastContainer , toast } from 'react-toastify';
 
-//import 'materialize-css/dist/css/materialize.css'
+import 'materialize-css/dist/css/materialize.min.css'
 import 'react-toastify/dist/ReactToastify.min.css';
 
 
